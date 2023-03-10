@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:10:33 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/10 18:01:19 by ezanotti         ###   ########.fr       */
+/*   Created: 2023/03/10 17:57:06 by ezanotti          #+#    #+#             */
+/*   Updated: 2023/03/10 17:57:15 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	main(int argc, char **argv)
+int	ft_parsing(t_args *args, char *cub_file)
 {
-	t_args	args;
+	int	fd;
 
-	if (argc != 2)
-		return (ft_error(2));
-	if (ft_reset_struct(&args))
+	if (!*cub_file)
+		return (ft_error(3));
+	if (!ft_is_extension_correct(cub_file, ".cub"))
+		return (ft_error(4));
+	fd = open(cub_file, O_RDONLY);
+	if (fd < 0)
+		return (ft_error(5));
+	if (ft_parse_infos(args, fd))
 		return (1);
-	if (ft_parsing(&args, argv[1]))
-		return (1);
-
-	(void)argv;
-
 	return (0);
 }

@@ -6,14 +6,18 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 12:36:15 by ezanotti          #+#    #+#              #
-#    Updated: 2023/03/10 16:44:31 by ezanotti         ###   ########.fr        #
+#    Updated: 2023/03/10 18:00:11 by ezanotti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 S_SRC		= main.c							\
+			${D_GNL}get_next_line.c				\
+			${D_GNL}get_next_line_utils.c		\
+			${D_PARSE}ft_parse_infos.c			\
+			${D_PARSE}ft_parsing.c				\
+			${D_PARSE}ft_reset_struct.c			\
 			${D_UTILS}ft_error.c				\
 			${D_UTILS}ft_is_extension_correct.c	\
-
 
 S_TMP		= ${addprefix ${D_SRC}, ${S_SRC}}
 O_SRC		= $(patsubst %.c, ${D_OBJS}%.o, $(S_TMP))
@@ -36,6 +40,8 @@ D_OBJS		= .objs/
 D_INC		= includes/
 D_LIB		= libft/
 D_SRC		= srcs/
+D_GNL		= gnl/
+D_PARSE		= parsing/
 D_UTILS		= utils/
 
 # COLORS
