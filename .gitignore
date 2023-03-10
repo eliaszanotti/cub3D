@@ -1,3 +1,4 @@
 *.swp
+*.a
 .objs
 cub3D
