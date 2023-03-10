@@ -6,7 +6,7 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 12:36:15 by ezanotti          #+#    #+#              #
-#    Updated: 2023/03/10 15:51:08 by ezanotti         ###   ########.fr        #
+#    Updated: 2023/03/10 16:21:31 by ezanotti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ C_DEL		= \r\033[2K
 
 all:		${NAME}
 
-${D_OBJS}%.o: %.c	${D_INC}${NAME}.h Makefile
+${D_OBJS}%.o: %.c	${D_INC}${NAME}.h ${D_INC}get_next_line.h Makefile
 			@mkdir		-p $(shell dirname $@)
 			@${PRINT}	"${C_Y}${C_DEL}Creating ${NAME}'s objects : $@"
 			@${CC}		${CFLAGS} -I ${D_LIB} -I ${D_INC} -c $< -o $@
@@ -79,12 +79,10 @@ fclean:		clean
 re:			fclean all
 
 define		ASCII
-${C_C}
- _____ _____ _____ ___ ____  
-|     |  |  | __  |_  |    \ 
-|   --|  |  | __ -|_  |  |  |
-|_____|_____|_____|___|____/ 
-                             
+${C_C} _____ _____ _____    ___ ____
+|     |  |  | __  |  |_  |    \\
+|   --|  |  | __ -|  |_  |  |  |
+|_____|_____|_____|  |___|____/
 ${C_RST}
 endef
 

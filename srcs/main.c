@@ -6,17 +6,34 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:10:33 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/10 15:49:46 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/03/10 16:16:28 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
+int	ft_parsing(t_args *args, char *cub_file)
+{
+	if (!*cub_file)
+		return (ft_error(3));
+	args->cub_file = cub_file;
+
+	
+	printf("%s\n", cub_file);
+
+
+
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
+	t_args	args;
+
 	if (argc != 2)
 		return (ft_error(2));
-	
+	if (ft_parsing(&args, argv[1]))
+		return (1);
 
 	(void)argv;
 

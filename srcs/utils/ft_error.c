@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:43:07 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/10 15:53:34 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/03/10 16:07:05 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ static int	ft_error_range_1(int error_code)
 	if (error_code == 2)
 		printf("Wrong amount of arguments "\
 			"(only one is expected in .cub format)\n");
+	if (error_code == 3)
+		printf("Cub file not found\n");
+	if (error_code == 4)
+		printf("Can't open file\n");
 	return (1);
 }
 
