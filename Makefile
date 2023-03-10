@@ -6,12 +6,14 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 12:36:15 by ezanotti          #+#    #+#              #
-#    Updated: 2023/03/10 16:21:31 by ezanotti         ###   ########.fr        #
+#    Updated: 2023/03/10 16:44:31 by ezanotti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-S_SRC		= main.c			\
-			${D_UTILS}ft_error.c
+S_SRC		= main.c							\
+			${D_UTILS}ft_error.c				\
+			${D_UTILS}ft_is_extension_correct.c	\
+
 
 S_TMP		= ${addprefix ${D_SRC}, ${S_SRC}}
 O_SRC		= $(patsubst %.c, ${D_OBJS}%.o, $(S_TMP))

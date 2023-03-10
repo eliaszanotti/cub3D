@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
+/*   ft_is_extension_correct.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/10 16:48:23 by ezanotti         ###   ########.fr       */
+/*   Created: 2023/03/10 16:36:35 by ezanotti          #+#    #+#             */
+/*   Updated: 2023/03/10 16:48:00 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "cub3D.h"
 
-# include <fcntl.h>
-# include <stdio.h>
-
-# include "libft.h"
-# include "get_next_line.h"
-
-typedef struct s_args
+int	ft_is_extension_correct(char *file, char *extension)
 {
-	char	*cub_file;
-}	t_args;
+	int	len_file;
+	int	len_extension;
+	int	i;
 
-//	UTILS
-int	ft_error(int error_code);
-int	ft_is_extension_correct(char *file, char *extension);
-
-#endif
+	len_file = ft_strlen(file);
+	len_extension = ft_strlen(extension);
+	if (len_file < len_extension + 1)
+		return (0);
+	i = 0;
+	while (*file && i++ < len_file - len_extension)
+		file++;
+	if (ft_strcmp(file, extension))
+		return (0);
+	return (1);
+}
