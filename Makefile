@@ -6,11 +6,12 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 12:36:15 by ezanotti          #+#    #+#              #
-#    Updated: 2023/03/10 13:56:22 by ezanotti         ###   ########.fr        #
+#    Updated: 2023/03/10 15:51:08 by ezanotti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-S_SRC		= main.c
+S_SRC		= main.c			\
+			${D_UTILS}ft_error.c
 
 S_TMP		= ${addprefix ${D_SRC}, ${S_SRC}}
 O_SRC		= $(patsubst %.c, ${D_OBJS}%.o, $(S_TMP))
@@ -33,6 +34,7 @@ D_OBJS		= .objs/
 D_INC		= includes/
 D_LIB		= libft/
 D_SRC		= srcs/
+D_UTILS		= utils/
 
 # COLORS
 C_R			= \033[1;31m
@@ -51,7 +53,7 @@ ${D_OBJS}%.o: %.c	${D_INC}${NAME}.h Makefile
 			@${CC}		${CFLAGS} -I ${D_LIB} -I ${D_INC} -c $< -o $@
 
 ${NAME}:	ascii lib ${O_SRC}
-			@${PRINT}	"${C_G}${SUPPR}Creating ${NAME}'s objects : DONE\n"
+			@${PRINT}	"${C_G}${C_DEL}Creating ${NAME}'s objects : DONE\n"
 			@${PRINT}	"${C_Y}Compiling ${NAME}...${C_RST}"
 			@${CC}		${O_SRC} -o ${NAME} ${LIBFT}
 			@${PRINT}	"${C_G}${C_DEL}Compiling ${NAME} : DONE ${C_RST}\n\n"

@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/10 15:50:12 by ezanotti         ###   ########.fr       */
+/*   Created: 2023/03/10 14:10:33 by ezanotti          #+#    #+#             */
+/*   Updated: 2023/03/10 15:49:46 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "cub3D.h"
 
-# include <stdio.h>
-
-# include "libft.h"
-
-/*typedef struct s_args
+int	main(int argc, char **argv)
 {
-	t_list	*stack;
-}	t_args;*/
+	if (argc != 2)
+		return (ft_error(2));
+	
 
-//	UTILS
-int	ft_error(int error_code);
+	(void)argv;
 
-#endif
+	return (0);
+}
