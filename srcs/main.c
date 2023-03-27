@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:10:33 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/10 18:01:19 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/03/23 18:13:44 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,5 @@ int	main(int argc, char **argv)
 		return (1);
 	if (ft_parsing(&args, argv[1]))
 		return (1);
-
-	(void)argv;
-
 	return (0);
 }

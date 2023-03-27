@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 08:07:23 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/11/24 10:10:05 by ezanotti         ###   ########lyon.fr   */
+/*   Updated: 2023/03/27 13:52:25 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char	*ft_join_buffer(char *save, char *buffer)
 	return (new_save);
 }
 
-char	*ft_finish_line(char *save)
+static char	*ft_finish_line(char *save)
 {
 	int		i;
 	char	*line;
