@@ -6,16 +6,22 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 12:36:15 by ezanotti          #+#    #+#              #
-#    Updated: 2023/03/10 18:00:11 by ezanotti         ###   ########.fr        #
+#    Updated: 2023/03/27 14:19:28 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 S_SRC		= main.c							\
 			${D_GNL}get_next_line.c				\
 			${D_GNL}get_next_line_utils.c		\
+												\
+			${D_PARSE}ft_convert_list.c			\
+			${D_PARSE}ft_fill_map.c				\
+			${D_PARSE}ft_is_valid_map.c			\
 			${D_PARSE}ft_parse_infos.c			\
+			${D_PARSE}ft_parse_map.c			\
 			${D_PARSE}ft_parsing.c				\
 			${D_PARSE}ft_reset_struct.c			\
+												\
 			${D_UTILS}ft_error.c				\
 			${D_UTILS}ft_is_extension_correct.c	\
 
@@ -63,7 +69,7 @@ ${D_OBJS}%.o: %.c	${D_INC}${NAME}.h ${D_INC}get_next_line.h Makefile
 ${NAME}:	ascii lib ${O_SRC}
 			@${PRINT}	"${C_G}${C_DEL}Creating ${NAME}'s objects : DONE\n"
 			@${PRINT}	"${C_Y}Compiling ${NAME}...${C_RST}"
-			@${CC}		${O_SRC} -o ${NAME} ${LIBFT}
+			@${CC}		-fsanitize=address ${O_SRC} -o ${NAME} ${LIBFT}
 			@${PRINT}	"${C_G}${C_DEL}Compiling ${NAME} : DONE ${C_RST}\n\n"
 
 lib:

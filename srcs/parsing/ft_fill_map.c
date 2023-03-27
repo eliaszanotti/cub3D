@@ -6,7 +6,7 @@
 /*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 13:56:05 by elias             #+#    #+#             */
-/*   Updated: 2023/03/27 14:17:40 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/27 14:25:21 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static int	ft_replace_void(t_ilst **ilst)
 	}
 	*ilst = first;
 	return (0);
-
 }
 
 static int	ft_finish_line(t_ilst **ilst, int size)
@@ -38,7 +37,7 @@ static int	ft_finish_line(t_ilst **ilst, int size)
 	t_ilst	*new;
 	t_ilst	*current;
 	int		i;
-	
+
 	current = *ilst;
 	i = ft_ilstsize(current);
 	while (i++ < size)
@@ -51,7 +50,7 @@ static int	ft_finish_line(t_ilst **ilst, int size)
 	return (0);
 }
 
-int ft_fill_map(t_args *args)
+int	ft_fill_map(t_args *args)
 {
 	t_list	*list;
 	int		size;

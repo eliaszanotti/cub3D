@@ -6,7 +6,7 @@
 /*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:18:30 by elias             #+#    #+#             */
-/*   Updated: 2023/03/27 14:19:46 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/27 14:26:29 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	ft_convert_list(t_args *args)
 
 	list = args->map_list;
 	size = ft_lstsize(list->content);
-	
 	args->map = malloc(sizeof(char *) * (size + 1));
 	if (!args->map)
 		return (ft_error(99));

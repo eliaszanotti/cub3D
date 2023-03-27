@@ -6,21 +6,11 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:57:06 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/27 14:18:59 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/27 14:25:44 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-void ft_log(t_ilst *ilst)
-{
-	while (ilst)
-	{
-		printf("[%c]", ilst->content);
-		ilst = ilst->next;
-	}
-	printf("\n");
-}
 
 int	ft_parsing(t_args *args, char *cub_file)
 {

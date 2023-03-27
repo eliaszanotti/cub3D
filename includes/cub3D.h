@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/10 18:00:59 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/03/27 14:26:40 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 
 typedef struct s_args
 {
+	char	**map;
+	t_list	*map_list;
 	char	*north;
 	char	*south;
 	char	*west;
@@ -30,7 +32,11 @@ typedef struct s_args
 }	t_args;
 
 //	PARSING
+int	ft_convert_list(t_args *args);
+int	ft_fill_map(t_args *args);
+int	ft_is_valid_map(t_args *args);
 int	ft_parse_infos(t_args *args, int fd);
+int	ft_parse_map(t_args *args, int fd);
 int	ft_parsing(t_args *args, char *cub_file);
 int	ft_reset_struct(t_args *args);
 //	UTILS
