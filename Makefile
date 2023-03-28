@@ -6,7 +6,7 @@
 #    By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 12:36:15 by ezanotti          #+#    #+#              #
-#    Updated: 2023/03/28 17:06:40 by elias            ###   ########.fr        #
+#    Updated: 2023/03/28 17:10:34 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ CC			= cc
 MAKEFLAGS	+= --no-print-directory -s
 CFLAGS		= -Wall -Wextra -Werror -g3
 LIBFT		= -L ./libft -lft
-MLX			= -Lmlx -lmlx -L/usr/lib -I mlx -LXext -LX11 -lm -lz
+MLX			= -Lmlx -lmlx -L/usr/lib -I mlx -lXext -lX11
 
 # COMMANDS
 RM			= rm -rf
@@ -70,7 +70,7 @@ all:		${NAME}
 ${D_OBJS}%.o: %.c	${D_MLX}mlx.h ${D_INC}${NAME}.h ${D_INC}get_next_line.h Makefile
 			@mkdir		-p $(shell dirname $@)
 			@${PRINT}	"${C_Y}${C_DEL}Creating ${NAME}'s objects : $@"
-			@${CC}		${CFLAGS} -I${D_MLX} -I/usr/includes -I${D_LIB} -I${D_INC} -c $< -o $@
+			@${CC}		${CFLAGS} -I${D_MLX} -I${D_LIB} -I${D_INC} -c $< -o $@
 
 ${NAME}:	ascii mlx lib ${O_SRC}
 			@${PRINT}	"${C_G}${C_DEL}Creating ${NAME}'s objects : DONE\n"
