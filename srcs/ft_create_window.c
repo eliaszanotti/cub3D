@@ -12,6 +12,14 @@
 
 #include "cub3D.h"
 
+int	hook_key(int key, t_mlx *mlx)
+{
+	(void)mlx;
+	if (key == 65307)
+		exit (0);
+	return (0);
+}
+
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 {
 	char	*dst;
@@ -67,6 +75,7 @@ int ft_create_window(t_args *args)
 			}	
 		}	
 	}
+	mlx_key_hook(mlx.win, hook_key, &mlx);
 	mlx_loop(mlx.mlx);
     return (0);
 }
