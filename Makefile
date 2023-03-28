@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 12:36:15 by ezanotti          #+#    #+#              #
-#    Updated: 2023/03/28 16:01:40 by elias            ###   ########.fr        #
+#    Updated: 2023/03/28 16:53:24 by tgiraudo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,8 @@ S_SRC		= main.c							\
 			${D_UTILS}ft_error.c				\
 			${D_UTILS}ft_free.c					\
 			${D_UTILS}ft_is_extension_correct.c	\
+												\
+			ft_create_window.c					\
 
 S_TMP		= ${addprefix ${D_SRC}, ${S_SRC}}
 O_SRC		= $(patsubst %.c, ${D_OBJS}%.o, $(S_TMP))
@@ -38,6 +40,7 @@ CC			= cc
 MAKEFLAGS	+= --no-print-directory -s
 CFLAGS		= -Wall -Wextra -Werror -g3
 LIBFT		= -L ./libft -lft
+MLX			= -L ./mlx -lmlx
 
 # COMMANDS
 RM			= rm -rf
@@ -46,7 +49,8 @@ PRINT		= @printf
 # DIRECTORIES
 D_OBJS		= .objs/
 D_INC		= includes/
-D_LIB		= libft/
+D_LIBFT		= libft/
+D_LIBMLX	= mlx/
 D_SRC		= srcs/
 D_GNL		= gnl/
 D_PARSE		= parsing/
@@ -67,12 +71,12 @@ all:		${NAME}
 ${D_OBJS}%.o: %.c	${D_MLX}mlx.h ${D_INC}${NAME}.h ${D_INC}get_next_line.h Makefile
 			@mkdir		-p $(shell dirname $@)
 			@${PRINT}	"${C_Y}${C_DEL}Creating ${NAME}'s objects : $@"
-			@${CC}		${CFLAGS} -I ${D_LIB} -I ${D_INC} -c $< -o $@
+			@${CC}		${CFLAGS} -I ${D_LIBFT} -I ${D_INC} -I${D_LIBMLX}-c $< -o $@
 
 ${NAME}:	ascii mlx lib ${O_SRC}
 			@${PRINT}	"${C_G}${C_DEL}Creating ${NAME}'s objects : DONE\n"
 			@${PRINT}	"${C_Y}Compiling ${NAME}...${C_RST}"
-			@${CC}		-fsanitize=address ${O_SRC} -o ${NAME} ${LIBFT}
+			@${CC}		-fsanitize=address ${O_SRC} -o ${NAME} ${LIBFT} ${MLX}
 			@${PRINT}	"${C_G}${C_DEL}Compiling ${NAME} : DONE ${C_RST}\n\n"
 
 lib:
