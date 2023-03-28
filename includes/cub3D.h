@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/28 13:35:47 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/28 16:46:48 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,28 @@
 # include <stdio.h>
 
 # include "libft.h"
+# include "../mlx/mlx.h"
 # include "get_next_line.h"
+
+#define SCREEN_WIDTH 640
+#define SCREEN_HEIGHT 480
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_mlx;
 
 typedef struct s_args
 {
 	char	**map;
 	t_list	*map_list;
+	t_mlx	*mlx;
 	char	*north;
 	char	*south;
 	char	*west;
@@ -45,5 +61,7 @@ void	ft_free_list(t_list *list);
 void	ft_free_struct(t_args *args);
 int		ft_error(int error_code);
 int		ft_is_extension_correct(char *file, char *extension);
+//	CREATE_WINDOW
+int		ft_create_window(t_args *args);
 
 #endif

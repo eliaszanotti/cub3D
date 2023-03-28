@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:10:33 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/28 13:57:55 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/28 16:46:31 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	main(int argc, char **argv)
 	if (ft_reset_struct(&args))
 		return (1);
 	if (ft_parsing(&args, argv[1]))
+		return (1);
+	if (ft_create_window(&args))
 		return (1);
 	ft_free_struct(&args);
 	return (0);
