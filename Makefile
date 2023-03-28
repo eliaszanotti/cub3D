@@ -6,7 +6,7 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 12:36:15 by ezanotti          #+#    #+#              #
-#    Updated: 2023/03/28 16:01:40 by elias            ###   ########.fr        #
+#    Updated: 2023/03/28 16:49:00 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,14 +80,14 @@ lib:
 
 mlx:
 			@${MAKE}	-C ./mlx
-			@${PRINT}	"${C_G}${C_DEL}Compiling MLX : DONE\n${C_RST}"
+			@${PRINT}	"${C_G}${C_DEL}\nCompiling MLX : DONE\n${C_RST}"
 
 ascii:
 			@${PRINT}	"$$ASCII\n"
 
 clean:		ascii
 			@${MAKE}	clean -C ./mlx
-			@${PRINT}	"${C_R}${C_DEL}Cleaning MLX : DONE\n"
+			@${PRINT}	"${C_R}${C_DEL}\nCleaning MLX : DONE\n"
 			@${PRINT}	"${C_R}Cleaning libft : DONE\n"
 			@${MAKE}	clean -C ./libft
 			@${PRINT}	"${C_R}Deleting objects : DONE\n"
