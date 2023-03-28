@@ -18,13 +18,13 @@ int	hook_key(int key, t_args *args)
 	if (key == 65307) //echap 
 		exit (0);
 	if (key == 65361) //left
-		args->x -= 8;
+		args->x_player -= 8;
 	if (key == 65362) //up
-		args->y -= 8;
+		args->y_player -= 8;
 	if (key == 65363) //right
-		args->x += 8;
+		args->x_player += 8;
 	if (key == 65364) //down
-		args->y += 8;
+		args->y_player += 8;
 	ft_create_window(args);
 	return (0);
 }
@@ -54,12 +54,12 @@ int ft_create_window(t_args *args)
 	t_mlx mlx;
 
 	mlx = *args->mlx;
-    mlx.blue.img = mlx_new_image(mlx.mlx, 32, 32);
-	mlx.blue.addr = mlx_get_data_addr(mlx.blue.img, &mlx.blue.bits_per_pixel, &mlx.blue.line_length, &mlx.blue.endian);
-    mlx.red.img = mlx_new_image(mlx.mlx, 32, 32);
-	mlx.red.addr = mlx_get_data_addr(mlx.red.img, &mlx.red.bits_per_pixel, &mlx.red.line_length, &mlx.red.endian);
-    mlx.pov.img = mlx_new_image(mlx.mlx, 16, 16);
-	mlx.pov.addr = mlx_get_data_addr(mlx.pov.img, &mlx.pov.bits_per_pixel, &mlx.pov.line_length, &mlx.pov.endian);
+    mlx.air.img = mlx_new_image(mlx.mlx, 32, 32);
+	mlx.air.addr = mlx_get_data_addr(mlx.air.img, &mlx.air.bits_per_pixel, &mlx.air.line_length, &mlx.air.endian);
+    mlx.wall.img = mlx_new_image(mlx.mlx, 32, 32);
+	mlx.wall.addr = mlx_get_data_addr(mlx.wall.img, &mlx.wall.bits_per_pixel, &mlx.wall.line_length, &mlx.wall.endian);
+    mlx.player.img = mlx_new_image(mlx.mlx, 16, 16);
+	mlx.player.addr = mlx_get_data_addr(mlx.player.img, &mlx.player.bits_per_pixel, &mlx.player.line_length, &mlx.player.endian);
 	
 	int i = -1;
 	int j;
@@ -70,22 +70,23 @@ int ft_create_window(t_args *args)
 		{
 			if (args->map[i][j] == '1')
 			{
-				ft_put_square(&mlx.red, 32, 0xFF0000);
-				mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.red.img, \
+				ft_put_square(&mlx.wall, 32, 0xFF0000);
+				mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.wall.img, \
 					j * 32, i * 32);
 			}
 			else if (args->map[i][j] != '1' && args->map[i][j] != '2')
 			{
-				ft_put_square(&mlx.blue, 32, 0xFFFFFF);
-				mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.blue.img, \
+				ft_put_square(&mlx.air, 32, 0xFFFFFF);
+				mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.air.img, \
 					j * 32, i * 32);
 			}	
 		}	
 	}
-	ft_put_square(&mlx.pov, 16, 0x0000FF);
-	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.pov.img, \
-		args->x, args->y);
-	mlx_key_hook(mlx.win, hook_key, args);
+	ft_put_square(&mlx.player, 16, 0x0000FF);
+	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.player.img, \
+		args->x_player, args->y_player);
+	// mlx_key_hook(mlx.win, hook_key, args);
+	mlx_hook(mlx.win, 2, 1L<<0, hook_key, args);
 	mlx_loop(mlx.mlx);
     return (0);
 }

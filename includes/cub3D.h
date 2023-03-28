@@ -36,9 +36,9 @@ typedef struct s_mlx
 {
 	void	*mlx;
 	void	*win;
-	t_img	blue;
-	t_img	red;
-	t_img	pov;
+	t_img	air;
+	t_img	wall;
+	t_img	player;
 }	t_mlx;
 
 typedef struct s_args
@@ -52,8 +52,8 @@ typedef struct s_args
 	char	*east;
 	char	*floor;
 	char	*ceiling;
-	int		x;
-	int		y;
+	int		x_player;
+	int		y_player;
 }	t_args;
 
 //	PARSING
