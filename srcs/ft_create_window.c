@@ -6,13 +6,13 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 16:26:46 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/28 19:44:14 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/28 19:53:04 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color)
+void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 {
 	char	*dst;
 	if (x < SCREEN_WIDTH || y < SCREEN_HEIGHT)
@@ -20,7 +20,7 @@ void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void	ft_put_square(t_mlx *data, int size, int color)
+void	ft_put_square(t_img *data, int size, int color)
 {
 	int i = 0;
 	int j;
@@ -40,8 +40,10 @@ int ft_create_window(t_args *args)
 
     mlx.mlx = mlx_init();
     mlx.win = mlx_new_window(mlx.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3D");
-    mlx.img = mlx_new_image(mlx.mlx, 32, 32);
-	mlx.addr = mlx_get_data_addr(mlx.img, &mlx.bits_per_pixel, &mlx.line_length, &mlx.endian);
+    mlx.blue.img = mlx_new_image(mlx.mlx, 32, 32);
+	mlx.blue.addr = mlx_get_data_addr(mlx.blue.img, &mlx.blue.bits_per_pixel, &mlx.blue.line_length, &mlx.blue.endian);
+    mlx.red.img = mlx_new_image(mlx.mlx, 32, 32);
+	mlx.red.addr = mlx_get_data_addr(mlx.red.img, &mlx.red.bits_per_pixel, &mlx.red.line_length, &mlx.red.endian);
 	
 	
 	int i = -1;
@@ -51,26 +53,17 @@ int ft_create_window(t_args *args)
 		j = -1;
 		while (args->map[i][++j])
 		{
-			printf("i = %d , j = %d, value = %c\n", i , j, args->map[i][j]);
-			//printf("%c", args->map[i][j]);
 			if (args->map[i][j] == '1')
 			{
-				ft_put_square(&mlx, 32, 0xFF0000);
-				mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img, j * 32 + j, i * 32 + i);
+				ft_put_square(&mlx.red, 32, 0xFF0000);
+				mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.red.img, j * 32 + j, i * 32 + i);
 			}
-			else
+			else if (args->map[i][j] == '0')
 			{
-				ft_put_square(&mlx, 32, 0x00000FF);
-				mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img, j * 32 + j, i * 32 + i);
-
-				
+				ft_put_square(&mlx.blue, 32, 0x00000FF);
+				mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.blue.img, j * 32 + j, i * 32 + i);
 			}	
-				// ft_put_square(&mlx, 32, 0xFFFFFF);
-			// else	
-			// 	ft_put_square(&mlx, 32, 0x0000FF);
-			
 		}	
-		printf("\n");
 	}
 	mlx_loop(mlx.mlx);
     return (0);

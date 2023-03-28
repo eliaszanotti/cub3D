@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/28 19:22:34 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/28 19:49:51 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,21 @@
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 800
 
-typedef struct s_mlx
+typedef struct s_img
 {
-	void	*mlx;
-	void	*win;
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+}	t_img;
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+	t_img	blue;
+	t_img	red;
 }	t_mlx;
 
 typedef struct s_args
