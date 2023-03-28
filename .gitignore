@@ -2,5 +2,6 @@
 *.swp
 *.a
 *.o
+mlx-test
 .objs
 cub3D
