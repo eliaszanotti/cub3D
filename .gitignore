@@ -1,5 +1,6 @@
 *.cub
 *.swp
 *.a
+*.o
 .objs
 cub3D
