@@ -6,7 +6,7 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 12:36:15 by ezanotti          #+#    #+#              #
-#    Updated: 2023/03/28 13:36:12 by elias            ###   ########.fr        #
+#    Updated: 2023/03/28 16:01:40 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ D_SRC		= srcs/
 D_GNL		= gnl/
 D_PARSE		= parsing/
 D_UTILS		= utils/
+D_MLX		= mlx/
 
 # COLORS
 C_R			= \033[1;31m
@@ -63,24 +64,30 @@ C_DEL		= \r\033[2K
 
 all:		${NAME}
 
-${D_OBJS}%.o: %.c	${D_INC}${NAME}.h ${D_INC}get_next_line.h Makefile
+${D_OBJS}%.o: %.c	${D_MLX}mlx.h ${D_INC}${NAME}.h ${D_INC}get_next_line.h Makefile
 			@mkdir		-p $(shell dirname $@)
 			@${PRINT}	"${C_Y}${C_DEL}Creating ${NAME}'s objects : $@"
 			@${CC}		${CFLAGS} -I ${D_LIB} -I ${D_INC} -c $< -o $@
 
-${NAME}:	ascii lib ${O_SRC}
+${NAME}:	ascii mlx lib ${O_SRC}
 			@${PRINT}	"${C_G}${C_DEL}Creating ${NAME}'s objects : DONE\n"
 			@${PRINT}	"${C_Y}Compiling ${NAME}...${C_RST}"
 			@${CC}		-fsanitize=address ${O_SRC} -o ${NAME} ${LIBFT}
 			@${PRINT}	"${C_G}${C_DEL}Compiling ${NAME} : DONE ${C_RST}\n\n"
 
 lib:
-			@make		-C ./libft
+			@${MAKE}	-C ./libft
+
+mlx:
+			@${MAKE}	-C ./mlx
+			@${PRINT}	"${C_G}${C_DEL}Compiling MLX : DONE\n${C_RST}"
 
 ascii:
 			@${PRINT}	"$$ASCII\n"
 
 clean:		ascii
+			@${MAKE}	clean -C ./mlx
+			@${PRINT}	"${C_R}${C_DEL}Cleaning MLX : DONE\n"
 			@${PRINT}	"${C_R}Cleaning libft : DONE\n"
 			@${MAKE}	clean -C ./libft
 			@${PRINT}	"${C_R}Deleting objects : DONE\n"
@@ -104,4 +111,4 @@ endef
 
 export		ASCII
 
-.PHONY:		all re clean fclean lib ascii
+.PHONY:		all re clean fclean lib mlx ascii
