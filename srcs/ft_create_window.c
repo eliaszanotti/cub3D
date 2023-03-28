@@ -6,11 +6,19 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 16:26:46 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/28 19:55:13 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/28 20:19:41 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+int	hook_key(int key, t_mlx *mlx)
+{
+	(void)mlx;
+	if (key == 65307)
+		exit (0);
+	return (0);
+}
 
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 {
@@ -65,6 +73,7 @@ int ft_create_window(t_args *args)
 			}	
 		}	
 	}
+	mlx_key_hook(mlx.win, hook_key, &mlx);
 	mlx_loop(mlx.mlx);
     return (0);
 }
