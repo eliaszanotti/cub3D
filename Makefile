@@ -27,6 +27,8 @@ S_SRC		= main.c							\
 			${D_UTILS}ft_free.c					\
 			${D_UTILS}ft_is_extension_correct.c	\
 												\
+			${D_MLX}ft_init_window.c			\
+												\
 			ft_create_window.c					\
 
 S_TMP		= ${addprefix ${D_SRC}, ${S_SRC}}

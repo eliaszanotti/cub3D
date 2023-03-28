@@ -38,6 +38,7 @@ typedef struct s_mlx
 	void	*win;
 	t_img	blue;
 	t_img	red;
+	t_img	pov;
 }	t_mlx;
 
 typedef struct s_args
@@ -51,6 +52,8 @@ typedef struct s_args
 	char	*east;
 	char	*floor;
 	char	*ceiling;
+	int		x;
+	int		y;
 }	t_args;
 
 //	PARSING
@@ -67,6 +70,11 @@ void	ft_free_list(t_list *list);
 void	ft_free_struct(t_args *args);
 int		ft_error(int error_code);
 int		ft_is_extension_correct(char *file, char *extension);
+//	MLX
+int		ft_init_window(t_args *args);
+
+
+
 //	CREATE_WINDOW
 int		ft_create_window(t_args *args);
 

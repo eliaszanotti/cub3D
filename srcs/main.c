@@ -35,6 +35,8 @@ int	main(int argc, char **argv)
 		return (1);
 	if (ft_parsing(&args, argv[1]))
 		return (1);
+	if (ft_init_window(&args))
+		return (1);
 	//ft_log(args.map);
 	if (ft_create_window(&args))
 		return (1);
