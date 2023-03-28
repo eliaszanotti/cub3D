@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:43:07 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/10 17:11:30 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/03/28 12:02:31 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static int	ft_error_range_1(int error_code)
 		printf("Can't open file\n");
 	if (error_code == 6)
 		printf("Invalid map\n");
+	if (error_code == 7)
+		printf("Invalid map (map not surrounded by walls)\n");
 	return (1);
 }
 

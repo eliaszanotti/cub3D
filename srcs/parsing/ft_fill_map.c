@@ -6,7 +6,7 @@
 /*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 13:56:05 by elias             #+#    #+#             */
-/*   Updated: 2023/03/27 14:25:21 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/28 11:48:51 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_replace_void(t_ilst **ilst)
 	while (current)
 	{
 		if (current->content == ' ')
-			current->content = '1';
+			current->content = '2';
 		current = current->next;
 		i++;
 	}
@@ -42,7 +42,7 @@ static int	ft_finish_line(t_ilst **ilst, int size)
 	i = ft_ilstsize(current);
 	while (i++ < size)
 	{
-		new = ft_ilstnew('1');
+		new = ft_ilstnew('2');
 		if (!new)
 			return (1);
 		ft_ilstadd_back(ilst, new);

@@ -6,13 +6,26 @@
 /*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:12:47 by elias             #+#    #+#             */
-/*   Updated: 2023/03/23 18:18:37 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/28 12:23:16 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-t_ilst	*ft_get_ilst(char *line)
+static char	*ft_skip_empty_line(int fd)
+{
+	char	*line;
+
+	line = get_next_line(fd);
+	while (line && !ft_strcmp(line, "\n"))
+	{
+		free(line);
+		line = get_next_line(fd);
+	}
+	return (line);
+}
+
+static t_ilst	*ft_get_ilst(char *line)
 {
 	t_ilst	*ilst;
 	t_ilst	*new;
@@ -38,8 +51,10 @@ int	ft_parse_map(t_args *args, int fd)
 	t_ilst	*ilst;
 
 	list = args->map_list;
-	line = get_next_line(fd);
-	while (line)
+	line = ft_skip_empty_line(fd);
+	if (!line)
+		return (ft_error(99));
+	while (line && ft_strcmp(line, "\n"))
 	{
 		ilst = ft_get_ilst(line);
 		if (!ilst)

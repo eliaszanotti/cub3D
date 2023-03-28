@@ -6,7 +6,7 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 12:36:15 by ezanotti          #+#    #+#              #
-#    Updated: 2023/03/27 14:19:28 by elias            ###   ########.fr        #
+#    Updated: 2023/03/28 13:36:12 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ S_SRC		= main.c							\
 			${D_GNL}get_next_line.c				\
 			${D_GNL}get_next_line_utils.c		\
 												\
+			${D_PARSE}ft_check_walls.c			\
 			${D_PARSE}ft_convert_list.c			\
 			${D_PARSE}ft_fill_map.c				\
 			${D_PARSE}ft_is_valid_map.c			\
@@ -23,6 +24,7 @@ S_SRC		= main.c							\
 			${D_PARSE}ft_reset_struct.c			\
 												\
 			${D_UTILS}ft_error.c				\
+			${D_UTILS}ft_free.c					\
 			${D_UTILS}ft_is_extension_correct.c	\
 
 S_TMP		= ${addprefix ${D_SRC}, ${S_SRC}}

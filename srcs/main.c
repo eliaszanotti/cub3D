@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:10:33 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/23 18:13:44 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/28 13:57:55 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ int	main(int argc, char **argv)
 		return (1);
 	if (ft_parsing(&args, argv[1]))
 		return (1);
+	ft_free_struct(&args);
 	return (0);
 }

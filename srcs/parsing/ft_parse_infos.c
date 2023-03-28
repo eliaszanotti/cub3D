@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:57:56 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/10 17:58:37 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/03/28 13:41:19 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_parse_infos(t_args *args, int fd)
 		i = 0;
 		line = get_next_line(fd);
 		if (!line)
-			return (ft_error(6));
+			return (ft_free_struct(args), ft_error(6));
 		while (line[i] == ' ')
 			i++;
 		if (*line && ft_compare_line(args, line + i))
