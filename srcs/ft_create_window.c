@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 16:26:46 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/28 19:55:13 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/28 20:16:15 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int ft_create_window(t_args *args)
 
     mlx.mlx = mlx_init();
     mlx.win = mlx_new_window(mlx.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3D");
-    mlx.blue.img = mlx_new_image(mlx.mlx, 96, 96);
+    mlx.blue.img = mlx_new_image(mlx.mlx, 32, 32);
 	mlx.blue.addr = mlx_get_data_addr(mlx.blue.img, &mlx.blue.bits_per_pixel, &mlx.blue.line_length, &mlx.blue.endian);
-    mlx.red.img = mlx_new_image(mlx.mlx, 96, 96);
+    mlx.red.img = mlx_new_image(mlx.mlx, 32, 32);
 	mlx.red.addr = mlx_get_data_addr(mlx.red.img, &mlx.red.bits_per_pixel, &mlx.red.line_length, &mlx.red.endian);
 	
 	
@@ -55,13 +55,15 @@ int ft_create_window(t_args *args)
 		{
 			if (args->map[i][j] == '1')
 			{
-				ft_put_square(&mlx.red, 96, 0xFF0000);
-				mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.red.img, j * 96 + j, i * 96 + i);
+				ft_put_square(&mlx.red, 32, 0xFF0000);
+				mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.red.img, \
+					j * 32 + j, i * 32 + i);
 			}
-			else if (args->map[i][j] == '0')
+			else if (args->map[i][j] != '1' && args->map[i][j] != '2')
 			{
-				ft_put_square(&mlx.blue, 96, 0xFFFFFF);
-				mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.blue.img, j * 96 + j, i * 96 + i);
+				ft_put_square(&mlx.blue, 32, 0xFFFFFF);
+				mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.blue.img, \
+					j * 32 + j, i * 32 + i);
 			}	
 		}	
 	}

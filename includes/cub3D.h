@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/28 19:54:03 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/28 20:14:37 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include "../mlx/mlx.h"
 # include "get_next_line.h"
 
-#define SCREEN_WIDTH 3840
-#define SCREEN_HEIGHT 2160
+#define SCREEN_WIDTH 1280
+#define SCREEN_HEIGHT 800
 
 typedef struct s_img
 {
