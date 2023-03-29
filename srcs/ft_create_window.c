@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_window.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thibault <thibault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 16:26:46 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/29 10:52:48 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/29 12:55:15 by thibault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	hook_key(int key, t_args *args)
 		args->x_player -= 8;
 	if (key == 65362 && args->map[(args->y_player - 8)/32][args->x_player/32] == '0') //up
 		args->y_player -= 8;
-	if (key == 65363 && args->map[args->y_player/32][(args->x_player + 8)/32] == '0') //right
+	if (key == 65363 && args->map[args->y_player/32][(args->x_player + 20)/32] == '0') //right
 		args->x_player += 8;
-	if (key == 65364 && args->map[(args->y_player + 8)/32][args->x_player/32] == '0') //down
+	if (key == 65364 && args->map[(args->y_player + 20)/32][args->x_player/32] == '0') //down
 		args->y_player += 8;
 	ft_create_window(args);
 	return (0);
