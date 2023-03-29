@@ -15,13 +15,15 @@
 
 # include <fcntl.h>
 # include <stdio.h>
+# include <math.h>
 
 # include "libft.h"
-# include "../mlx/mlx.h"
+# include "mlx.h"
 # include "get_next_line.h"
 
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 800
+#define CUB_SIZE 8
 
 typedef struct s_img
 {
@@ -30,16 +32,14 @@ typedef struct s_img
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-	int x;
-	int y;
+	int		x;
+	int		y;
 }	t_img;
 
 typedef struct s_mlx
 {
 	void	*mlx;
 	void	*win;
-	// t_img	air;
-	// t_img	wall;
 	t_img	player;
 	t_img	image;
 }	t_mlx;
@@ -61,6 +61,11 @@ typedef struct s_args
 	int		y_img;
 }	t_args;
 
+//	IMG
+void	ft_put_player(t_img *img);
+void	ft_put_square(t_img *img, int size, int color);
+//	MLX
+int		ft_init_window(t_args *args);
 //	PARSING
 int		ft_check_walls(t_args *args);
 int		ft_convert_list(t_args *args);
@@ -75,12 +80,10 @@ void	ft_free_list(t_list *list);
 void	ft_free_struct(t_args *args);
 int		ft_error(int error_code);
 int		ft_is_extension_correct(char *file, char *extension);
-//	MLX
-int		ft_init_window(t_args *args);
-
-
 
 //	CREATE_WINDOW
 int		ft_create_window(t_args *args);
+void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
+int		ft_raycasting(t_args *args);
 
 #endif

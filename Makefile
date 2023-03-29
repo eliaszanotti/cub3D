@@ -11,6 +11,11 @@
 # **************************************************************************** #
 
 S_SRC		= main.c							\
+			${D_MLX}ft_init_window.c			\
+												\
+			${D_IMG}ft_put_player.c				\
+			${D_IMG}ft_put_square.c				\
+												\
 			${D_GNL}get_next_line.c				\
 			${D_GNL}get_next_line_utils.c		\
 												\
@@ -27,9 +32,9 @@ S_SRC		= main.c							\
 			${D_UTILS}ft_free.c					\
 			${D_UTILS}ft_is_extension_correct.c	\
 												\
-			${D_MLX}ft_init_window.c			\
 												\
 			ft_create_window.c					\
+			ft_raycasting.c
 
 S_TMP		= ${addprefix ${D_SRC}, ${S_SRC}}
 O_SRC		= $(patsubst %.c, ${D_OBJS}%.o, $(S_TMP))
@@ -42,7 +47,7 @@ CC			= cc
 MAKEFLAGS	+= --no-print-directory -s
 CFLAGS		= -Wall -Wextra -Werror -g3
 LIBFT		= -L ./libft -lft
-MLX			= -Lmlx -lmlx -L/usr/lib -I mlx -lXext -lX11
+MLX			= -Lmlx -lmlx -L/usr/lib -I mlx -lXext -lX11 -lm
 
 # COMMANDS
 RM			= rm -rf
@@ -57,6 +62,7 @@ D_GNL		= gnl/
 D_PARSE		= parsing/
 D_UTILS		= utils/
 D_MLX		= mlx/
+D_IMG		= img/
 
 # COLORS
 C_R			= \033[1;31m
