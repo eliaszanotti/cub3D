@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/28 20:14:37 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/29 14:44:40 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,18 @@ typedef struct s_img
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int x;
+	int y;
 }	t_img;
 
 typedef struct s_mlx
 {
 	void	*mlx;
 	void	*win;
-	t_img	air;
-	t_img	wall;
+	// t_img	air;
+	// t_img	wall;
 	t_img	player;
+	t_img	image;
 }	t_mlx;
 
 typedef struct s_args
@@ -54,6 +57,8 @@ typedef struct s_args
 	char	*ceiling;
 	int		x_player;
 	int		y_player;
+	int		x_img;
+	int		y_img;
 }	t_args;
 
 //	PARSING
