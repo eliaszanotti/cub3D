@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 16:26:46 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/28 20:16:15 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/29 10:52:48 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,15 @@
 
 int	hook_key(int key, t_args *args)
 {
-	(void)args;
 	if (key == 65307) //echap 
 		exit (0);
-	if (key == 65361) //left
+	if (key == 65361 && args->map[args->y_player/32][(args->x_player - 8)/32] == '0') //left
 		args->x_player -= 8;
-	if (key == 65362) //up
+	if (key == 65362 && args->map[(args->y_player - 8)/32][args->x_player/32] == '0') //up
 		args->y_player -= 8;
-	if (key == 65363) //right
+	if (key == 65363 && args->map[args->y_player/32][(args->x_player + 8)/32] == '0') //right
 		args->x_player += 8;
-	if (key == 65364) //down
+	if (key == 65364 && args->map[(args->y_player + 8)/32][args->x_player/32] == '0') //down
 		args->y_player += 8;
 	ft_create_window(args);
 	return (0);
