@@ -14,18 +14,52 @@
 
 int	hook_key(int key, t_args *args)
 {
+	printf("struct\n");
+	printf("%f\n", args->ray->dirX);
+	printf("%f\n", args->ray->dirY);
+	printf("posX = %f\n", args->ray->posX);
+	printf("posY = %f\n", args->ray->posY);
+	printf("%f\n", args->ray->planeX);
+	printf("%f\n", args->ray->planeY);
+	printf("%f\n", args->ray->moveSpeed);
+	printf("%f\n", args->ray->rotSpeed);
+	printf("\n\n");
 	if (key == 65307) //echap 
 		exit (0);
-	if (key == 65361 && args->map[args->y_player/32][(args->x_player - 32)/32] == '0') //left
-		args->x_player -= CUB_SIZE;
-	if (key == 65362 && args->map[(args->y_player - 32)/32][args->x_player/32] == '0') //up
-		args->y_player -= CUB_SIZE;
-	if (key == 65363 && args->map[args->y_player/32][(args->x_player + 32)/32] == '0') //right
-		args->x_player += CUB_SIZE;
-	if (key == 65364 && args->map[(args->y_player + 32)/32][args->x_player/32] == '0') //down
-		args->y_player += CUB_SIZE;
-	// mlx_destroy_image(args->mlx.mlx, args->mlx.image.img);
-	ft_create_window(args);
+	if (key == 65361) //left
+	{
+		double oldDirX = args->ray->dirX;
+		args->ray->dirX = args->ray->dirX * cos(args->ray->rotSpeed) - args->ray->dirY * sin(args->ray->rotSpeed);
+		args->ray->dirY = oldDirX * sin(args->ray->rotSpeed) + args->ray->dirY * cos(args->ray->rotSpeed);
+		double oldPlaneX = args->ray->planeX;
+		args->ray->planeX = args->ray->planeX * cos(args->ray->rotSpeed) - args->ray->planeY * sin(args->ray->rotSpeed);
+		args->ray->planeY = oldPlaneX * sin(args->ray->rotSpeed) + args->ray->planeY * cos(args->ray->rotSpeed);
+    }
+	if (key == 65362) //up
+    {
+		if(args->map[(int)(args->ray->posX + args->ray->dirX * args->ray->moveSpeed)][(int)args->ray->posY] == '0') 
+			args->ray->posX += args->ray->dirX * args->ray->moveSpeed;
+		if(args->map[(int)args->ray->posX][(int)(args->ray->posY + args->ray->dirY * args->ray->moveSpeed)] == '0')
+			args->ray->posY += args->ray->dirY * args->ray->moveSpeed;
+    }
+	if (key == 65363) //right
+	{
+		double oldDirX = args->ray->dirX;
+		args->ray->dirX = args->ray->dirX * cos(-args->ray->rotSpeed) - args->ray->dirY * sin(-args->ray->rotSpeed);
+		args->ray->dirY = oldDirX * sin(-args->ray->rotSpeed) + args->ray->dirY * cos(-args->ray->rotSpeed);
+		double oldPlaneX = args->ray->planeX;
+		args->ray->planeX = args->ray->planeX * cos(-args->ray->rotSpeed) - args->ray->planeY * sin(-args->ray->rotSpeed);
+		args->ray->planeY = oldPlaneX * sin(-args->ray->rotSpeed) + args->ray->planeY * cos(-args->ray->rotSpeed);
+    }
+	if (key == 65364) //down
+    {
+		if(args->map[(int)(args->ray->posX - args->ray->dirX * args->ray->moveSpeed)][(int)args->ray->posY] == '0')
+			args->ray->posX -= args->ray->dirX * args->ray->moveSpeed;
+		if(args->map[(int)args->ray->posX][(int)(args->ray->posY - args->ray->dirY * args->ray->moveSpeed)] == '0')
+			args->ray->posY -= args->ray->dirY * args->ray->moveSpeed;
+    }
+	// mlx_destroy_image(&args->mlx->mlx, &args->mlx->image.img);
+	ft_loop(args);
 	return (0);
 }
 
@@ -44,25 +78,25 @@ int ft_create_window(t_args *args)
 	t_mlx *mlx;
 
 	mlx = args->mlx;
-	mlx->image.img = mlx_new_image(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
-	mlx->image.addr = mlx_get_data_addr(mlx->image.img, &mlx->image.bits_per_pixel, &mlx->image.line_length, &mlx->image.endian);
+	// mlx->image.img = mlx_new_image(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	// mlx->image.addr = mlx_get_data_addr(mlx->image.img, &mlx->image.bits_per_pixel, &mlx->image.line_length, &mlx->image.endian);
 	
-	mlx->image.y = -1;
-	while (args->map[++mlx->image.y])
-	{
-		mlx->image.x = -1;
-		while (args->map[mlx->image.y][++mlx->image.x])
-		{
-			if (args->map[mlx->image.y][mlx->image.x] == '1')
-				ft_put_square(&mlx->image, 8, 0xFF0000);
-			else if (args->map[mlx->image.y][mlx->image.x] != '1' && args->map[mlx->image.y][mlx->image.x] != '2')
-				ft_put_square(&mlx->image, 8, 0xFFFFFF);
-		}	
-	}
-	mlx->image.y = args->y_player/8;
-	mlx->image.x = args->x_player/8;
+	// mlx->image.y = -1;
+	// while (args->map[++mlx->image.y])
+	// {
+	// 	mlx->image.x = -1;
+	// 	while (args->map[mlx->image.y][++mlx->image.x])
+	// 	{
+	// 		if (args->map[mlx->image.y][mlx->image.x] == '1')
+	// 			ft_put_square(&mlx->image, 8, 0xFF0000);
+	// 		else if (args->map[mlx->image.y][mlx->image.x] != '1' && args->map[mlx->image.y][mlx->image.x] != '2')
+	// 			ft_put_square(&mlx->image, 8, 0xFFFFFF);
+	// 	}	
+	// }
+	// mlx->image.y = args->y_player/8;
+	// mlx->image.x = args->x_player/8;
 	
-	ft_put_player(&mlx->image);
+	// ft_put_player(&mlx->image);
 	ft_raycasting(args);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->image.img, \
 		0, 0);

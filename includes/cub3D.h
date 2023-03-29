@@ -25,6 +25,18 @@
 #define SCREEN_HEIGHT 800
 #define CUB_SIZE 8
 
+typedef struct s_ray
+{
+	double	posX;
+	double	posY;
+	double	dirX;
+	double	dirY;
+	double planeX;
+	double planeY;
+	double	moveSpeed;
+	double	rotSpeed;
+}	t_ray;
+
 typedef struct s_img
 {
 	void	*img;
@@ -49,6 +61,7 @@ typedef struct s_args
 	char	**map;
 	t_list	*map_list;
 	t_mlx	*mlx;
+	t_ray	*ray;
 	char	*north;
 	char	*south;
 	char	*west;
@@ -85,5 +98,6 @@ int		ft_is_extension_correct(char *file, char *extension);
 int		ft_create_window(t_args *args);
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 int		ft_raycasting(t_args *args);
-
+void	ft_loop(t_args *args);
+int		hook_key(int key, t_args *args);
 #endif

@@ -18,24 +18,23 @@ void	ft_draw_line(int x, int start, int end, int color, t_img *img)
 		my_mlx_pixel_put(img, x, start, color);
 }
 
-int ft_raycasting(t_args *args)
+void ft_loop(t_args *args)
 {
-    double posX = 22, posY = 12;   //x and y start position
-    double dirX = -1, dirY = 0; //initial direction vector
-    double planeX = 0, planeY = 0.66; //the 2d raycaster version of camera plane
+	t_mlx *mlx;
 
-    // double time = 0; //time of current frame
-    // double oldTime = 0; //time of previous frame
-
-    for(int x = 0; x < SCREEN_WIDTH; x++)
+	mlx = args->mlx;
+	mlx->image.img = mlx_new_image(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	mlx->image.addr = mlx_get_data_addr(mlx->image.img, &mlx->image.bits_per_pixel, &mlx->image.line_length, &mlx->image.endian);
+	
+	for(int x = 0; x < SCREEN_WIDTH; x++)
     {
 		//calculate ray position and direction
 		double cameraX = 2 * x / (double)SCREEN_WIDTH - 1; //x-coordinate in camera space
-		double rayDirX = dirX + planeX * cameraX;
-		double rayDirY = dirY + planeY * cameraX;
+		double rayDirX = args->ray->dirX + args->ray->planeX * cameraX;
+		double rayDirY = args->ray->dirY + args->ray->planeY * cameraX;
 		//which box of the map we're in
-		int mapX = (int)posX;
-		int mapY = (int)posY;
+		int mapX = (int)args->ray->posX;
+		int mapY = (int)args->ray->posY;
 
 		double sideDistX;
 		double sideDistY;
@@ -59,22 +58,22 @@ int ft_raycasting(t_args *args)
 		if(rayDirX < 0)
 		{
 			stepX = -1;
-			sideDistX = (posX - mapX) * deltaDistX;
+			sideDistX = (args->ray->posX - mapX) * deltaDistX;
 		}
 		else
 		{
 			stepX = 1;
-			sideDistX = (mapX + 1.0 - posX) * deltaDistX;
+			sideDistX = (mapX + 1.0 - args->ray->posX) * deltaDistX;
 		}
 		if(rayDirY < 0)
 		{
 			stepY = -1;
-			sideDistY = (posY - mapY) * deltaDistY;
+			sideDistY = (args->ray->posY - mapY) * deltaDistY;
 		}
 		else
 		{
 			stepY = 1;
-			sideDistY = (mapY + 1.0 - posY) * deltaDistY;
+			sideDistY = (mapY + 1.0 - args->ray->posY) * deltaDistY;
 		}
 		//perform DDA
 		while(hit == 0)
@@ -95,8 +94,10 @@ int ft_raycasting(t_args *args)
 			//Check if ray has hit a wall
 			if(args->map[mapX][mapY] == '1') hit = 1;
 		}
-		if(side == 0) perpWallDist = (sideDistX - deltaDistX);
-		else    perpWallDist = (sideDistY - deltaDistY);
+		if (side == 0) 
+      		perpWallDist = (sideDistX - deltaDistX);
+		else
+      		perpWallDist = (sideDistY - deltaDistY);
 
 		//Calculate height of line to draw on screen
 		int lineHeight = (int)(SCREEN_HEIGHT / perpWallDist);
@@ -109,7 +110,6 @@ int ft_raycasting(t_args *args)
 
 		//choose wall color
 		int color;
-		printf("index : %c\n", args->map[mapX][mapY]);
 		switch(args->map[mapX][mapY])
 		{
 		case '1':   color = 0xFF0000;   break; //red
@@ -125,53 +125,26 @@ int ft_raycasting(t_args *args)
 		// printf("color : %X", color);
 		ft_draw_line(x, drawStart, drawEnd, color, &args->mlx->image);
 	}
-	return (0);
-    //timing for input and FPS counter
-    // oldTime = time;
-    // time = getTicks();
-    // double frameTime = (time - oldTime) / 1000.0; //frameTime is the time this frame has taken, in seconds
-    // print(1.0 / frameTime); //FPS counter
-    // redraw();
-    // cls();
+    //speed modifiers
+    args->ray->moveSpeed = 5 * 0.016; //the constant value is in squares/second
+    args->ray->rotSpeed = 3 * 0.016; //the constant value is in radians/second
+		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->image.img, \
+		0, 0);
+}
 
-    // //speed modifiers
-    // double moveSpeed = frameTime * 5.0; //the constant value is in squares/second
-    // double rotSpeed = frameTime * 3.0; //the constant value is in radians/second
-    // readKeys();
-    // //move forward if no wall in front of you
-    // if(keyDown(SDLK_UP))
-    // {
-    // if(args->map[int(posX + dirX * moveSpeed)][int(posY)] == false) 
-    // posX += dirX * moveSpeed;
-    // if(args->map[int(posX)][int(posY + dirY * moveSpeed)] == false)
-    // posY += dirY * moveSpeed;
-    // }
-    // //move backwards if no wall behind you
-    // if(keyDown(SDLK_DOWN))
-    // {
-    // if(args->map[int(posX - dirX * moveSpeed)][int(posY)] == false) posX -= dirX * moveSpeed;
-    // if(args->map[int(posX)][int(posY - dirY * moveSpeed)] == false) posY -= dirY * moveSpeed;
-    // }
-    // //rotate to the right
-    // if(keyDown(SDLK_RIGHT))
-    // {
-    // //both camera direction and camera plane must be rotated
-    // double oldDirX = dirX;
-    // dirX = dirX * cos(-rotSpeed) - dirY * sin(-rotSpeed);
-    // dirY = oldDirX * sin(-rotSpeed) + dirY * cos(-rotSpeed);
-    // double oldPlaneX = planeX;
-    // planeX = planeX * cos(-rotSpeed) - planeY * sin(-rotSpeed);
-    // planeY = oldPlaneX * sin(-rotSpeed) + planeY * cos(-rotSpeed);
-    // }
-    // //rotate to the left
-    // if(keyDown(SDLK_LEFT))
-    // {
-    // //both camera direction and camera plane must be rotated
-    // double oldDirX = dirX;
-    // dirX = dirX * cos(rotSpeed) - dirY * sin(rotSpeed);
-    // dirY = oldDirX * sin(rotSpeed) + dirY * cos(rotSpeed);
-    // double oldPlaneX = planeX;
-    // planeX = planeX * cos(rotSpeed) - planeY * sin(rotSpeed);
-    // planeY = oldPlaneX * sin(rotSpeed) + planeY * cos(rotSpeed);
-    // }
+int ft_raycasting(t_args *args)
+{
+	args->ray = malloc(sizeof(t_ray));
+
+    args->ray->posX = 3;
+	args->ray->posY = 4;
+    args->ray->dirX = -1;
+	args->ray->dirY = 0;
+    args->ray->planeX = 0;
+	args->ray->planeY = 0.66;
+
+    ft_loop(args);
+	// mlx_hook(args->mlx->win, 2, 1L<<0, hook_key, args);
+	// mlx_loop(args->mlx->mlx);
+	return (0);
 }
