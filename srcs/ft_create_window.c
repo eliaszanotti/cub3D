@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 16:26:46 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/29 14:47:24 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/29 19:09:41 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,6 @@
 
 int	hook_key(int key, t_args *args)
 {
-	printf("struct\n");
-	printf("%f\n", args->ray->dirX);
-	printf("%f\n", args->ray->dirY);
-	printf("posX = %f\n", args->ray->posX);
-	printf("posY = %f\n", args->ray->posY);
-	printf("%f\n", args->ray->planeX);
-	printf("%f\n", args->ray->planeY);
-	printf("%f\n", args->ray->moveSpeed);
-	printf("%f\n", args->ray->rotSpeed);
-	printf("\n\n");
 	if (key == 65307) //echap 
 		exit (0);
 	if (key == 65361) //left
@@ -58,7 +48,7 @@ int	hook_key(int key, t_args *args)
 		if(args->map[(int)args->ray->posX][(int)(args->ray->posY - args->ray->dirY * args->ray->moveSpeed)] == '0')
 			args->ray->posY -= args->ray->dirY * args->ray->moveSpeed;
     }
-	// mlx_destroy_image(&args->mlx->mlx, &args->mlx->image.img);
+	mlx_destroy_image(args->mlx->mlx, args->mlx->image.img);
 	ft_loop(args);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/29 14:44:40 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/29 19:08:03 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include "mlx.h"
 # include "get_next_line.h"
 
-#define SCREEN_WIDTH 1280
-#define SCREEN_HEIGHT 800
+#define SCREEN_WIDTH 3640
+#define SCREEN_HEIGHT 2160
 #define CUB_SIZE 8
 
 typedef struct s_ray
@@ -52,7 +52,6 @@ typedef struct s_mlx
 {
 	void	*mlx;
 	void	*win;
-	t_img	player;
 	t_img	image;
 }	t_mlx;
 

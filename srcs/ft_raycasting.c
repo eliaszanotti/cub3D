@@ -18,6 +18,25 @@ void	ft_draw_line(int x, int start, int end, int color, t_img *img)
 		my_mlx_pixel_put(img, x, start, color);
 }
 
+void	ft_color(t_img *img)
+{
+	int i;
+	int j;
+
+	i = -1;
+	while(++i < SCREEN_HEIGHT)
+	{
+		j = -1;
+		while(++j < SCREEN_WIDTH)
+		{
+			if (i > SCREEN_HEIGHT / 2)
+				my_mlx_pixel_put(img, j, i, 0x2f243a);
+			else 
+				my_mlx_pixel_put(img, j, i, 0x273469);
+		}
+	}
+}
+
 void ft_loop(t_args *args)
 {
 	t_mlx *mlx;
@@ -25,7 +44,7 @@ void ft_loop(t_args *args)
 	mlx = args->mlx;
 	mlx->image.img = mlx_new_image(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	mlx->image.addr = mlx_get_data_addr(mlx->image.img, &mlx->image.bits_per_pixel, &mlx->image.line_length, &mlx->image.endian);
-	
+	ft_color(&mlx->image);
 	for(int x = 0; x < SCREEN_WIDTH; x++)
     {
 		//calculate ray position and direction
@@ -112,14 +131,14 @@ void ft_loop(t_args *args)
 		int color;
 		switch(args->map[mapX][mapY])
 		{
-		case '1':   color = 0xFF0000;   break; //red
+		case '1':   color = 0xDB8A74;   break; //red
 		case '2':   color = 0x00FF00;   break; //green
 		case '3':   color = 0x0000FF;    break; //blue
 		case '4':   color = 0xFFFFFF;   break; //white
 		default: color = 0xFFFF00; break; //yellow
 		}
 		//give x and y sides different brightness
-		if(side == 1) {color = 0x990000;}
+		if(side == 1) {color = 0xFAC9B8;}
 
 		//draw the pixels of the stripe as a vertical line
 		// printf("color : %X", color);
@@ -136,8 +155,8 @@ int ft_raycasting(t_args *args)
 {
 	args->ray = malloc(sizeof(t_ray));
 
-    args->ray->posX = 3;
-	args->ray->posY = 4;
+    args->ray->posX = 2;
+	args->ray->posY = 27;
     args->ray->dirX = -1;
 	args->ray->dirY = 0;
     args->ray->planeX = 0;
