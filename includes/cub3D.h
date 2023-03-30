@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/30 17:41:03 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/30 17:46:42 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ typedef struct s_args
 int		ft_init_window(t_args *args);
 void	ft_print_colors(t_args *args);
 void	ft_print_cross(t_img *img);
+int		ft_print_minimap(t_args *args, t_img *img);
 void	ft_put_player(t_img *img, int color);
 void	ft_put_square(t_img *img, int size, int color);
 //	PARSING

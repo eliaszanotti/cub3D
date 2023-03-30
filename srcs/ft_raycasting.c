@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:56:41 by thibault          #+#    #+#             */
-/*   Updated: 2023/03/30 17:41:08 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/30 17:47:55 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ void ft_loop(t_args *args)
     // circleBres(&args->mlx->image, 400);
     args->ray->moveSpeed = 5 * 0.032; //the constant value is in squares/second
     args->ray->rotSpeed = 3 * 0.032; //the constant value is in radians/second
-	ft_create_minimap(args, &mlx->image);
+	ft_print_minimap(args, &mlx->image);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->image.img, \
 		0, 0);
 	ft_print_cross(&mlx->image);
