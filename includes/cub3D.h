@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/30 13:33:07 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/30 15:12:54 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@
 # endif
 
 
-#define SCREEN_WIDTH 3840
-#define SCREEN_HEIGHT 2160
+#define SCREEN_WIDTH 1440
+#define SCREEN_HEIGHT 900
 #define CUB_SIZE 8
 
 typedef struct s_ray
