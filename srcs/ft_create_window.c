@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 16:26:46 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/29 20:41:55 by thibaultgir      ###   ########.fr       */
+/*   Updated: 2023/03/30 10:30:16 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,6 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 
 int ft_create_window(t_args *args)
 {
-	t_mlx *mlx;
-
-	mlx = args->mlx;
 	// mlx->image.img = mlx_new_image(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	// mlx->image.addr = mlx_get_data_addr(mlx->image.img, &mlx->image.bits_per_pixel, &mlx->image.line_length, &mlx->image.endian);
 	
@@ -88,9 +85,7 @@ int ft_create_window(t_args *args)
 	
 	// ft_put_player(&mlx->image);
 	ft_raycasting(args);
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->image.img, \
-		0, 0);
-	mlx_hook(mlx->win, 2, 1L<<0, hook_key, args);
-	mlx_loop(mlx->mlx);
+	// mlx_hook(mlx->win, 2, 1L<<0, hook_key, args);
+	// mlx_loop(mlx->mlx);
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:56:41 by thibault          #+#    #+#             */
-/*   Updated: 2023/03/30 10:20:48 by thibaultgir      ###   ########.fr       */
+/*   Updated: 2023/03/30 10:27:39 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,44 +16,23 @@ void	ft_draw_line(int x, int start, int end, int color, t_img *img)
 {
 	int dx;
 	int dy;
+	int hyp;
 
 	while(start++ < end)
 	{
 		dx = abs(x - SCREEN_WIDTH / 2);
 		dy = abs(start - SCREEN_HEIGHT / 2);
-		if (sqrt(dx * dx + dy * dy) > 800)
+		hyp = sqrt(dx * dx + dy * dy);
+		if (hyp > 800)
 			my_mlx_pixel_put(img, x, start, (color & 0xfefefe) >> 4);
-			else if (sqrt(dx * dx + dy * dy) > 600)
+		else if (hyp > 600)
 			my_mlx_pixel_put(img, x, start, (color & 0xfefefe) >> 3);
-			else if (sqrt(dx * dx + dy * dy) > 300)
+		else if (hyp > 300)
 			my_mlx_pixel_put(img, x, start, (color & 0xfefefe) >> 2);
-		else if (sqrt(dx * dx + dy * dy) > 200)
+		else if (hyp > 200)
 			my_mlx_pixel_put(img, x, start, (color & 0xfefefe) >> 1);
 		else
 			my_mlx_pixel_put(img, x, start, color);
-	}
-}
-
-void	ft_draw(t_img *img, int x1, int y1, int x2, int y2)
-{
-	double	dx;
-	double	dy;
-	int		eps;
-	double	x;
-	double	y;
-
-	dx = x2 - x1;
-	dy = y2 - y1;
-	eps = sqrt((dx * dx) + (dy * dy));
-	dx /= eps;
-	dy /= eps;
-	x = x1;
-	y = y1;
-	while (eps--)
-	{
-		my_mlx_pixel_put(img, x, y, 0x00CCFFFF);
-		x += dx;
-		y += dy;
 	}
 }
 
@@ -76,54 +55,26 @@ void	ft_color(t_img *img)
 	}
 }
 
-void	ft_draw_circle(t_img *img, int x, int y)
+void	ft_print_cross(t_img *img)
 {
-	int xc;
-	int yc;
+	int i;
+	int j;
 
-	xc = SCREEN_WIDTH / 2;
-	yc = SCREEN_HEIGHT / 2;
+	i = ((SCREEN_HEIGHT / 2) - 2);
+	while (i++ < ((SCREEN_HEIGHT / 2) + 2))
+	{
+		j = ((SCREEN_WIDTH / 2) - 25);
+		while (j++ < ((SCREEN_WIDTH / 2) + 25))
+			my_mlx_pixel_put(img, j, i, 0xFF0000);
+	}
+	i = ((SCREEN_HEIGHT / 2) - 25);
+	while (i++ < ((SCREEN_HEIGHT / 2) + 25))
+	{
+		j = ((SCREEN_WIDTH / 2) - 2);
+		while (j++ < ((SCREEN_WIDTH / 2) + 2))
+			my_mlx_pixel_put(img, j, i, 0xFF0000);
+	}
 
-	ft_draw(img, xc, yc, xc+x, yc+y);
-	ft_draw(img, xc, yc, xc-x, yc+y);
-	ft_draw(img, xc, yc, xc+x, yc-y);
-	ft_draw(img, xc, yc, xc-x, yc-y);
-	ft_draw(img, xc, yc, xc+y, yc+x);
-	ft_draw(img, xc, yc, xc-y, yc+x);
-	ft_draw(img, xc, yc, xc+y, yc-x);
-	ft_draw(img, xc, yc, xc-y, yc-x);
-
-	// my_mlx_pixel_put(img, xc+x, yc+y, 0xFF0000);
-    // my_mlx_pixel_put(img, xc-x, yc+y, 0xFF0000);
-    // my_mlx_pixel_put(img, xc+x, yc-y, 0xFF0000);
-    // my_mlx_pixel_put(img, xc-x, yc-y, 0xFF0000);
-    // my_mlx_pixel_put(img, xc+y, yc+x, 0xFF0000);
-    // my_mlx_pixel_put(img, xc-y, yc+x, 0xFF0000);
-    // my_mlx_pixel_put(img, xc+y, yc-x, 0xFF0000);
-    // my_mlx_pixel_put(img, xc-y, yc-x, 0xFF0000);
-}
-
-void circleBres(t_img *img, int r)
-{
-    // int x = 0, y = r;
-    // int d = 3 - 2 * r;
-    // ft_draw_circle(img, x, y);
-    // while (y >= x)
-    // {
-    //     x++;
-    //     if (d > 0)
-    //     {
-    //         y--;
-    //         d = d + 4 * (x - y) + 10;
-    //     }
-    //     else
-    //         d = d + 4 * x + 6;
-    //     ft_draw_circle(img, x, y);
-    // }
-	for(int y=-r; y<=r; y++)
-    for(int x=-r; x<=r; x++)
-        if(x*x+y*y <= r*r)
-            my_mlx_pixel_put(img, SCREEN_WIDTH / 2+x, SCREEN_HEIGHT / 2+y, 0xFFFFCC);
 }
 
 void ft_loop(t_args *args)
@@ -252,7 +203,7 @@ int ft_raycasting(t_args *args)
 	args->ray->planeY = 0.66;
 
     ft_loop(args);
-	// mlx_hook(args->mlx->win, 2, 1L<<0, hook_key, args);
-	// mlx_loop(args->mlx->mlx);
+	mlx_hook(args->mlx->win, 2, 1L<<0, hook_key, args);
+	mlx_loop(args->mlx->mlx);
 	return (0);
 }
