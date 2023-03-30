@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/30 16:14:37 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/30 17:31:21 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@
 
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 800
-#define CUB_SIZE 8
+#define CUB_SIZE 32
 
 typedef struct s_ray
 {
@@ -104,11 +104,10 @@ typedef struct s_args
 	int		move_down;
 }	t_args;
 
-//	IMG
-void	ft_put_player(t_img *img);
-void	ft_put_square(t_img *img, int size, int color);
 //	MLX
 int		ft_init_window(t_args *args);
+void	ft_put_player(t_img *img, int color);
+void	ft_put_square(t_img *img, int size, int color);
 //	PARSING
 int		ft_check_walls(t_args *args);
 int		ft_convert_list(t_args *args);

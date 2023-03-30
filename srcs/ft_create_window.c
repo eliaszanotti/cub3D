@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 16:26:46 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/30 15:15:13 by thibaultgir      ###   ########.fr       */
+/*   Updated: 2023/03/30 17:26:48 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,14 @@ int ft_create_minimap(t_args *args, t_img *img)
 		{
 			if (args->map[img->y][img->x] == '1')
 				ft_put_square(img, CUB_SIZE, 0xFFFFFF);
-			else if (args->map[img->y][img->x] != '1' && args->map[img->y][img->x] != '2')
-				ft_put_square(img, CUB_SIZE, 0x000000);
+			else if (args->map[img->y][img->x] != '1' && \
+				args->map[img->y][img->x] != '2')
+				ft_put_square(img, CUB_SIZE, args->floor_color);
 		}	
 	}
 	args->mlx->image.y = args->ray->posX - 1;
 	args->mlx->image.x = args->ray->posY - 1;
 	
-	ft_put_player(img);
+	ft_put_player(img, 0x0000FF);
     return (0);
 }

@@ -6,7 +6,7 @@
 #    By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 12:36:15 by ezanotti          #+#    #+#              #
-#    Updated: 2023/03/30 15:13:06 by elias            ###   ########.fr        #
+#    Updated: 2023/03/30 17:11:23 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,9 +23,8 @@ endif
 
 S_SRC		= main.c							\
 			${D_MLX}ft_init_window.c			\
-												\
-			${D_IMG}ft_put_player.c				\
-			${D_IMG}ft_put_square.c				\
+			${D_MLX}ft_put_player.c				\
+			${D_MLX}ft_put_square.c				\
 												\
 			${D_GNL}get_next_line.c				\
 			${D_GNL}get_next_line_utils.c		\
@@ -73,7 +72,6 @@ D_SRC		= srcs/
 D_GNL		= gnl/
 D_PARSE		= parsing/
 D_UTILS		= utils/
-D_IMG		= img/
 D_MLX		= mlx/
 
 # COLORS
