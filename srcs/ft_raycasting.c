@@ -14,8 +14,26 @@
 
 void	ft_draw_line(int x, int start, int end, int color, t_img *img)
 {
+	int dx;
+	int dy;
+	int hyp;
+
 	while(start++ < end)
-		my_mlx_pixel_put(img, x, start, color);
+	{
+		dx = abs(x - SCREEN_WIDTH / 2);
+		dy = abs(start - SCREEN_HEIGHT / 2);
+		hyp = sqrt(dx * dx + dy * dy);
+		if (hyp > 800)
+			my_mlx_pixel_put(img, x, start, (color & 0xfefefe) >> 4);
+		else if (hyp > 600)
+			my_mlx_pixel_put(img, x, start, (color & 0xfefefe) >> 3);
+		else if (hyp > 300)
+			my_mlx_pixel_put(img, x, start, (color & 0xfefefe) >> 2);
+		else if (hyp > 200)
+			my_mlx_pixel_put(img, x, start, (color & 0xfefefe) >> 1);
+		else
+			my_mlx_pixel_put(img, x, start, color);
+	}
 }
 
 void	ft_color(t_img *img)
@@ -35,6 +53,28 @@ void	ft_color(t_img *img)
 				my_mlx_pixel_put(img, j, i, 0x273469);
 		}
 	}
+}
+
+void	ft_print_cross(t_img *img)
+{
+	int i;
+	int j;
+
+	i = ((SCREEN_HEIGHT / 2) - 2);
+	while (i++ < ((SCREEN_HEIGHT / 2) + 2))
+	{
+		j = ((SCREEN_WIDTH / 2) - 25);
+		while (j++ < ((SCREEN_WIDTH / 2) + 25))
+			my_mlx_pixel_put(img, j, i, 0xFF0000);
+	}
+	i = ((SCREEN_HEIGHT / 2) - 25);
+	while (i++ < ((SCREEN_HEIGHT / 2) + 25))
+	{
+		j = ((SCREEN_WIDTH / 2) - 2);
+		while (j++ < ((SCREEN_WIDTH / 2) + 2))
+			my_mlx_pixel_put(img, j, i, 0xFF0000);
+	}
+
 }
 
 void ft_loop(t_args *args)
@@ -131,14 +171,14 @@ void ft_loop(t_args *args)
 		int color;
 		switch(args->map[mapX][mapY])
 		{
-		case '1':   color = 0xDB8A74;   break; //red
+		case '1':   color = 0x0080FF;   break; //red
 		case '2':   color = 0x00FF00;   break; //green
 		case '3':   color = 0x0000FF;    break; //blue
 		case '4':   color = 0xFFFFFF;   break; //white
 		default: color = 0xFFFF00; break; //yellow
 		}
 		//give x and y sides different brightness
-		if(side == 1) {color = 0xFAC9B8;}
+		if(side == 1) {color = 0x008000;}
 
 		//draw the pixels of the stripe as a vertical line
 		// printf("color : %X", color);
@@ -147,7 +187,8 @@ void ft_loop(t_args *args)
     //speed modifiers
     args->ray->moveSpeed = 5 * 0.016; //the constant value is in squares/second
     args->ray->rotSpeed = 3 * 0.016; //the constant value is in radians/second
-		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->image.img, \
+	ft_print_cross(&mlx->image);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->image.img, \
 		0, 0);
 }
 
@@ -163,7 +204,7 @@ int ft_raycasting(t_args *args)
 	args->ray->planeY = 0.66;
 
     ft_loop(args);
-	// mlx_hook(args->mlx->win, 2, 1L<<0, hook_key, args);
-	// mlx_loop(args->mlx->mlx);
+	mlx_hook(args->mlx->win, 2, 1L<<0, hook_key, args);
+	mlx_loop(args->mlx->mlx);
 	return (0);
 }
