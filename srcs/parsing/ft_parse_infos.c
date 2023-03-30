@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:57:56 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/28 13:41:19 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/30 16:46:28 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,50 @@ static int	ft_compare_line(t_args *args, char *line)
 	else if (!ft_strncmp("EA", line, 2))
 		args->east = ft_strdup(line + 2);
 	else if (!ft_strncmp("F", line, 1))
-		args->floor = ft_strdup(line + 1);
+		args->floor = ft_substr(line, 2, ft_strlen(line) - 3);
 	else if (!ft_strncmp("C", line, 1))
-		args->ceiling = ft_strdup(line + 1);
+		args->ceiling = ft_substr(line, 2, ft_strlen(line) - 3);
 	return (0);
+}
+
+static int	ft_convert_hexa(char **split_color)
+{
+	int	total;
+	int	atoi;
+	int	size;
+
+	total = 0;
+	size = -1;
+	while (split_color[++size])
+	{
+		atoi = ft_atoi(split_color[size]);
+		total += atoi << (2 - size) * 8;
+	}
+	return (total);
+}
+
+static int	ft_parse_colors(char *element)
+{
+	char	**split_color;
+	int		size;
+	int		total;
+
+	split_color = ft_split(element, ',');
+	if (!split_color)
+		return (-1);
+	size = 0;
+	while (split_color[size])
+		size++;
+	if (size != 3)
+		return (-1);
+	total = ft_convert_hexa(split_color);
+	if (total == -1)
+		return (-1);
+	size = -1;
+	while (split_color[++size])
+		free(split_color[size]);
+	free(split_color);
+	return (total);
 }
 
 int	ft_parse_infos(t_args *args, int fd)
@@ -55,5 +95,9 @@ int	ft_parse_infos(t_args *args, int fd)
 			return (1);
 		free(line);
 	}
+	args->floor_color = ft_parse_colors(args->floor);
+	args->ceiling_color = ft_parse_colors(args->ceiling);
+	if (args->floor_color == -1 || args->ceiling_color == -1)
+		return (ft_error(8));
 	return (0);
 }

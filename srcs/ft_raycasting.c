@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:56:41 by thibault          #+#    #+#             */
-/*   Updated: 2023/03/30 15:17:32 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/30 16:17:28 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	ft_draw_line(int x, int start, int end, int color, t_img *img)
 {
-	int dx;
-	int dy;
-	int hyp;
+	//int dx;
+	//int dy;
+	//int hyp;
 
-	dx = abs(x - SCREEN_WIDTH / 2);
+	//dx = abs(x - SCREEN_WIDTH / 2);
 	while(start++ < end)
 	{
-		dy = abs(start - SCREEN_HEIGHT / 2);
-		hyp = sqrt(dx * dx + dy * dy);
+		//dy = abs(start - SCREEN_HEIGHT / 2);
+		/*hyp = sqrt(dx * dx + dy * dy);
 		if (hyp > 800)
 			my_mlx_pixel_put(img, x, start, (color & 0xfefefe) >> 4);
 		else if (hyp > 600)
@@ -31,26 +31,28 @@ void	ft_draw_line(int x, int start, int end, int color, t_img *img)
 			my_mlx_pixel_put(img, x, start, (color & 0xfefefe) >> 2);
 		else if (hyp > 200)
 			my_mlx_pixel_put(img, x, start, (color & 0xfefefe) >> 1);
-		else
-			my_mlx_pixel_put(img, x, start, color);
+		else*/
+		my_mlx_pixel_put(img, x, start, color);
 	}
 }
 
-void	ft_color(t_img *img)
+void	ft_color(t_args *args)
 {
+	t_img	*img;
 	int i;
 	int j;
 
 	i = -1;
+	img = &args->mlx->image;
 	while(++i < SCREEN_HEIGHT)
 	{
 		j = -1;
 		while(++j < SCREEN_WIDTH)
 		{
 			if (i > SCREEN_HEIGHT / 2)
-				my_mlx_pixel_put(img, j, i, 0x2f243a);
+				my_mlx_pixel_put(img, j, i, args->floor_color);
 			else 
-				my_mlx_pixel_put(img, j, i, 0x273469);
+				my_mlx_pixel_put(img, j, i, args->ceiling_color);
 		}
 	}
 }
@@ -84,7 +86,7 @@ void ft_loop(t_args *args)
 	mlx = args->mlx;
 	mlx->image.img = mlx_new_image(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	mlx->image.addr = mlx_get_data_addr(mlx->image.img, &mlx->image.bits_per_pixel, &mlx->image.line_length, &mlx->image.endian);
-	ft_color(&mlx->image);
+	ft_color(args);
 	for(int x = 0; x < SCREEN_WIDTH; x++)
     {
 		//calculate ray position and direction

@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:43:07 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/28 12:02:31 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/30 15:38:35 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static int	ft_error_range_1(int error_code)
 		printf("Invalid map\n");
 	if (error_code == 7)
 		printf("Invalid map (map not surrounded by walls)\n");
+	if (error_code == 8)
+		printf("Invalid color format (R,G,B)\n");
 	return (1);
 }
 
