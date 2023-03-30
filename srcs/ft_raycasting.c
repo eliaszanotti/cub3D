@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:56:41 by thibault          #+#    #+#             */
-/*   Updated: 2023/03/30 16:17:28 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/30 17:41:08 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,49 +36,6 @@ void	ft_draw_line(int x, int start, int end, int color, t_img *img)
 	}
 }
 
-void	ft_color(t_args *args)
-{
-	t_img	*img;
-	int i;
-	int j;
-
-	i = -1;
-	img = &args->mlx->image;
-	while(++i < SCREEN_HEIGHT)
-	{
-		j = -1;
-		while(++j < SCREEN_WIDTH)
-		{
-			if (i > SCREEN_HEIGHT / 2)
-				my_mlx_pixel_put(img, j, i, args->floor_color);
-			else 
-				my_mlx_pixel_put(img, j, i, args->ceiling_color);
-		}
-	}
-}
-
-void	ft_print_cross(t_img *img)
-{
-	int i;
-	int j;
-
-	i = ((SCREEN_HEIGHT / 2) - 1);
-	while (i++ < ((SCREEN_HEIGHT / 2) + 1))
-	{
-		j = ((SCREEN_WIDTH / 2) - 10);
-		while (j++ < ((SCREEN_WIDTH / 2) + 10))
-			my_mlx_pixel_put(img, j, i, 0xFFFFFF);
-	}
-	i = ((SCREEN_HEIGHT / 2) - 10);
-	while (i++ < ((SCREEN_HEIGHT / 2) + 10))
-	{
-		j = ((SCREEN_WIDTH / 2) - 1);
-		while (j++ < ((SCREEN_WIDTH / 2) + 1))
-			my_mlx_pixel_put(img, j, i, 0xFFFFFF);
-	}
-
-}
-
 void ft_loop(t_args *args)
 {
 	t_mlx *mlx;
@@ -86,7 +43,7 @@ void ft_loop(t_args *args)
 	mlx = args->mlx;
 	mlx->image.img = mlx_new_image(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	mlx->image.addr = mlx_get_data_addr(mlx->image.img, &mlx->image.bits_per_pixel, &mlx->image.line_length, &mlx->image.endian);
-	ft_color(args);
+	ft_print_colors(args);
 	for(int x = 0; x < SCREEN_WIDTH; x++)
     {
 		//calculate ray position and direction
