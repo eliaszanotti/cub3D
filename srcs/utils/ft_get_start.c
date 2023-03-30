@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:04:19 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/30 12:05:25 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/30 18:07:32 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int	ft_get_start(t_args *args)
 			if(ft_isalpha(args->map[i][j]))
 			{
 				ft_get_dir(args, args->map[i][j]);
-				args->ray->posX = i;
-				args->ray->posY = j;
+				args->ray->x = i;
+				args->ray->y = j;
 			}
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:39:34 by elias             #+#    #+#             */
-/*   Updated: 2023/03/30 17:44:26 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/30 18:07:04 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_print_colors(t_args *args)
 	int		j;
 
 	i = -1;
-	img = &args->mlx->image;
+	img = &args->mlx->img;
 	while (++i < SCREEN_HEIGHT)
 	{
 		j = -1;

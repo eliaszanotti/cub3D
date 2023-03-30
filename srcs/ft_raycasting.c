@@ -41,8 +41,8 @@ void ft_loop(t_args *args)
 	t_mlx *mlx;
 
 	mlx = args->mlx;
-	mlx->image.img = mlx_new_image(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
-	mlx->image.addr = mlx_get_data_addr(mlx->image.img, &mlx->image.bits_per_pixel, &mlx->image.line_length, &mlx->image.endian);
+	mlx->img.img = mlx_new_image(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	mlx->img.addr = mlx_get_data_addr(mlx->img.img, &mlx->img.bits_per_pixel, &mlx->img.line_length, &mlx->img.endian);
 	ft_print_colors(args);
 	for(int x = 0; x < SCREEN_WIDTH; x++)
     {
@@ -51,8 +51,8 @@ void ft_loop(t_args *args)
 		double rayDirX = args->ray->dirX + args->ray->planeX * cameraX;
 		double rayDirY = args->ray->dirY + args->ray->planeY * cameraX;
 		//which box of the map we're in
-		int mapX = (int)args->ray->posX;
-		int mapY = (int)args->ray->posY;
+		int mapX = (int)args->ray->x;
+		int mapY = (int)args->ray->y;
 
 		double sideDistX;
 		double sideDistY;
@@ -76,22 +76,22 @@ void ft_loop(t_args *args)
 		if(rayDirX < 0)
 		{
 			stepX = -1;
-			sideDistX = (args->ray->posX - mapX) * deltaDistX;
+			sideDistX = (args->ray->x - mapX) * deltaDistX;
 		}
 		else
 		{
 			stepX = 1;
-			sideDistX = (mapX + 1.0 - args->ray->posX) * deltaDistX;
+			sideDistX = (mapX + 1.0 - args->ray->x) * deltaDistX;
 		}
 		if(rayDirY < 0)
 		{
 			stepY = -1;
-			sideDistY = (args->ray->posY - mapY) * deltaDistY;
+			sideDistY = (args->ray->y - mapY) * deltaDistY;
 		}
 		else
 		{
 			stepY = 1;
-			sideDistY = (mapY + 1.0 - args->ray->posY) * deltaDistY;
+			sideDistY = (mapY + 1.0 - args->ray->y) * deltaDistY;
 		}
 		//perform DDA
 		while(hit == 0)
@@ -141,15 +141,15 @@ void ft_loop(t_args *args)
 
 		//draw the pixels of the stripe as a vertical line
 		// printf("color : %X", color);
-		ft_draw_line(SCREEN_WIDTH - x, drawStart, drawEnd, color, &args->mlx->image);
+		ft_draw_line(SCREEN_WIDTH - x, drawStart, drawEnd, color, &args->mlx->img);
 	}
     // circleBres(&args->mlx->image, 400);
     args->ray->moveSpeed = 5 * 0.032; //the constant value is in squares/second
     args->ray->rotSpeed = 3 * 0.032; //the constant value is in radians/second
-	ft_print_minimap(args, &mlx->image);
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->image.img, \
+	ft_print_minimap(args, &mlx->img);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img, \
 		0, 0);
-	ft_print_cross(&mlx->image);
+	ft_print_cross(&mlx->img);
 }
 
 int ft_raycasting(t_args *args)

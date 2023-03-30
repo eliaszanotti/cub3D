@@ -6,7 +6,7 @@
 /*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:46:07 by elias             #+#    #+#             */
-/*   Updated: 2023/03/30 17:46:56 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/30 18:17:55 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,30 @@
 
 int ft_print_minimap(t_args *args, t_img *img)
 {
+	int	x;
+	int	y;
+
 	img->y = -1;
 	while (args->map[++img->y])
 	{
 		img->x = -1;
 		while (args->map[img->y][++img->x])
 		{
+			x = img->x;
+			y = img->y;
 			if (args->map[img->y][img->x] == '1')
-				ft_put_square(img, CUB_SIZE, 0xFFFFFF);
+				ft_put_square(img, x, y, 0xFFFFFF);
 			else if (args->map[img->y][img->x] != '1' && \
-				args->map[img->y][img->x] != '2')
-				ft_put_square(img, CUB_SIZE, args->floor_color);
+					args->map[img->y][img->x] != '2')
+				ft_put_square(img, x, y, args->floor_color);
 		}	
 	}
-	args->mlx->image.y = args->ray->posX - 1;
-	args->mlx->image.x = args->ray->posY - 1;
+	args->mlx->img.y = args->ray->x - 1;
+	args->mlx->img.x = args->ray->y - 1;
+
+	printf("posx= %f\n", args->ray->x);
+
+
 	ft_put_player(img, 0x0000FF);
     return (0);
 }

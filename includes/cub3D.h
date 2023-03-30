@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/30 17:46:42 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/30 18:14:37 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@
 
 typedef struct s_ray
 {
-	double	posX;
-	double	posY;
+	double	x;
+	double	y;
 	double	dirX;
 	double	dirY;
 	double	planeX;
@@ -76,7 +76,7 @@ typedef struct s_mlx
 {
 	void	*mlx;
 	void	*win;
-	t_img	image;
+	t_img	img;
 }	t_mlx;
 
 typedef struct s_args
@@ -110,7 +110,7 @@ void	ft_print_colors(t_args *args);
 void	ft_print_cross(t_img *img);
 int		ft_print_minimap(t_args *args, t_img *img);
 void	ft_put_player(t_img *img, int color);
-void	ft_put_square(t_img *img, int size, int color);
+void	ft_put_square(t_img *img, int x, int y, int color);
 //	PARSING
 int		ft_check_walls(t_args *args);
 int		ft_convert_list(t_args *args);
