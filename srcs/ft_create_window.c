@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_window.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 16:26:46 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/30 13:33:47 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/30 15:15:13 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int hook_keyrelease(int key, t_args *args)
 	args->move_down = 0;
 	args->move_left = 0;
 	args->move_up = 0;
-	args->move_down = 0;
+	args->move_right = 0;
 	return (0);
 }
 
