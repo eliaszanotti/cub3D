@@ -1,12 +1,12 @@
 /* ************************************************************************** */
-/*                                                                              */
+/*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_raycasting.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibault <thibault@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:56:41 by thibault          #+#    #+#             */
-/*   Updated: 2023/03/29 13:09:44 by thibault         ###   ########.fr       */
+/*   Updated: 2023/03/30 10:20:48 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,47 @@
 
 void	ft_draw_line(int x, int start, int end, int color, t_img *img)
 {
+	int dx;
+	int dy;
+
 	while(start++ < end)
-		my_mlx_pixel_put(img, x, start, color);
+	{
+		dx = abs(x - SCREEN_WIDTH / 2);
+		dy = abs(start - SCREEN_HEIGHT / 2);
+		if (sqrt(dx * dx + dy * dy) > 800)
+			my_mlx_pixel_put(img, x, start, (color & 0xfefefe) >> 4);
+			else if (sqrt(dx * dx + dy * dy) > 600)
+			my_mlx_pixel_put(img, x, start, (color & 0xfefefe) >> 3);
+			else if (sqrt(dx * dx + dy * dy) > 300)
+			my_mlx_pixel_put(img, x, start, (color & 0xfefefe) >> 2);
+		else if (sqrt(dx * dx + dy * dy) > 200)
+			my_mlx_pixel_put(img, x, start, (color & 0xfefefe) >> 1);
+		else
+			my_mlx_pixel_put(img, x, start, color);
+	}
+}
+
+void	ft_draw(t_img *img, int x1, int y1, int x2, int y2)
+{
+	double	dx;
+	double	dy;
+	int		eps;
+	double	x;
+	double	y;
+
+	dx = x2 - x1;
+	dy = y2 - y1;
+	eps = sqrt((dx * dx) + (dy * dy));
+	dx /= eps;
+	dy /= eps;
+	x = x1;
+	y = y1;
+	while (eps--)
+	{
+		my_mlx_pixel_put(img, x, y, 0x00CCFFFF);
+		x += dx;
+		y += dy;
+	}
 }
 
 void	ft_color(t_img *img)
@@ -35,6 +74,56 @@ void	ft_color(t_img *img)
 				my_mlx_pixel_put(img, j, i, 0x273469);
 		}
 	}
+}
+
+void	ft_draw_circle(t_img *img, int x, int y)
+{
+	int xc;
+	int yc;
+
+	xc = SCREEN_WIDTH / 2;
+	yc = SCREEN_HEIGHT / 2;
+
+	ft_draw(img, xc, yc, xc+x, yc+y);
+	ft_draw(img, xc, yc, xc-x, yc+y);
+	ft_draw(img, xc, yc, xc+x, yc-y);
+	ft_draw(img, xc, yc, xc-x, yc-y);
+	ft_draw(img, xc, yc, xc+y, yc+x);
+	ft_draw(img, xc, yc, xc-y, yc+x);
+	ft_draw(img, xc, yc, xc+y, yc-x);
+	ft_draw(img, xc, yc, xc-y, yc-x);
+
+	// my_mlx_pixel_put(img, xc+x, yc+y, 0xFF0000);
+    // my_mlx_pixel_put(img, xc-x, yc+y, 0xFF0000);
+    // my_mlx_pixel_put(img, xc+x, yc-y, 0xFF0000);
+    // my_mlx_pixel_put(img, xc-x, yc-y, 0xFF0000);
+    // my_mlx_pixel_put(img, xc+y, yc+x, 0xFF0000);
+    // my_mlx_pixel_put(img, xc-y, yc+x, 0xFF0000);
+    // my_mlx_pixel_put(img, xc+y, yc-x, 0xFF0000);
+    // my_mlx_pixel_put(img, xc-y, yc-x, 0xFF0000);
+}
+
+void circleBres(t_img *img, int r)
+{
+    // int x = 0, y = r;
+    // int d = 3 - 2 * r;
+    // ft_draw_circle(img, x, y);
+    // while (y >= x)
+    // {
+    //     x++;
+    //     if (d > 0)
+    //     {
+    //         y--;
+    //         d = d + 4 * (x - y) + 10;
+    //     }
+    //     else
+    //         d = d + 4 * x + 6;
+    //     ft_draw_circle(img, x, y);
+    // }
+	for(int y=-r; y<=r; y++)
+    for(int x=-r; x<=r; x++)
+        if(x*x+y*y <= r*r)
+            my_mlx_pixel_put(img, SCREEN_WIDTH / 2+x, SCREEN_HEIGHT / 2+y, 0xFFFFCC);
 }
 
 void ft_loop(t_args *args)
@@ -131,23 +220,23 @@ void ft_loop(t_args *args)
 		int color;
 		switch(args->map[mapX][mapY])
 		{
-		case '1':   color = 0xDB8A74;   break; //red
+		case '1':   color = 0x0080FF;   break; //red
 		case '2':   color = 0x00FF00;   break; //green
 		case '3':   color = 0x0000FF;    break; //blue
 		case '4':   color = 0xFFFFFF;   break; //white
 		default: color = 0xFFFF00; break; //yellow
 		}
 		//give x and y sides different brightness
-		if(side == 1) {color = 0xFAC9B8;}
+		if(side == 1) {color = 0x008000;}
 
 		//draw the pixels of the stripe as a vertical line
 		// printf("color : %X", color);
 		ft_draw_line(x, drawStart, drawEnd, color, &args->mlx->image);
 	}
-    //speed modifiers
+    // circleBres(&args->mlx->image, 400);
     args->ray->moveSpeed = 5 * 0.016; //the constant value is in squares/second
     args->ray->rotSpeed = 3 * 0.016; //the constant value is in radians/second
-		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->image.img, \
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->image.img, \
 		0, 0);
 }
 
@@ -157,7 +246,7 @@ int ft_raycasting(t_args *args)
 
     args->ray->posX = 2;
 	args->ray->posY = 27;
-    args->ray->dirX = -1;
+    args->ray->dirX = 1;
 	args->ray->dirY = 0;
     args->ray->planeX = 0;
 	args->ray->planeY = 0.66;

@@ -3,15 +3,26 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+         #
+#    By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 12:36:15 by ezanotti          #+#    #+#              #
-#    Updated: 2023/03/28 17:10:34 by elias            ###   ########.fr        #
+#    Updated: 2023/03/29 20:28:26 by thibaultgir      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+OS				= $(shell uname -s)
+
+ifeq ($(OS), Linux)
+	D_MLX		=	mlx/
+	MLX	=	-Lmlx -lmlx -lXext -lX11 -lm
+endif
+ifeq ($(OS), Darwin)
+	D_MLX		=	mlx_mac/
+	MLX	=	-Lmlx_mac -lmlx -framework OpenGL -framework AppKit
+endif
+
 S_SRC		= main.c							\
-			${D_MLX}ft_init_window.c			\
+			mlx/ft_init_window.c			\
 												\
 			${D_IMG}ft_put_player.c				\
 			${D_IMG}ft_put_square.c				\
@@ -47,7 +58,6 @@ CC			= cc
 MAKEFLAGS	+= --no-print-directory -s
 CFLAGS		= -Wall -Wextra -Werror -g3
 LIBFT		= -L ./libft -lft
-MLX			= -Lmlx -lmlx -L/usr/lib -I mlx -lXext -lX11 -lm
 
 # COMMANDS
 RM			= rm -rf
@@ -61,7 +71,6 @@ D_SRC		= srcs/
 D_GNL		= gnl/
 D_PARSE		= parsing/
 D_UTILS		= utils/
-D_MLX		= mlx/
 D_IMG		= img/
 
 # COLORS
@@ -90,7 +99,7 @@ lib:
 			@${MAKE}	-C ./libft
 
 mlx:
-			@${MAKE}	-C ./mlx
+			@${MAKE}	-C ${D_MLX}
 			@${PRINT}	"${C_G}${C_DEL}\nCompiling MLX : DONE\n${C_RST}"
 
 ascii:

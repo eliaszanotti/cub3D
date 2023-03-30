@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_window.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 16:26:46 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/29 19:09:41 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/29 20:41:55 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	hook_key(int key, t_args *args)
 {
-	if (key == 65307) //echap 
+	if (key == ESC_KEY) //echap 
 		exit (0);
-	if (key == 65361) //left
+	if (key == LEFT_ARROW_KEY) //left
 	{
 		double oldDirX = args->ray->dirX;
 		args->ray->dirX = args->ray->dirX * cos(args->ray->rotSpeed) - args->ray->dirY * sin(args->ray->rotSpeed);
@@ -25,14 +25,14 @@ int	hook_key(int key, t_args *args)
 		args->ray->planeX = args->ray->planeX * cos(args->ray->rotSpeed) - args->ray->planeY * sin(args->ray->rotSpeed);
 		args->ray->planeY = oldPlaneX * sin(args->ray->rotSpeed) + args->ray->planeY * cos(args->ray->rotSpeed);
     }
-	if (key == 65362) //up
+	if (key == UP_ARROW_KEY) //up
     {
 		if(args->map[(int)(args->ray->posX + args->ray->dirX * args->ray->moveSpeed)][(int)args->ray->posY] == '0') 
 			args->ray->posX += args->ray->dirX * args->ray->moveSpeed;
 		if(args->map[(int)args->ray->posX][(int)(args->ray->posY + args->ray->dirY * args->ray->moveSpeed)] == '0')
 			args->ray->posY += args->ray->dirY * args->ray->moveSpeed;
     }
-	if (key == 65363) //right
+	if (key == RIGHT_ARROW_KEY) //right
 	{
 		double oldDirX = args->ray->dirX;
 		args->ray->dirX = args->ray->dirX * cos(-args->ray->rotSpeed) - args->ray->dirY * sin(-args->ray->rotSpeed);
@@ -41,7 +41,7 @@ int	hook_key(int key, t_args *args)
 		args->ray->planeX = args->ray->planeX * cos(-args->ray->rotSpeed) - args->ray->planeY * sin(-args->ray->rotSpeed);
 		args->ray->planeY = oldPlaneX * sin(-args->ray->rotSpeed) + args->ray->planeY * cos(-args->ray->rotSpeed);
     }
-	if (key == 65364) //down
+	if (key == DOWN_ARROW_KEY) //down
     {
 		if(args->map[(int)(args->ray->posX - args->ray->dirX * args->ray->moveSpeed)][(int)args->ray->posY] == '0')
 			args->ray->posX -= args->ray->dirX * args->ray->moveSpeed;

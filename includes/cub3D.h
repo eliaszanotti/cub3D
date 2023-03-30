@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/29 19:08:03 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/29 23:39:11 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,33 @@
 # include "mlx.h"
 # include "get_next_line.h"
 
-#define SCREEN_WIDTH 3640
-#define SCREEN_HEIGHT 2160
+# ifdef __APPLE__
+#  define LEFT_ARROW_KEY 124
+#  define RIGHT_ARROW_KEY 123
+#  define UP_ARROW_KEY 126
+#  define DOWN_ARROW_KEY 125
+#  define W_LOWER_KEY 13
+#  define S_LOWER_KEY 1
+#  define A_LOWER_KEY 0
+#  define D_LOWER_KEY 2
+#  define ESC_KEY 53
+#  define F5_KEY 96
+# else
+#  define LEFT_ARROW_KEY 65361
+#  define RIGHT_ARROW_KEY 65363
+#  define UP_ARROW_KEY 65362
+#  define DOWN_ARROW_KEY 65364
+#  define W_LOWER_KEY 119
+#  define S_LOWER_KEY 115
+#  define A_LOWER_KEY 97
+#  define D_LOWER_KEY 100
+#  define ESC_KEY 65307
+#  define F5_KEY 65474
+# endif
+
+
+#define SCREEN_WIDTH 1440
+#define SCREEN_HEIGHT 900
 #define CUB_SIZE 8
 
 typedef struct s_ray
@@ -31,8 +56,8 @@ typedef struct s_ray
 	double	posY;
 	double	dirX;
 	double	dirY;
-	double planeX;
-	double planeY;
+	double	planeX;
+	double	planeY;
 	double	moveSpeed;
 	double	rotSpeed;
 }	t_ray;
