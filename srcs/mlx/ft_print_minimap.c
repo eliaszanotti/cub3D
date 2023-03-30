@@ -6,7 +6,7 @@
 /*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:46:07 by elias             #+#    #+#             */
-/*   Updated: 2023/03/30 18:17:55 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/30 18:35:14 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int ft_print_minimap(t_args *args, t_img *img)
 		img->x = -1;
 		while (args->map[img->y][++img->x])
 		{
-			x = img->x;
-			y = img->y;
+			x = img->x + 12 - args->ray->y;
+			y = img->y + 12 - args->ray->x;
 			if (args->map[img->y][img->x] == '1')
 				ft_put_square(img, x, y, 0xFFFFFF);
 			else if (args->map[img->y][img->x] != '1' && \
