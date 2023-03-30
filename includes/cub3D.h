@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/30 12:31:41 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/30 13:33:07 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,10 @@ typedef struct s_args
 	int		x_img;
 	int		y_img;
 	int 	keypress;
+	int		move_left;
+	int		move_right;
+	int		move_up;
+	int		move_down;
 }	t_args;
 
 //	IMG
@@ -125,6 +129,7 @@ int		ft_create_minimap(t_args *args, t_img *img);
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 int		ft_raycasting(t_args *args);
 void	ft_loop(t_args *args);
-int		hook_keypress(int key, t_args *args);
+int		hook_keypress(int key, void *param, t_args *args);
 int		hook_keyrelease(int key, t_args *args);
+void    ft_move(t_args *args);
 #endif

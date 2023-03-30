@@ -6,7 +6,7 @@
 #    By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 12:36:15 by ezanotti          #+#    #+#              #
-#    Updated: 2023/03/30 11:04:58 by tgiraudo         ###   ########.fr        #
+#    Updated: 2023/03/30 13:24:38 by tgiraudo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ S_SRC		= main.c							\
 												\
 												\
 			ft_create_window.c					\
+			ft_move.c					\
 			ft_raycasting.c
 
 S_TMP		= ${addprefix ${D_SRC}, ${S_SRC}}
