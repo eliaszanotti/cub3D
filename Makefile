@@ -6,23 +6,23 @@
 #    By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 12:36:15 by ezanotti          #+#    #+#              #
-#    Updated: 2023/03/30 13:24:38 by tgiraudo         ###   ########.fr        #
+#    Updated: 2023/03/30 15:13:06 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 OS				= $(shell uname -s)
 
 ifeq ($(OS), Linux)
-	D_MLX		=	mlx/
+	D_LMLX	= mlx/
 	MLX	=	-Lmlx -lmlx -lXext -lX11 -lm
 endif
 ifeq ($(OS), Darwin)
-	D_MLX		=	mlx_mac/
+	D_LMLX	= mlx_mac/
 	MLX	=	-Lmlx_mac -lmlx -framework OpenGL -framework AppKit
 endif
 
 S_SRC		= main.c							\
-			mlx/ft_init_window.c			\
+			${D_MLX}ft_init_window.c			\
 												\
 			${D_IMG}ft_put_player.c				\
 			${D_IMG}ft_put_square.c				\
@@ -46,7 +46,7 @@ S_SRC		= main.c							\
 												\
 												\
 			ft_create_window.c					\
-			ft_move.c					\
+			ft_move.c							\
 			ft_raycasting.c
 
 S_TMP		= ${addprefix ${D_SRC}, ${S_SRC}}
@@ -74,6 +74,7 @@ D_GNL		= gnl/
 D_PARSE		= parsing/
 D_UTILS		= utils/
 D_IMG		= img/
+D_MLX		= mlx/
 
 # COLORS
 C_R			= \033[1;31m
@@ -89,7 +90,7 @@ all:		${NAME}
 ${D_OBJS}%.o: %.c	${D_MLX}mlx.h ${D_INC}${NAME}.h ${D_INC}get_next_line.h Makefile
 			@mkdir		-p $(shell dirname $@)
 			@${PRINT}	"${C_Y}${C_DEL}Creating ${NAME}'s objects : $@"
-			@${CC}		${CFLAGS} -I${D_MLX} -I${D_LIB} -I${D_INC} -c $< -o $@
+			@${CC}		${CFLAGS} -I${D_LMLX} -I${D_LIB} -I${D_INC} -c $< -o $@
 
 ${NAME}:	ascii mlx lib ${O_SRC}
 			@${PRINT}	"${C_G}${C_DEL}Creating ${NAME}'s objects : DONE\n"
@@ -101,7 +102,7 @@ lib:
 			@${MAKE}	-C ./libft
 
 mlx:
-			@${MAKE}	-C ${D_MLX}
+			@${MAKE}	-C ${D_LMLX}
 			@${PRINT}	"${C_G}${C_DEL}\nCompiling MLX : DONE\n${C_RST}"
 
 ascii:

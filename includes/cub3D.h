@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/30 13:33:07 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/30 14:52:09 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,8 @@
 #  define F5_KEY 65474
 # endif
 
-
-#define SCREEN_WIDTH 3840
-#define SCREEN_HEIGHT 2160
+#define SCREEN_WIDTH 1280
+#define SCREEN_HEIGHT 800
 #define CUB_SIZE 8
 
 typedef struct s_ray

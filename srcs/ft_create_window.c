@@ -60,9 +60,9 @@ int ft_create_minimap(t_args *args, t_img *img)
 		while (args->map[img->y][++img->x])
 		{
 			if (args->map[img->y][img->x] == '1')
-				ft_put_square(img, 8, 0xFF0000);
+				ft_put_square(img, CUB_SIZE, 0xFFFFFF);
 			else if (args->map[img->y][img->x] != '1' && args->map[img->y][img->x] != '2')
-				ft_put_square(img, 8, 0xFFFFFF);
+				ft_put_square(img, CUB_SIZE, 0x000000);
 		}	
 	}
 	args->mlx->image.y = args->ray->posX - 1;
