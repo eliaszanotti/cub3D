@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
+/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/29 23:39:11 by thibaultgir      ###   ########.fr       */
+/*   Updated: 2023/03/30 12:31:41 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include "get_next_line.h"
 
 # ifdef __APPLE__
-#  define LEFT_ARROW_KEY 124
-#  define RIGHT_ARROW_KEY 123
+#  define LEFT_ARROW_KEY 123
+#  define RIGHT_ARROW_KEY 124
 #  define UP_ARROW_KEY 126
 #  define DOWN_ARROW_KEY 125
 #  define W_LOWER_KEY 13
@@ -46,8 +46,8 @@
 # endif
 
 
-#define SCREEN_WIDTH 1440
-#define SCREEN_HEIGHT 900
+#define SCREEN_WIDTH 3840
+#define SCREEN_HEIGHT 2160
 #define CUB_SIZE 8
 
 typedef struct s_ray
@@ -96,6 +96,7 @@ typedef struct s_args
 	int		y_player;
 	int		x_img;
 	int		y_img;
+	int 	keypress;
 }	t_args;
 
 //	IMG
@@ -117,11 +118,13 @@ void	ft_free_list(t_list *list);
 void	ft_free_struct(t_args *args);
 int		ft_error(int error_code);
 int		ft_is_extension_correct(char *file, char *extension);
+int		ft_get_start(t_args *args);
 
 //	CREATE_WINDOW
-int		ft_create_window(t_args *args);
+int		ft_create_minimap(t_args *args, t_img *img);
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 int		ft_raycasting(t_args *args);
 void	ft_loop(t_args *args);
-int		hook_key(int key, t_args *args);
+int		hook_keypress(int key, t_args *args);
+int		hook_keyrelease(int key, t_args *args);
 #endif

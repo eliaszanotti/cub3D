@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+         #
+#    By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 12:36:15 by ezanotti          #+#    #+#              #
-#    Updated: 2023/03/29 20:28:26 by thibaultgir      ###   ########.fr        #
+#    Updated: 2023/03/30 11:04:58 by tgiraudo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ S_SRC		= main.c							\
 			${D_UTILS}ft_error.c				\
 			${D_UTILS}ft_free.c					\
 			${D_UTILS}ft_is_extension_correct.c	\
+			${D_UTILS}ft_get_start.c			\
 												\
 												\
 			ft_create_window.c					\

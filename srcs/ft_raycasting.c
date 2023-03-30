@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_raycasting.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
+/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:56:41 by thibault          #+#    #+#             */
-/*   Updated: 2023/03/30 10:27:39 by thibaultgir      ###   ########.fr       */
+/*   Updated: 2023/03/30 12:32:51 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ void	ft_draw_line(int x, int start, int end, int color, t_img *img)
 	int dy;
 	int hyp;
 
+	dx = abs(x - SCREEN_WIDTH / 2);
 	while(start++ < end)
 	{
-		dx = abs(x - SCREEN_WIDTH / 2);
 		dy = abs(start - SCREEN_HEIGHT / 2);
 		hyp = sqrt(dx * dx + dy * dy);
 		if (hyp > 800)
 			my_mlx_pixel_put(img, x, start, (color & 0xfefefe) >> 4);
 		else if (hyp > 600)
 			my_mlx_pixel_put(img, x, start, (color & 0xfefefe) >> 3);
-		else if (hyp > 300)
+		else if (hyp > 400)
 			my_mlx_pixel_put(img, x, start, (color & 0xfefefe) >> 2);
 		else if (hyp > 200)
 			my_mlx_pixel_put(img, x, start, (color & 0xfefefe) >> 1);
@@ -182,28 +182,25 @@ void ft_loop(t_args *args)
 
 		//draw the pixels of the stripe as a vertical line
 		// printf("color : %X", color);
-		ft_draw_line(x, drawStart, drawEnd, color, &args->mlx->image);
+		ft_draw_line(SCREEN_WIDTH - x, drawStart, drawEnd, color, &args->mlx->image);
 	}
     // circleBres(&args->mlx->image, 400);
-    args->ray->moveSpeed = 5 * 0.016; //the constant value is in squares/second
-    args->ray->rotSpeed = 3 * 0.016; //the constant value is in radians/second
+    args->ray->moveSpeed = 5 * 0.032; //the constant value is in squares/second
+    args->ray->rotSpeed = 3 * 0.032; //the constant value is in radians/second
+	ft_create_minimap(args, &mlx->image);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->image.img, \
 		0, 0);
 }
 
 int ft_raycasting(t_args *args)
 {
-	args->ray = malloc(sizeof(t_ray));
-
-    args->ray->posX = 2;
-	args->ray->posY = 27;
-    args->ray->dirX = 1;
-	args->ray->dirY = 0;
+	ft_get_start(args);
     args->ray->planeX = 0;
 	args->ray->planeY = 0.66;
 
     ft_loop(args);
-	mlx_hook(args->mlx->win, 2, 1L<<0, hook_key, args);
+	mlx_hook(args->mlx->win, 2, 1L<<0, hook_keypress, args);
+	mlx_hook(args->mlx->win, 3, 1L<<1, hook_keyrelease, args);
 	mlx_loop(args->mlx->mlx);
 	return (0);
 }
