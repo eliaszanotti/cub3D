@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_minimap.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
+/*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:46:07 by elias             #+#    #+#             */
-/*   Updated: 2023/03/30 18:35:14 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/31 15:07:11 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ int ft_print_minimap(t_args *args, t_img *img)
 	printf("posx= %f\n", args->ray->x);
 
 
-	ft_put_player(img, 0x0000FF);
+	ft_put_player(img, 0xFFFF00);
     return (0);
 }

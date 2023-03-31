@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/30 18:14:37 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/31 13:26:43 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 800
 #define CUB_SIZE 8
+#define IMG_SIZE 64
 
 typedef struct s_ray
 {
@@ -59,6 +60,10 @@ typedef struct s_ray
 	double	planeY;
 	double	moveSpeed;
 	double	rotSpeed;
+	double	texPos;
+	double	step;
+	int		texX;
+	int		side;
 }	t_ray;
 
 typedef struct s_img
@@ -68,6 +73,8 @@ typedef struct s_img
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		width;
+	int		height;
 	int		x;
 	int		y;
 }	t_img;
@@ -85,10 +92,15 @@ typedef struct s_args
 	t_list	*map_list;
 	t_mlx	*mlx;
 	t_ray	*ray;
-	char	*north;
-	char	*south;
-	char	*west;
-	char	*east;
+	t_img	*texture;
+	char	*north_path;
+	t_img	north_img;
+	char	*south_path;
+	t_img	south_img;
+	char	*west_path;
+	t_img	west_img;
+	char	*east_path;
+	t_img	east_img;
 	char	*floor;
 	int		floor_color;
 	char	*ceiling;
@@ -102,6 +114,7 @@ typedef struct s_args
 	int		move_right;
 	int		move_up;
 	int		move_down;
+	int		img_size;
 }	t_args;
 
 //	MLX

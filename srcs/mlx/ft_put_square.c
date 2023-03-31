@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_put_square.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 15:39:01 by elias             #+#    #+#             */
-/*   Updated: 2023/03/30 18:23:52 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/31 15:24:42 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_put_square(t_img *img, int x, int y, int color)
 {
 	int	i;
 	int	j;
+	int	dx;
+	int	dy;
 
 	i = -1;
 	if (x < 0 || y < 0)
@@ -23,8 +25,13 @@ void	ft_put_square(t_img *img, int x, int y, int color)
 	while (++i < CUB_SIZE)
 	{
 		j = -1;
+		dx = abs((x * CUB_SIZE) + i - 100);
 		while (++j < CUB_SIZE)
-			my_mlx_pixel_put(img, (x * CUB_SIZE) + i, \
-				(y * CUB_SIZE) + j, color);
+		{
+			dy = abs((y * CUB_SIZE) + j - 100);
+			if (sqrt(dx * dx + dy * dy) < 50)
+				my_mlx_pixel_put(img, (x * CUB_SIZE) + i, \
+					(y * CUB_SIZE) + j, color);
+		}
 	}
 }

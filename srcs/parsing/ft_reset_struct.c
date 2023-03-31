@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_reset_struct.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:56:24 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/23 18:11:40 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/31 09:38:44 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	ft_reset_struct(t_args *args)
 {
-	args->north = NULL;
-	args->south = NULL;
-	args->west = NULL;
-	args->east = NULL;
+	args->north_path = NULL;
+	args->south_path = NULL;
+	args->west_path = NULL;
+	args->east_path = NULL;
 	args->floor = NULL;
 	args->ceiling = NULL;
 	args->map_list = NULL;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_infos.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:57:56 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/30 16:46:28 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/31 09:38:44 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_is_filled(t_args *args)
 {
-	if (!args->north || !args->south || !args->west || !args->east)
+	if (!args->north_path || !args->south_path || !args->west_path || !args->east_path)
 		return (0);
 	if (!args->floor || !args->ceiling)
 		return (0);
@@ -24,13 +24,13 @@ static int	ft_is_filled(t_args *args)
 static int	ft_compare_line(t_args *args, char *line)
 {
 	if (!ft_strncmp("NO", line, 2))
-		args->north = ft_strdup(line + 2);
+		args->north_path = ft_strdup(line + 2);
 	else if (!ft_strncmp("SO", line, 2))
-		args->south = ft_strdup(line + 2);
+		args->south_path = ft_strdup(line + 2);
 	else if (!ft_strncmp("WE", line, 2))
-		args->west = ft_strdup(line + 2);
+		args->west_path = ft_strdup(line + 2);
 	else if (!ft_strncmp("EA", line, 2))
-		args->east = ft_strdup(line + 2);
+		args->east_path = ft_strdup(line + 2);
 	else if (!ft_strncmp("F", line, 1))
 		args->floor = ft_substr(line, 2, ft_strlen(line) - 3);
 	else if (!ft_strncmp("C", line, 1))

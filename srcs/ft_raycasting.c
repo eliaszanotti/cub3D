@@ -6,33 +6,47 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:56:41 by thibault          #+#    #+#             */
-/*   Updated: 2023/03/31 08:56:26 by thibaultgir      ###   ########.fr       */
+/*   Updated: 2023/03/31 15:00:59 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"cub3D.h"
 
-void	ft_draw_line(int x, int start, int end, int color, t_img *img)
+unsigned int ft_get_color(t_img *img, int x, int y)
+{
+	char *dst;
+
+	dst = img->addr + (y % 64 * img->line_length + x % 64 * \
+			(img->bits_per_pixel / 8));
+	return (*(unsigned int *)dst);
+}
+
+void	ft_draw_line(t_args *args, t_img *img, int x, int start, int end)
 {
 	int dx;
 	int dy;
 	int hyp;
+	int color;
+	int texY;
 
 	dx = abs(x - SCREEN_WIDTH / 2);
 	while(start++ < end)
 	{
+		texY = (int)args->ray->texPos & 63;
+		args->ray->texPos += args->ray->step;
+		color = ft_get_color(&args->texture[args->ray->side], args->ray->texX, texY);
 		dy = abs(start - SCREEN_HEIGHT / 2);
 		hyp = sqrt(dx * dx + dy * dy);
-		if (hyp > 800)
-			my_mlx_pixel_put(img, x, start, (color & 0xfefefe) >> 4);
-		else if (hyp > 600)
-			my_mlx_pixel_put(img, x, start, (color & 0xfefefe) >> 3);
-		else if (hyp > 400)
-			my_mlx_pixel_put(img, x, start, (color & 0xfefefe) >> 2);
+		if (hyp > 400)
+			my_mlx_pixel_put(img, x, start, (color >> 4) & 0b000011110000111100001111);
+		else if (hyp > 300)
+			my_mlx_pixel_put(img, x, start, (color >> 3) & 0b000111110001111100011111);
 		else if (hyp > 200)
-			my_mlx_pixel_put(img, x, start, (color & 0xfefefe) >> 1);
+			my_mlx_pixel_put(img, x, start, (color >> 2) & 0b001111110011111100111111);
+		else if (hyp > 100)
+			my_mlx_pixel_put(img, x, start, (color >> 1) & 8355711);
 		else
-		my_mlx_pixel_put(img, x, start, color);
+			my_mlx_pixel_put(img, x, start, color);
 	}
 }
 
@@ -71,8 +85,6 @@ void ft_loop(t_args *args)
 		int stepY;
 
 		int hit = 0; //was there a wall hit?
-		int side; //was a NS or a EW wall hit?
-		//calculate step and initial sideDist
 		if(rayDirX < 0)
 		{
 			stepX = -1;
@@ -99,20 +111,25 @@ void ft_loop(t_args *args)
 			//jump to next map square, either in x-direction, or in y-direction
 			if(sideDistX < sideDistY)
 			{
-			sideDistX += deltaDistX;
-			mapX += stepX;
-			side = 0;
+				sideDistX += deltaDistX;
+				mapX += stepX;
+				args->ray->side = 0;
+				if (mapX > args->ray->x)
+					args->ray->side = 1;
 			}
 			else
 			{
-			sideDistY += deltaDistY;
-			mapY += stepY;
-			side = 1;
+				sideDistY += deltaDistY;
+				mapY += stepY;
+				args->ray->side = 2;
+				if (mapY > args->ray->y)
+					args->ray->side = 3;
 			}
 			//Check if ray has hit a wall
 			if(args->map[mapX][mapY] == '1') hit = 1;
 		}
-		if (side == 0) 
+		// printf("mapX : %d, mapY : %d\n", mapX, mapY);
+		if (args->ray->side == 0 || args->ray->side == 1) 
       		perpWallDist = (sideDistX - deltaDistX);
 		else
       		perpWallDist = (sideDistY - deltaDistY);
@@ -120,28 +137,27 @@ void ft_loop(t_args *args)
 		//Calculate height of line to draw on screen
 		int lineHeight = (int)(SCREEN_HEIGHT / perpWallDist);
 
-		//calculate lowest and highest pixel to fill in current stripe
+		//calculate lowest_path and highest pixel to fill in current stripe
 		int drawStart = -lineHeight / 2 + SCREEN_HEIGHT / 2;
 		if(drawStart < 0) drawStart = 0;
 		int drawEnd = lineHeight / 2 + SCREEN_HEIGHT / 2;
 		if(drawEnd >= SCREEN_HEIGHT) drawEnd = SCREEN_HEIGHT - 1;
-
-		//choose wall color
-		int color;
-		switch(args->map[mapX][mapY])
-		{
-		case '1':   color = 0x0080FF;   break; //red
-		case '2':   color = 0x00FF00;   break; //green
-		case '3':   color = 0x0000FF;    break; //blue
-		case '4':   color = 0xFFFFFF;   break; //white
-		default: color = 0xFFFF00; break; //yellow
-		}
-		//give x and y sides different brightness
-		if(side == 1) {color = 0x008000;}
-
-		//draw the pixels of the stripe as a vertical line
-		// printf("color : %X", color);
-		ft_draw_line(x, drawStart, drawEnd, color, &args->mlx->img);
+		
+		double wallX;
+		if (args->ray->side == 0 || args->ray->side == 1)
+			wallX = args->ray->y + perpWallDist * rayDirY;
+		else 
+			wallX = args->ray->x + perpWallDist * rayDirX;
+		
+		args->ray->texX = (int)(wallX * 64.0);
+		if (args->ray->side <= 1 && rayDirX > 0)
+			args->ray->texX = 64 - args->ray->texX - 1;
+		if (args->ray->side >= 2 && rayDirY < 0)
+			args->ray->texX = 64 - args->ray->texX - 1;
+		
+		args->ray->step = 1.0 * 64 / lineHeight;
+		args->ray->texPos = (drawStart - SCREEN_HEIGHT / 2 + lineHeight / 2) * args->ray->step;
+		ft_draw_line(args, &args->mlx->img, x, drawStart, drawEnd);
 	}
     // circleBres(&args->mlx->image, 400);
     args->ray->moveSpeed = 5 * 0.032; //the constant value is in squares/second
@@ -152,9 +168,35 @@ void ft_loop(t_args *args)
 	ft_print_cross(&mlx->img);
 }
 
+t_img	ft_create_img(t_args *args, char *path)
+{
+	int		height;
+	int		width;
+	t_img	img;
+	printf("%s\n\n", path);
+	printf("%d\n\n", open(path, O_RDONLY));
+	img.img = mlx_xpm_file_to_image(args->mlx->mlx, path, &width, &height);
+	printf("%p\n\n", args->mlx->mlx);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	return (img);
+}
+
+int	ft_load_texture(t_args *args)
+{
+	args->texture = malloc(sizeof(t_img) * 4);
+	args->texture[0] = ft_create_img(args, "textures/CRATE_1I.xpm");
+	args->texture[1] = ft_create_img(args, "textures/CRATE_1N.xpm");
+	args->texture[2] = ft_create_img(args, "textures/FLOOR_1B.xpm");
+	args->texture[3] = ft_create_img(args, "textures/TECH_4C.xpm");
+	// args->west_img = ft_create_img(args, args->west_path);
+	// args->east_img = ft_create_img(args, args->east_path);
+	return (0);
+}
+
 int ft_raycasting(t_args *args)
 {
 	ft_get_start(args);
+	ft_load_texture(args);
     ft_loop(args);
 	mlx_hook(args->mlx->win, 2, 1L<<0, hook_keypress, args);
 	mlx_hook(args->mlx->win, 3, 1L<<1, hook_keyrelease, args);

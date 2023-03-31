@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
+/*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:55:41 by elias             #+#    #+#             */
-/*   Updated: 2023/03/28 11:44:04 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/31 09:38:44 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ void	ft_free_list(t_list *list)
 
 void	ft_free_struct(t_args *args)
 {
-	free(args->north);
-	free(args->south);
-	free(args->west);
-	free(args->east);
+	free(args->north_path);
+	free(args->south_path);
+	free(args->west_path);
+	free(args->east_path);
 	free(args->floor);
 	free(args->ceiling);
 }

@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:04:19 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/31 08:55:00 by thibaultgir      ###   ########.fr       */
+/*   Updated: 2023/03/31 13:47:22 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ int	ft_get_start(t_args *args)
 			if(ft_isalpha(args->map[i][j]))
 			{
 				ft_get_dir(args, args->map[i][j]);
-				args->ray->x = i;
-				args->ray->y = j;
+				args->ray->x = i + 0.5;
+				args->ray->y = j + 0.5;
 			}
 		}
 	}
