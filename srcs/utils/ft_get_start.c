@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_start.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:04:19 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/30 18:07:32 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/31 08:55:00 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,31 @@ void	ft_get_dir(t_args *args, char c)
 {
 	if (c == 'N')
 	{
-		args->ray->dirX = 1;
+		args->ray->dirX = -1;
 		args->ray->dirY = 0;
+		args->ray->planeX = 0;
+		args->ray->planeY = 0.66;
 	}
 	if (c == 'S')
 	{
 		args->ray->dirX = 1;
 		args->ray->dirY = 0;
+		args->ray->planeX = 0;
+		args->ray->planeY = -0.66;
 	}
 	if (c == 'E')
 	{
-		args->ray->dirX = -1;
+		args->ray->dirX = 0;
 		args->ray->dirY = 1;
+		args->ray->planeX = 0.66;
+		args->ray->planeY = 0;
 	}
 	if (c == 'W')
 	{
-		args->ray->dirX = -1;
+		args->ray->dirX = 0;
 		args->ray->dirY = -1;
+		args->ray->planeX = -0.66;
+		args->ray->planeY = 0;
 	}
 }
 

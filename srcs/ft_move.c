@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_move.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 13:19:29 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/30 13:22:12 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/31 08:58:51 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,16 @@ void    ft_move(t_args *args)
     }
     if (args->move_up)
     {
-        if(args->map[(int)(args->ray->x + args->ray->dirX * args->ray->moveSpeed)][(int)args->ray->y] == '0') 
+        if(args->map[(int)(args->ray->x + args->ray->dirX * args->ray->moveSpeed)][(int)args->ray->y] != '1') 
 				args->ray->x += args->ray->dirX * args->ray->moveSpeed;
-			if(args->map[(int)args->ray->x][(int)(args->ray->y + args->ray->dirY * args->ray->moveSpeed)] == '0')
+			if(args->map[(int)args->ray->x][(int)(args->ray->y + args->ray->dirY * args->ray->moveSpeed)] != '1')
 				args->ray->y += args->ray->dirY * args->ray->moveSpeed;
     }
     if (args->move_down)
     {
-        if(args->map[(int)(args->ray->x - args->ray->dirX * args->ray->moveSpeed)][(int)args->ray->y] == '0')
+        if(args->map[(int)(args->ray->x - args->ray->dirX * args->ray->moveSpeed)][(int)args->ray->y] != '1')
 				args->ray->x -= args->ray->dirX * args->ray->moveSpeed;
-			if(args->map[(int)args->ray->x][(int)(args->ray->y - args->ray->dirY * args->ray->moveSpeed)] == '0')
+			if(args->map[(int)args->ray->x][(int)(args->ray->y - args->ray->dirY * args->ray->moveSpeed)] != '1')
 				args->ray->y -= args->ray->dirY * args->ray->moveSpeed;
     }
 }

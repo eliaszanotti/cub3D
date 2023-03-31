@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_raycasting.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:56:41 by thibault          #+#    #+#             */
-/*   Updated: 2023/03/30 17:47:55 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/31 08:56:26 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	ft_draw_line(int x, int start, int end, int color, t_img *img)
 {
-	//int dx;
-	//int dy;
-	//int hyp;
+	int dx;
+	int dy;
+	int hyp;
 
-	//dx = abs(x - SCREEN_WIDTH / 2);
+	dx = abs(x - SCREEN_WIDTH / 2);
 	while(start++ < end)
 	{
-		//dy = abs(start - SCREEN_HEIGHT / 2);
-		/*hyp = sqrt(dx * dx + dy * dy);
+		dy = abs(start - SCREEN_HEIGHT / 2);
+		hyp = sqrt(dx * dx + dy * dy);
 		if (hyp > 800)
 			my_mlx_pixel_put(img, x, start, (color & 0xfefefe) >> 4);
 		else if (hyp > 600)
@@ -31,7 +31,7 @@ void	ft_draw_line(int x, int start, int end, int color, t_img *img)
 			my_mlx_pixel_put(img, x, start, (color & 0xfefefe) >> 2);
 		else if (hyp > 200)
 			my_mlx_pixel_put(img, x, start, (color & 0xfefefe) >> 1);
-		else*/
+		else
 		my_mlx_pixel_put(img, x, start, color);
 	}
 }
@@ -141,7 +141,7 @@ void ft_loop(t_args *args)
 
 		//draw the pixels of the stripe as a vertical line
 		// printf("color : %X", color);
-		ft_draw_line(SCREEN_WIDTH - x, drawStart, drawEnd, color, &args->mlx->img);
+		ft_draw_line(x, drawStart, drawEnd, color, &args->mlx->img);
 	}
     // circleBres(&args->mlx->image, 400);
     args->ray->moveSpeed = 5 * 0.032; //the constant value is in squares/second
@@ -155,9 +155,6 @@ void ft_loop(t_args *args)
 int ft_raycasting(t_args *args)
 {
 	ft_get_start(args);
-    args->ray->planeX = 0;
-	args->ray->planeY = 0.66;
-
     ft_loop(args);
 	mlx_hook(args->mlx->win, 2, 1L<<0, hook_keypress, args);
 	mlx_hook(args->mlx->win, 3, 1L<<1, hook_keyrelease, args);
