@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_window.c                                   :+:      :+:    :+:   */
+/*   ft_get_color.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/31 19:11:24 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/03/31 19:11:26 by thibaultgir      ###   ########.fr       */
+/*   Created: 2023/03/31 19:11:12 by thibaultgir       #+#    #+#             */
+/*   Updated: 2023/04/01 12:16:46 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include"cub3D.h"
 
-int	ft_init_window(t_args *args)
+unsigned int	ft_get_color(t_img *img, int x, int y)
 {
-	t_mlx	*mlx;
+	char	*dst;
 
-	mlx = malloc(sizeof(t_mlx));
-	if (!mlx)
-		return (ft_error(99));
-	mlx->mlx = mlx_init();
-	mlx->win = mlx_new_window(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3D");
-	args->mlx = mlx;
-	args->x_player = 12 * CUB_SIZE;
-	args->y_player = 22 * CUB_SIZE;
-	return (0);
+	dst = img->addr + (y % 64 * img->line_length + x % 64 * \
+			(img->bits_per_pixel / 8));
+	return (*(unsigned int *)dst);
 }

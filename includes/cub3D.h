@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/31 13:26:43 by thibaultgir      ###   ########.fr       */
+/*   Updated: 2023/04/01 13:44:12 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,25 +45,43 @@
 #  define F5_KEY 65474
 # endif
 
-#define SCREEN_WIDTH 1280
-#define SCREEN_HEIGHT 800
-#define CUB_SIZE 8
-#define IMG_SIZE 64
+# define NORTH 0
+# define SOUTH 1
+# define WEST 2
+# define EAST 3
+# define SCREEN_WIDTH 1280
+# define SCREEN_HEIGHT 800
+# define CUB_SIZE 8
+# define IMG_SIZE 64
 
 typedef struct s_ray
 {
-	double	x;
-	double	y;
-	double	dirX;
-	double	dirY;
-	double	planeX;
-	double	planeY;
-	double	moveSpeed;
-	double	rotSpeed;
-	double	texPos;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	double	raydir_x;
+	double	raydir_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	move_speed;
+	double	rot_speed;
+	double	tex_pos;
 	double	step;
-	int		texX;
+	double	perp_wall_dist;
+	int		draw_start;
+	int		draw_end;
+	int		map_x;
+	int		map_y;
+	int		step_x;
+	int		step_y;
+	int		tex_x;
 	int		side;
+	double	angle;
 }	t_ray;
 
 typedef struct s_img
@@ -109,7 +127,7 @@ typedef struct s_args
 	int		y_player;
 	int		x_img;
 	int		y_img;
-	int 	keypress;
+	int		keypress;
 	int		move_left;
 	int		move_right;
 	int		move_up;
@@ -118,35 +136,38 @@ typedef struct s_args
 }	t_args;
 
 //	MLX
-int		ft_init_window(t_args *args);
-void	ft_print_colors(t_args *args);
-void	ft_print_cross(t_img *img);
-int		ft_print_minimap(t_args *args, t_img *img);
-void	ft_put_player(t_img *img, int color);
-void	ft_put_square(t_img *img, int x, int y, int color);
+int				ft_init_window(t_args *args);
+void			ft_print_colors(t_args *args);
+void			ft_print_cross(t_img *img);
+int				ft_print_minimap(t_args *args, t_img *img);
+void			ft_put_player(t_img *img, int color);
+void			ft_put_square(t_img *img, int x, int y, int color);
+unsigned int	ft_get_color(t_img *img, int x, int y);
+t_img			ft_create_img(t_args *args, char *path);
+void			ft_draw_line(t_args *args, t_img *img, int x);
 //	PARSING
-int		ft_check_walls(t_args *args);
-int		ft_convert_list(t_args *args);
-int		ft_fill_map(t_args *args);
-int		ft_is_valid_map(t_args *args);
-int		ft_parse_infos(t_args *args, int fd);
-int		ft_parse_map(t_args *args, int fd);
-int		ft_parsing(t_args *args, char *cub_file);
-int		ft_reset_struct(t_args *args);
+int				ft_check_walls(t_args *args);
+int				ft_convert_list(t_args *args);
+int				ft_fill_map(t_args *args);
+int				ft_is_valid_map(t_args *args);
+int				ft_parse_infos(t_args *args, int fd);
+int				ft_parse_map(t_args *args, int fd);
+int				ft_parsing(t_args *args, char *cub_file);
+int				ft_reset_struct(t_args *args);
 //	UTILS
-void	ft_free_list(t_list *list);
-void	ft_free_struct(t_args *args);
-int		ft_error(int error_code);
-int		ft_is_extension_correct(char *file, char *extension);
-int		ft_get_start(t_args *args);
+void			ft_free_list(t_list *list);
+void			ft_free_struct(t_args *args);
+int				ft_error(int error_code);
+int				ft_is_extension_correct(char *file, char *extension);
+int				ft_get_start(t_args *args);
 
 //	CREATE_WINDOW
-int		ft_create_minimap(t_args *args, t_img *img);
-void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
-int		ft_raycasting(t_args *args);
-void	ft_loop(t_args *args);
-int		hook_keypress(int key, void *param, t_args *args);
-int		hook_keyrelease(int key, t_args *args);
-void    ft_move(t_args *args);
+int				ft_create_minimap(t_args *args, t_img *img);
+void			my_mlx_pixel_put(t_img *data, int x, int y, int color);
+int				ft_raycasting(t_args *args);
+void			ft_loop(t_args *args);
+int				hook_keypress(int key, t_args *args);
+int				hook_keyrelease(int key, t_args *args);
+void			ft_move(t_args *args);
 
 #endif

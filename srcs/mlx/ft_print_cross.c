@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_cross.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
+/*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/30 17:39:51 by elias             #+#    #+#             */
-/*   Updated: 2023/03/30 17:43:28 by elias            ###   ########.fr       */
+/*   Created: 2023/03/31 19:11:49 by thibaultgir       #+#    #+#             */
+/*   Updated: 2023/03/31 19:11:52 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

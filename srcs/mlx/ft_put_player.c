@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_put_player.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
+/*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/29 15:39:00 by elias             #+#    #+#             */
-/*   Updated: 2023/03/30 18:35:06 by elias            ###   ########.fr       */
+/*   Created: 2023/03/31 19:12:26 by thibaultgir       #+#    #+#             */
+/*   Updated: 2023/03/31 19:12:29 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

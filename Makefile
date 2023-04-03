@@ -1,13 +1,13 @@
 # **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/10 12:36:15 by ezanotti          #+#    #+#              #
-#    Updated: 2023/03/30 17:47:27 by elias            ###   ########.fr        #
-#                                                                              #
+#																			  #
+#														 :::	  ::::::::	#
+#	Makefile										   :+:	  :+:	:+:	#
+#													 +:+ +:+		 +:+	  #
+#	By: thibaultgiraudon <thibaultgiraudon@stud	+#+  +:+	   +#+		 #
+#												 +#+#+#+#+#+   +#+			#
+#	Created: 2023/03/10 12:36:15 by ezanotti		  #+#	#+#			  #
+#	Updated: 2023/03/31 18:55:30 by thibaultgir	  ###   ########.fr		#
+#																			  #
 # **************************************************************************** #
 
 OS				= $(shell uname -s)
@@ -28,6 +28,9 @@ S_SRC		= main.c							\
 			${D_MLX}ft_print_minimap.c			\
 			${D_MLX}ft_put_player.c				\
 			${D_MLX}ft_put_square.c				\
+			${D_MLX}ft_get_color.c				\
+			${D_MLX}ft_create_img.c				\
+			${D_MLX}ft_draw_line.c				\
 												\
 			${D_GNL}get_next_line.c				\
 			${D_GNL}get_next_line_utils.c		\
@@ -126,8 +129,8 @@ fclean:		clean
 re:			fclean all
 
 define		ASCII
-${C_C} _____ _____ _____    ___ ____
-|     |  |  | __  |  |_  |    \\
+${C_C} _____ _____ _____	___ ____
+|	 |  |  | __  |  |_  |	\\
 |   --|  |  | __ -|  |_  |  |  |
 |_____|_____|_____|  |___|____/
 ${C_RST}

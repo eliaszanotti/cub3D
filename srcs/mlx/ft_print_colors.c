@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_colors.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
+/*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/30 17:39:34 by elias             #+#    #+#             */
-/*   Updated: 2023/03/30 18:07:04 by elias            ###   ########.fr       */
+/*   Created: 2023/03/31 19:11:33 by thibaultgir       #+#    #+#             */
+/*   Updated: 2023/03/31 19:11:38 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

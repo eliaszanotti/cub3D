@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:57:56 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/31 09:38:44 by thibaultgir      ###   ########.fr       */
+/*   Updated: 2023/04/01 12:15:45 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static int	ft_is_filled(t_args *args)
 {
-	if (!args->north_path || !args->south_path || !args->west_path || !args->east_path)
+	if (!args->north_path || !args->south_path || \
+	!args->west_path || !args->east_path)
 		return (0);
 	if (!args->floor || !args->ceiling)
 		return (0);

@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_window.c                                   :+:      :+:    :+:   */
+/*   ft_create_img.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/31 19:11:24 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/03/31 19:11:26 by thibaultgir      ###   ########.fr       */
+/*   Created: 2023/03/31 21:31:52 by thibaultgir       #+#    #+#             */
+/*   Updated: 2023/04/01 12:19:50 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include"cub3D.h"
 
-int	ft_init_window(t_args *args)
+t_img	ft_create_img(t_args *args, char *path)
 {
-	t_mlx	*mlx;
+	int		height;
+	int		width;
+	t_img	img;
 
-	mlx = malloc(sizeof(t_mlx));
-	if (!mlx)
-		return (ft_error(99));
-	mlx->mlx = mlx_init();
-	mlx->win = mlx_new_window(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3D");
-	args->mlx = mlx;
-	args->x_player = 12 * CUB_SIZE;
-	args->y_player = 22 * CUB_SIZE;
-	return (0);
+	img.img = mlx_xpm_file_to_image(args->mlx->mlx, path, &width, &height);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, \
+	&img.line_length, &img.endian);
+	return (img);
 }

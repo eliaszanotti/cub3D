@@ -5,45 +5,75 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/30 13:19:29 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/31 08:58:51 by thibaultgir      ###   ########.fr       */
+/*   Created: 2023/04/01 12:13:46 by thibaultgir       #+#    #+#             */
+/*   Updated: 2023/04/01 12:21:02 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void    ft_move(t_args *args)
+void	ft_move_left(t_args *args)
 {
-    if (args->move_left)
-    {
-        double oldDirX = args->ray->dirX;
-        args->ray->dirX = args->ray->dirX * cos(args->ray->rotSpeed) - args->ray->dirY * sin(args->ray->rotSpeed);
-        args->ray->dirY = oldDirX * sin(args->ray->rotSpeed) + args->ray->dirY * cos(args->ray->rotSpeed);
-        double oldPlaneX = args->ray->planeX;
-        args->ray->planeX = args->ray->planeX * cos(args->ray->rotSpeed) - args->ray->planeY * sin(args->ray->rotSpeed);
-        args->ray->planeY = oldPlaneX * sin(args->ray->rotSpeed) + args->ray->planeY * cos(args->ray->rotSpeed);
-    }
-    if (args->move_right)
-    {
-        double oldDirX = args->ray->dirX;
-			args->ray->dirX = args->ray->dirX * cos(-args->ray->rotSpeed) - args->ray->dirY * sin(-args->ray->rotSpeed);
-			args->ray->dirY = oldDirX * sin(-args->ray->rotSpeed) + args->ray->dirY * cos(-args->ray->rotSpeed);
-			double oldPlaneX = args->ray->planeX;
-			args->ray->planeX = args->ray->planeX * cos(-args->ray->rotSpeed) - args->ray->planeY * sin(-args->ray->rotSpeed);
-			args->ray->planeY = oldPlaneX * sin(-args->ray->rotSpeed) + args->ray->planeY * cos(-args->ray->rotSpeed);
-    }
-    if (args->move_up)
-    {
-        if(args->map[(int)(args->ray->x + args->ray->dirX * args->ray->moveSpeed)][(int)args->ray->y] != '1') 
-				args->ray->x += args->ray->dirX * args->ray->moveSpeed;
-			if(args->map[(int)args->ray->x][(int)(args->ray->y + args->ray->dirY * args->ray->moveSpeed)] != '1')
-				args->ray->y += args->ray->dirY * args->ray->moveSpeed;
-    }
-    if (args->move_down)
-    {
-        if(args->map[(int)(args->ray->x - args->ray->dirX * args->ray->moveSpeed)][(int)args->ray->y] != '1')
-				args->ray->x -= args->ray->dirX * args->ray->moveSpeed;
-			if(args->map[(int)args->ray->x][(int)(args->ray->y - args->ray->dirY * args->ray->moveSpeed)] != '1')
-				args->ray->y -= args->ray->dirY * args->ray->moveSpeed;
-    }
+	double	olddir_x;
+	double	oldplane_x;
+
+	olddir_x = args->ray->dir_x;
+	args->ray->dir_x = args->ray->dir_x * cos(args->ray->rot_speed) - \
+	args->ray->dir_y * sin(args->ray->rot_speed);
+	args->ray->dir_y = olddir_x * sin(args->ray->rot_speed) + \
+	args->ray->dir_y * cos(args->ray->rot_speed);
+	oldplane_x = args->ray->plane_x;
+	args->ray->plane_x = args->ray->plane_x * cos(args->ray->rot_speed) \
+	- args->ray->plane_y * sin(args->ray->rot_speed);
+	args->ray->plane_y = oldplane_x * sin(args->ray->rot_speed) \
+	+ args->ray->plane_y * cos(args->ray->rot_speed);
+}
+
+void	ft_move_right(t_args *args)
+{
+	double	olddir_x;
+	double	oldplane_x;
+
+	olddir_x = args->ray->dir_x;
+	args->ray->dir_x = args->ray->dir_x * cos(-args->ray->rot_speed) \
+	- args->ray->dir_y * sin(-args->ray->rot_speed);
+	args->ray->dir_y = olddir_x * sin(-args->ray->rot_speed) \
+	+ args->ray->dir_y * cos(-args->ray->rot_speed);
+	oldplane_x = args->ray->plane_x;
+	args->ray->plane_x = args->ray->plane_x * cos(-args->ray->rot_speed) \
+	- args->ray->plane_y * sin(-args->ray->rot_speed);
+	args->ray->plane_y = oldplane_x * sin(-args->ray->rot_speed) + \
+	args->ray->plane_y * cos(-args->ray->rot_speed);
+}
+
+void	ft_move_up(t_args *args)
+{
+	if (args->map[(int)(args->ray->pos_x + args->ray->dir_x * \
+	args->ray->move_speed)][(int)args->ray->pos_y] != '1')
+		args->ray->pos_x += args->ray->dir_x * args->ray->move_speed;
+	if (args->map[(int)args->ray->pos_x][(int)(args->ray->pos_y + \
+	args->ray->dir_y * args->ray->move_speed)] != '1')
+		args->ray->pos_y += args->ray->dir_y * args->ray->move_speed;
+}
+
+void	ft_move_down(t_args *args)
+{
+	if (args->map[(int)(args->ray->pos_x - args->ray->dir_x * \
+	args->ray->move_speed)][(int)args->ray->pos_y] != '1')
+		args->ray->pos_x -= args->ray->dir_x * args->ray->move_speed;
+	if (args->map[(int)args->ray->pos_x][(int)(args->ray->pos_y - \
+	args->ray->dir_y * args->ray->move_speed)] != '1')
+		args->ray->pos_y -= args->ray->dir_y * args->ray->move_speed;
+}
+
+void	ft_move(t_args *args)
+{
+	if (args->move_left)
+		ft_move_left(args);
+	if (args->move_right)
+		ft_move_right(args);
+	if (args->move_up)
+		ft_move_up(args);
+	if (args->move_down)
+		ft_move_down(args);
 }
