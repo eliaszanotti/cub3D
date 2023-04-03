@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:11:49 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/03/31 19:11:52 by thibaultgir      ###   ########.fr       */
+/*   Updated: 2023/04/03 14:47:54 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ void	ft_print_cross(t_img *img)
 	{
 		j = ((SCREEN_WIDTH / 2) - 10);
 		while (j++ < ((SCREEN_WIDTH / 2) + 10))
-			my_mlx_pixel_put(img, j, i, 0xFFFFFF);
+			ft_mlx_pixel_put(img, j, i, 0xFFFFFF);
 	}
 	i = ((SCREEN_HEIGHT / 2) - 10);
 	while (i++ < ((SCREEN_HEIGHT / 2) + 10))
 	{
 		j = ((SCREEN_WIDTH / 2) - 1);
 		while (j++ < ((SCREEN_WIDTH / 2) + 1))
-			my_mlx_pixel_put(img, j, i, 0xFFFFFF);
+			ft_mlx_pixel_put(img, j, i, 0xFFFFFF);
 	}
 }

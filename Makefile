@@ -22,18 +22,19 @@ ifeq ($(OS), Darwin)
 endif
 
 S_SRC		= main.c							\
+			${D_GNL}get_next_line.c				\
+			${D_GNL}get_next_line_utils.c		\
+												\
+			${D_MLX}ft_create_img.c				\
+			${D_MLX}ft_draw_line.c				\
+			${D_MLX}ft_get_color.c				\
 			${D_MLX}ft_init_window.c			\
+			${D_MLX}ft_mlx_pixel_put.c			\
 			${D_MLX}ft_print_colors.c			\
 			${D_MLX}ft_print_cross.c			\
 			${D_MLX}ft_print_minimap.c			\
 			${D_MLX}ft_put_player.c				\
 			${D_MLX}ft_put_square.c				\
-			${D_MLX}ft_get_color.c				\
-			${D_MLX}ft_create_img.c				\
-			${D_MLX}ft_draw_line.c				\
-												\
-			${D_GNL}get_next_line.c				\
-			${D_GNL}get_next_line_utils.c		\
 												\
 			${D_PARSE}ft_check_walls.c			\
 			${D_PARSE}ft_convert_list.c			\
@@ -44,22 +45,20 @@ S_SRC		= main.c							\
 			${D_PARSE}ft_parsing.c				\
 			${D_PARSE}ft_reset_struct.c			\
 												\
+			${D_RAY}ft_calculate_positions.c	\
+			${D_RAY}ft_calculate_side_dist.c	\
 			${D_RAY}ft_init_ray.c				\
 			${D_RAY}ft_init_textures.c			\
 			${D_RAY}ft_init_values.c			\
 			${D_RAY}ft_loop.c					\
+			${D_RAY}ft_move.c					\
 			${D_RAY}ft_raycasting.c				\
+			${D_RAY}ft_throw_ray.c				\
 												\
 			${D_UTILS}ft_error.c				\
 			${D_UTILS}ft_free.c					\
+			${D_UTILS}ft_hooks.c				\
 			${D_UTILS}ft_is_extension_correct.c	\
-												\
-												\
-												\
-												\
-			ft_create_window.c					\
-			ft_move.c							\
-			ft_raycasting_utils.c
 
 S_TMP		= ${addprefix ${D_SRC}, ${S_SRC}}
 O_SRC		= $(patsubst %.c, ${D_OBJS}%.o, $(S_TMP))

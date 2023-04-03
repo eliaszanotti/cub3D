@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:11:33 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/03/31 19:11:38 by thibaultgir      ###   ########.fr       */
+/*   Updated: 2023/04/03 14:47:07 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	ft_print_colors(t_args *args)
 		while (++j < SCREEN_WIDTH)
 		{
 			if (i > SCREEN_HEIGHT / 2)
-				my_mlx_pixel_put(img, j, i, args->floor_color);
+				ft_mlx_pixel_put(img, j, i, args->floor_color);
 			else
-				my_mlx_pixel_put(img, j, i, args->ceiling_color);
+				ft_mlx_pixel_put(img, j, i, args->ceiling_color);
 		}
 	}
 }

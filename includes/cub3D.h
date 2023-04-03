@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/03 13:03:58 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/03 14:41:30 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,6 @@ int				ft_get_start(t_args *args);
 
 //	CREATE_WINDOW
 int				ft_create_minimap(t_args *args, t_img *img);
-void			my_mlx_pixel_put(t_img *data, int x, int y, int color);
 int				ft_raycasting(t_args *args);
 int	ft_loop(t_args *args);
 int				hook_keypress(int key, t_args *args);
@@ -175,10 +174,16 @@ int				hook_keyrelease(int key, t_args *args);
 void			ft_move(t_args *args);
 
 int				ft_init_values(t_args *args, int x);
-void			ft_calcul_side_dist(t_args *args);
-void			ft_throw_ray(t_args *args);
-void			ft_calcul(t_args *a);
+int	ft_calculate_side_dist(t_args *args);
+int	ft_throw_ray(t_args *args);
+int	ft_calculate_positions(t_args *args);
 int	ft_init_ray(t_args *args);
 int	ft_init_textures(t_args *args);
+
+
+void	ft_mlx_pixel_put(t_img *data, int x, int y, int color);
+
+
+void	ft_calcul(t_args *a);
 
 #endif

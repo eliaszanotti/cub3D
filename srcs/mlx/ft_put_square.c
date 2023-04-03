@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:12:38 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/03/31 19:12:41 by thibaultgir      ###   ########.fr       */
+/*   Updated: 2023/04/03 14:47:36 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_put_square(t_img *img, int x, int y, int color)
 		{
 			dy = abs((y * CUB_SIZE) + j - 100);
 			if (sqrt(dx * dx + dy * dy) < 50)
-				my_mlx_pixel_put(img, (x * CUB_SIZE) + i, \
+				ft_mlx_pixel_put(img, (x * CUB_SIZE) + i, \
 					(y * CUB_SIZE) + j, color);
 		}
 	}

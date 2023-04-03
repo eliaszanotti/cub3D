@@ -6,13 +6,13 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 12:13:46 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/04/01 12:21:02 by thibaultgir      ###   ########.fr       */
+/*   Updated: 2023/04/03 14:32:25 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	ft_move_left(t_args *args)
+static void	ft_move_left(t_args *args)
 {
 	double	olddir_x;
 	double	oldplane_x;
@@ -29,7 +29,7 @@ void	ft_move_left(t_args *args)
 	+ args->ray->plane_y * cos(args->ray->rot_speed);
 }
 
-void	ft_move_right(t_args *args)
+static void	ft_move_right(t_args *args)
 {
 	double	olddir_x;
 	double	oldplane_x;
@@ -46,7 +46,7 @@ void	ft_move_right(t_args *args)
 	args->ray->plane_y * cos(-args->ray->rot_speed);
 }
 
-void	ft_move_up(t_args *args)
+static void	ft_move_up(t_args *args)
 {
 	if (args->map[(int)(args->ray->pos_x + args->ray->dir_x * \
 	args->ray->move_speed)][(int)args->ray->pos_y] != '1')
@@ -56,7 +56,7 @@ void	ft_move_up(t_args *args)
 		args->ray->pos_y += args->ray->dir_y * args->ray->move_speed;
 }
 
-void	ft_move_down(t_args *args)
+static void	ft_move_down(t_args *args)
 {
 	if (args->map[(int)(args->ray->pos_x - args->ray->dir_x * \
 	args->ray->move_speed)][(int)args->ray->pos_y] != '1')

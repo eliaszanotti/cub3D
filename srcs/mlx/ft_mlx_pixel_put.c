@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_window.c                                   :+:      :+:    :+:   */
+/*   ft_mlx_pixel_put.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
+/*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/31 19:11:24 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/04/03 14:54:28 by elias            ###   ########.fr       */
+/*   Created: 2023/04/03 14:40:39 by elias             #+#    #+#             */
+/*   Updated: 2023/04/03 14:41:01 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	ft_init_window(t_args *args)
+void	ft_mlx_pixel_put(t_img *data, int x, int y, int color)
 {
-	t_mlx	*mlx;
+	char	*dst;
 
-	mlx = malloc(sizeof(t_mlx));
-	if (!mlx)
-		return (ft_error(99));
-	mlx->mlx = mlx_init();
-	mlx->win = mlx_new_window(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3D");
-	args->mlx = mlx;
-	return (0);
+	if (x < SCREEN_WIDTH && y < SCREEN_HEIGHT)
+	{
+		dst = data->addr + (y * data->line_length + x * \
+			(data->bits_per_pixel / 8));
+		*(unsigned int *)dst = color;
+	}
 }
