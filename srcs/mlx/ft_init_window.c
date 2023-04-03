@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:11:24 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/03/31 19:11:26 by thibaultgir      ###   ########.fr       */
+/*   Updated: 2023/04/03 11:55:24 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int	ft_init_window(t_args *args)
 	mlx->win = mlx_new_window(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3D");
 	args->mlx = mlx;
 	args->x_player = 12 * CUB_SIZE;
-	args->y_player = 22 * CUB_SIZE;
+	args->y_player = 22 * CUB_SIZE; //TODO
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/03 10:39:36 by thibaultgir      ###   ########.fr       */
+/*   Updated: 2023/04/03 13:03:58 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ typedef struct s_args
 	t_list	*map_list;
 	t_mlx	*mlx;
 	t_ray	*ray;
-	t_img	*texture;
+	t_img	texture[4];
 	char	*north_path;
 	t_img	north_img;
 	char	*south_path;
@@ -143,7 +143,7 @@ int				ft_print_minimap(t_args *args, t_img *img);
 void			ft_put_player(t_img *img, int color);
 void			ft_put_square(t_img *img, int x, int y, int color);
 unsigned int	ft_get_color(t_img *img, int x, int y);
-t_img			ft_create_img(t_args *args, char *path);
+int				ft_create_img(t_args *args, char *path, int side);
 void			ft_draw_line(t_args *args, t_img *img, int x);
 //	PARSING
 int				ft_check_walls(t_args *args);
@@ -159,21 +159,26 @@ void			ft_free_list(t_list *list);
 void			ft_free_struct(t_args *args);
 int				ft_error(int error_code);
 int				ft_is_extension_correct(char *file, char *extension);
+
+
+
+
 int				ft_get_start(t_args *args);
-int				ft_load_texture(t_args *args);
 
 //	CREATE_WINDOW
 int				ft_create_minimap(t_args *args, t_img *img);
 void			my_mlx_pixel_put(t_img *data, int x, int y, int color);
 int				ft_raycasting(t_args *args);
-void			ft_loop(t_args *args);
+int	ft_loop(t_args *args);
 int				hook_keypress(int key, t_args *args);
 int				hook_keyrelease(int key, t_args *args);
 void			ft_move(t_args *args);
 
-void			ft_init_raycasting(t_args *args, int x);
+int				ft_init_values(t_args *args, int x);
 void			ft_calcul_side_dist(t_args *args);
 void			ft_throw_ray(t_args *args);
 void			ft_calcul(t_args *a);
+int	ft_init_ray(t_args *args);
+int	ft_init_textures(t_args *args);
 
 #endif

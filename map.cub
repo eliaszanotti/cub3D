@@ -1,8 +1,8 @@
-NO ./textures/eagle.xpm
-SO ./textures/greystone.xpm
-WE ./textures/purplestone.xpm
-EA ./textures/red.xpm
+SO textures/CRATE_1I.xpm
+NO textures/CRATE_1N.xpm
 
+WE textures/FLOOR_1B.xpm
+EA textures/TECH_4C.xpm
 C 51,51,51
 F 99,00,00
 

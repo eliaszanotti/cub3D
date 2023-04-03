@@ -10,7 +10,7 @@
 #																			  #
 # **************************************************************************** #
 
-OS				= $(shell uname -s)
+OS			= $(shell uname -s)
 
 ifeq ($(OS), Linux)
 	D_LMLX	= mlx/
@@ -44,16 +44,21 @@ S_SRC		= main.c							\
 			${D_PARSE}ft_parsing.c				\
 			${D_PARSE}ft_reset_struct.c			\
 												\
+			${D_RAY}ft_init_ray.c				\
+			${D_RAY}ft_init_textures.c			\
+			${D_RAY}ft_init_values.c			\
+			${D_RAY}ft_loop.c					\
+			${D_RAY}ft_raycasting.c				\
+												\
 			${D_UTILS}ft_error.c				\
 			${D_UTILS}ft_free.c					\
 			${D_UTILS}ft_is_extension_correct.c	\
-			${D_UTILS}ft_get_start.c			\
-			${D_UTILS}ft_load_texture.c			\
+												\
+												\
 												\
 												\
 			ft_create_window.c					\
 			ft_move.c							\
-			ft_raycasting.c						\
 			ft_raycasting_utils.c
 
 S_TMP		= ${addprefix ${D_SRC}, ${S_SRC}}
@@ -81,6 +86,7 @@ D_GNL		= gnl/
 D_PARSE		= parsing/
 D_UTILS		= utils/
 D_MLX		= mlx/
+D_RAY		= raycasting/
 
 # COLORS
 C_R			= \033[1;31m
@@ -93,7 +99,7 @@ C_DEL		= \r\033[2K
 
 all:		${NAME}
 
-${D_OBJS}%.o: %.c	${D_MLX}mlx.h ${D_INC}${NAME}.h ${D_INC}get_next_line.h Makefile
+${D_OBJS}%.o: %.c		${D_MLX}mlx.h ${D_INC}${NAME}.h ${D_INC}get_next_line.h Makefile
 			@mkdir		-p $(shell dirname $@)
 			@${PRINT}	"${C_Y}${C_DEL}Creating ${NAME}'s objects : $@"
 			@${CC}		${CFLAGS} -I${D_LMLX} -I${D_LIB} -I${D_INC} -c $< -o $@

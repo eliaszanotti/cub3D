@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*																			*/
 /*														:::	  ::::::::   */
-/*   ft_error.c										 :+:	  :+:	:+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*													+:+ +:+		 +:+	 */
 /*   By: ezanotti <marvin@42.fr>					+#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2023/03/10 15:43:07 by ezanotti		  #+#	#+#			 */
-/*   Updated: 2023/03/30 15:38:35 by elias			###   ########.fr	   */
+/*   Updated: 2023/04/03 12:41:43 by elias            ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static int	ft_error_range_1(int error_code)
 		printf("Invalid map (map not surrounded by walls)\n");
 	if (error_code == 8)
 		printf("Invalid color format (R,G,B)\n");
+	if (error_code == 9)
+		printf("Invalid texture path\n");
 	return (1);
 }
 

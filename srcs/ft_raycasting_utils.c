@@ -6,30 +6,11 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 10:37:46 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/04/03 10:39:51 by thibaultgir      ###   ########.fr       */
+/*   Updated: 2023/04/03 13:02:54 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"cub3D.h"
-
-void	ft_init_raycasting(t_args *args, int x)
-{
-	double	camera_x;
-
-	camera_x = 2 * x / (double)SCREEN_WIDTH - 1;
-	args->ray->raydir_x = args->ray->dir_x + args->ray->plane_x * camera_x;
-	args->ray->raydir_y = args->ray->dir_y + args->ray->plane_y * camera_x;
-	args->ray->map_x = (int)args->ray->pos_x;
-	args->ray->map_y = (int)args->ray->pos_y;
-	args->ray->delta_dist_x = 1 / args->ray->raydir_x;
-	args->ray->delta_dist_y = 1 / args->ray->raydir_y;
-	if (args->ray->delta_dist_x < 0)
-		args->ray->delta_dist_x *= -1;
-	if (args->ray->delta_dist_y < 0)
-		args->ray->delta_dist_y *= -1;
-	args->ray->move_speed = 5 * 0.032;
-	args->ray->rot_speed = 3 * 0.032;
-}
 
 void	ft_calcul_side_dist(t_args *args)
 {
