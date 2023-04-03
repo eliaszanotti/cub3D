@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:12:38 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/04/03 15:56:46 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/03 17:47:56 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ void	ft_put_square(t_args *args, int x, int y, int color)
 	int	dx;
 	int	dy;
 
-	i = -1;
 	if (x < 0 || y < 0)
 		return ;
+	if (args->expanded == 0)
+		color = ft_reduce_opacity(color, 0.3);
+	i = -1;
 	while (++i < CUB_SIZE)
 	{
 		j = -1;

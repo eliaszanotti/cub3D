@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:11:02 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/04/03 17:43:13 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/03 17:47:43 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_flash_light(t_args *a, t_img *img, int x, int y)
 	double	opacity;
 	
 	if (a->expanded)
-		opacity = 1 - ((double)a->ray->draw_start / (SCREEN_HEIGHT / 2)) + 0.3;
+		opacity = 1 - ((double)a->ray->draw_start / (SCREEN_HEIGHT / 2)) + 0.5;
 	else
 		opacity = 1 - ((double)a->ray->draw_start / (SCREEN_HEIGHT / 2)) - 0.1;
 	if (y >= a->ray->draw_start && y <= a->ray->draw_end)
@@ -40,7 +40,7 @@ void	ft_draw_line(t_args *a, t_img *img, int x)
 	while (y++ <= SCREEN_HEIGHT)
 	{
 		if (a->expanded)
-			opacity = 1 - ((double)y / (SCREEN_HEIGHT / 2)) + 0.3;
+			opacity = 1 - ((double)y / (SCREEN_HEIGHT / 2)) + 0.6;
 		else
 			opacity = 1 - ((double)y / (SCREEN_HEIGHT / 2)) - 0.5;
 		if (y < a->ray->draw_start)
@@ -49,7 +49,7 @@ void	ft_draw_line(t_args *a, t_img *img, int x)
 		ft_flash_light(a, img, x, y);
 		if (a->expanded)
 			opacity = ((double)(y - SCREEN_HEIGHT / 2) \
-				/ (SCREEN_HEIGHT / 2)) + 0.3;
+				/ (SCREEN_HEIGHT / 2)) + 0.6;
 		else
 			opacity = ((double)(y - SCREEN_HEIGHT / 2) \
 				/ (SCREEN_HEIGHT / 2)) - 0.5;
