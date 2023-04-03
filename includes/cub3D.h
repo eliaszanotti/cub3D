@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/03 14:41:30 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/03 15:32:27 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,8 +123,6 @@ typedef struct s_args
 	int		floor_color;
 	char	*ceiling;
 	int		ceiling_color;
-	int		x_player;
-	int		y_player;
 	int		x_img;
 	int		y_img;
 	int		keypress;
