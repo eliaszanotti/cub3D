@@ -1,46 +1,50 @@
 /* ************************************************************************** */
-/*																			*/
-/*														:::	  ::::::::   */
-/*   ft_get_start.c									 :+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: thibaultgiraudon <thibaultgiraudon@stud	+#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2023/03/30 11:04:19 by tgiraudo		  #+#	#+#			 */
-/*   Updated: 2023/03/31 19:04:13 by thibaultgir	  ###   ########.fr	   */
-/*																			*/
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_get_start.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/03 10:28:42 by thibaultgir       #+#    #+#             */
+/*   Updated: 2023/04/03 10:33:02 by thibaultgir      ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+void	ft_give_dir(t_args *args, double dir_x, double dir_y)
+{
+	args->ray->dir_x = dir_x;
+	args->ray->dir_y = dir_y;
+}
+
+void	ft_give_plane(t_args *args, double plane_x, double plane_y)
+{
+	args->ray->plane_x = plane_x;
+	args->ray->plane_y = plane_y;
+}
 
 void	ft_get_dir(t_args *args, char c)
 {
 	if (c == 'N')
 	{
-		args->ray->dir_x = -1;
-		args->ray->dir_y = 0;
-		args->ray->plane_x = 0;
-		args->ray->plane_y = 0.66;
+		ft_give_dir(args, -1, 0);
+		ft_give_plane(args, 0, 0.66);
 	}
 	if (c == 'S')
 	{
-		args->ray->dir_x = 1;
-		args->ray->dir_y = 0;
-		args->ray->plane_x = 0;
-		args->ray->plane_y = -0.66;
+		ft_give_dir(args, 1, 0);
+		ft_give_plane(args, 0, -0.66);
 	}
 	if (c == 'E')
 	{
-		args->ray->dir_x = 0;
-		args->ray->dir_y = 1;
-		args->ray->plane_x = 0.66;
-		args->ray->plane_y = 0;
+		ft_give_dir(args, 0, 1);
+		ft_give_plane(args, 0.66, 0);
 	}
 	if (c == 'W')
 	{
-		args->ray->dir_x = 0;
-		args->ray->dir_y = -1;
-		args->ray->plane_x = -0.66;
-		args->ray->plane_y = 0;
+		ft_give_dir(args, 0, -1);
+		ft_give_plane(args, -0.66, 0);
 	}
 }
 

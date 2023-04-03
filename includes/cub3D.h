@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/01 13:44:12 by thibaultgir      ###   ########.fr       */
+/*   Updated: 2023/04/03 10:39:36 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ typedef struct s_ray
 	int		step_x;
 	int		step_y;
 	int		tex_x;
+	int		tex_y;
 	int		side;
-	double	angle;
 }	t_ray;
 
 typedef struct s_img
@@ -160,6 +160,7 @@ void			ft_free_struct(t_args *args);
 int				ft_error(int error_code);
 int				ft_is_extension_correct(char *file, char *extension);
 int				ft_get_start(t_args *args);
+int				ft_load_texture(t_args *args);
 
 //	CREATE_WINDOW
 int				ft_create_minimap(t_args *args, t_img *img);
@@ -169,5 +170,10 @@ void			ft_loop(t_args *args);
 int				hook_keypress(int key, t_args *args);
 int				hook_keyrelease(int key, t_args *args);
 void			ft_move(t_args *args);
+
+void			ft_init_raycasting(t_args *args, int x);
+void			ft_calcul_side_dist(t_args *args);
+void			ft_throw_ray(t_args *args);
+void			ft_calcul(t_args *a);
 
 #endif

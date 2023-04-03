@@ -48,11 +48,13 @@ S_SRC		= main.c							\
 			${D_UTILS}ft_free.c					\
 			${D_UTILS}ft_is_extension_correct.c	\
 			${D_UTILS}ft_get_start.c			\
+			${D_UTILS}ft_load_texture.c			\
 												\
 												\
 			ft_create_window.c					\
 			ft_move.c							\
-			ft_raycasting.c
+			ft_raycasting.c						\
+			ft_raycasting_utils.c
 
 S_TMP		= ${addprefix ${D_SRC}, ${S_SRC}}
 O_SRC		= $(patsubst %.c, ${D_OBJS}%.o, $(S_TMP))
