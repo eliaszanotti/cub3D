@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:11:02 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/04/03 17:47:43 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/03 17:50:16 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_flash_light(t_args *a, t_img *img, int x, int y)
 {
 	int		color;
 	double	opacity;
-	
+
 	if (a->expanded)
 		opacity = 1 - ((double)a->ray->draw_start / (SCREEN_HEIGHT / 2)) + 0.5;
 	else
