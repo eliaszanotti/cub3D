@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/03 15:32:27 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/03 16:04:45 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 #  define D_LOWER_KEY 2
 #  define ESC_KEY 53
 #  define F5_KEY 96
+#  define M_KEY 109
 # else
 #  define LEFT_ARROW_KEY 65361
 #  define RIGHT_ARROW_KEY 65363
@@ -43,6 +44,7 @@
 #  define D_LOWER_KEY 100
 #  define ESC_KEY 65307
 #  define F5_KEY 65474
+#  define M_KEY 109
 # endif
 
 # define NORTH 0
@@ -51,7 +53,8 @@
 # define EAST 3
 # define SCREEN_WIDTH 1280
 # define SCREEN_HEIGHT 800
-# define CUB_SIZE 8
+# define CUB_SIZE 12
+# define P_OFFSET 8
 # define IMG_SIZE 64
 
 typedef struct s_ray
@@ -123,6 +126,7 @@ typedef struct s_args
 	int		floor_color;
 	char	*ceiling;
 	int		ceiling_color;
+	int		expanded;
 	int		x_img;
 	int		y_img;
 	int		keypress;
@@ -139,7 +143,7 @@ void			ft_print_colors(t_args *args);
 void			ft_print_cross(t_img *img);
 int				ft_print_minimap(t_args *args, t_img *img);
 void			ft_put_player(t_img *img, int color);
-void			ft_put_square(t_img *img, int x, int y, int color);
+void			ft_put_square(t_args *args, int x, int y, int color);
 unsigned int	ft_get_color(t_img *img, int x, int y);
 int				ft_create_img(t_args *args, char *path, int side);
 void			ft_draw_line(t_args *args, t_img *img, int x);

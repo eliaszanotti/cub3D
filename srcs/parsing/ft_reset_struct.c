@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:56:24 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/31 09:38:44 by thibaultgir      ###   ########.fr       */
+/*   Updated: 2023/04/03 15:54:55 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ int	ft_reset_struct(t_args *args)
 	args->floor = NULL;
 	args->ceiling = NULL;
 	args->map_list = NULL;
+	args->expanded = 1;
 	return (0);
 }
