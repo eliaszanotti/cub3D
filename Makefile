@@ -59,6 +59,7 @@ S_SRC		= main.c							\
 			${D_UTILS}ft_free.c					\
 			${D_UTILS}ft_hooks.c				\
 			${D_UTILS}ft_is_extension_correct.c	\
+			${D_UTILS}ft_reduce_opacity.c		\
 
 S_TMP		= ${addprefix ${D_SRC}, ${S_SRC}}
 O_SRC		= $(patsubst %.c, ${D_OBJS}%.o, $(S_TMP))

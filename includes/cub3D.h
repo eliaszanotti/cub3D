@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/03 16:04:45 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/03 16:51:15 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,7 @@ void			ft_free_list(t_list *list);
 void			ft_free_struct(t_args *args);
 int				ft_error(int error_code);
 int				ft_is_extension_correct(char *file, char *extension);
+int				ft_reduce_opacity(int color, double opacity);
 
 
 

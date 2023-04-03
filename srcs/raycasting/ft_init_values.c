@@ -6,7 +6,7 @@
 /*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 13:01:43 by elias             #+#    #+#             */
-/*   Updated: 2023/04/03 13:31:06 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/03 16:12:52 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_init_values(t_args *args, int x)
 		args->ray->delta_dist_x *= -1;
 	if (args->ray->delta_dist_y < 0)
 		args->ray->delta_dist_y *= -1;
-	args->ray->move_speed = 5 * 0.032;
+	args->ray->move_speed = 6 * 0.032;
 	args->ray->rot_speed = 3 * 0.032;
 	return (0);
 }
