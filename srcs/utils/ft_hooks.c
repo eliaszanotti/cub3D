@@ -6,7 +6,7 @@
 /*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:43:39 by elias             #+#    #+#             */
-/*   Updated: 2023/04/03 15:48:31 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/04 11:59:44 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	hook_keypress(int key, t_args *args)
 	if (key == M_KEY)
 		args->expanded = args->expanded ^ 1;
 	ft_move(args);
-	mlx_destroy_image(args->mlx->mlx, args->mlx->img.img);
 	ft_loop(args);
+	mlx_destroy_image(args->mlx->mlx, args->mlx->img.img);
 	return (0);
 }
 

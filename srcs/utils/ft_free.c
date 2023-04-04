@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*																			*/
 /*														:::	  ::::::::   */
-/*   ft_free.c										  :+:	  :+:	:+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*													+:+ +:+		 +:+	 */
 /*   By: thibaultgiraudon <thibaultgiraudon@stud	+#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2023/03/27 17:55:41 by elias			 #+#	#+#			 */
-/*   Updated: 2023/03/31 09:38:44 by thibaultgir	  ###   ########.fr	   */
+/*   Updated: 2023/04/04 13:54:51 by elias            ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -45,6 +45,14 @@ void	ft_free_list(t_list *list)
 		free(list);
 		list = tmp;
 	}
+}
+
+void	ft_free_mlx(t_args *args)
+{
+	mlx_destroy_window(args->mlx->mlx, args->mlx->win);
+	free(args->mlx->mlx);
+	free(args->mlx);
+	free(args->ray);
 }
 
 void	ft_free_struct(t_args *args)

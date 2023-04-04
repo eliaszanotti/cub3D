@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*																			*/
 /*														:::	  ::::::::   */
-/*   main.c											 :+:	  :+:	:+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*													+:+ +:+		 +:+	 */
 /*   By: tgiraudo <tgiraudo@student.42.fr>		  +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2023/03/10 14:10:33 by ezanotti		  #+#	#+#			 */
-/*   Updated: 2023/03/30 10:35:06 by tgiraudo		 ###   ########.fr	   */
+/*   Updated: 2023/04/04 13:22:07 by elias            ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int argc, char **argv)
 	if (ft_parsing(&args, argv[1]))
 		return (1);
 	if (ft_init_window(&args))
-		return (1);
+		return (ft_free_str(args.map), ft_free_struct(&args), 1);
 	if (ft_raycasting(&args))
 		return (1);
 	ft_free_struct(&args);

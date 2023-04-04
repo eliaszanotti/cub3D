@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/03 17:06:34 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/04 14:16:00 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@
 # define SOUTH 1
 # define WEST 2
 # define EAST 3
-# define SCREEN_WIDTH 1280
-# define SCREEN_HEIGHT 800
+# define SCREEN_WIDTH 960
+# define SCREEN_HEIGHT 600
 # define CUB_SIZE 12
 # define P_OFFSET 8
 # define IMG_SIZE 64
@@ -113,15 +113,11 @@ typedef struct s_args
 	t_list	*map_list;
 	t_mlx	*mlx;
 	t_ray	*ray;
-	t_img	texture[4];
+	t_img	*texture[4];
 	char	*north_path;
-	t_img	north_img;
 	char	*south_path;
-	t_img	south_img;
 	char	*west_path;
-	t_img	west_img;
 	char	*east_path;
-	t_img	east_img;
 	char	*floor;
 	int		floor_color;
 	char	*ceiling;
@@ -157,7 +153,9 @@ int				ft_parse_map(t_args *args, int fd);
 int				ft_parsing(t_args *args, char *cub_file);
 int				ft_reset_struct(t_args *args);
 //	UTILS
+void			ft_free_str(char **str);
 void			ft_free_list(t_list *list);
+void			ft_free_mlx(t_args *args);
 void			ft_free_struct(t_args *args);
 int				ft_error(int error_code);
 int				ft_is_extension_correct(char *file, char *extension);
@@ -166,7 +164,6 @@ int				ft_reduce_opacity(int color, double opacity);
 
 
 
-int				ft_get_start(t_args *args);
 
 //	CREATE_WINDOW
 int				ft_create_minimap(t_args *args, t_img *img);
@@ -187,6 +184,6 @@ int	ft_init_textures(t_args *args);
 void	ft_mlx_pixel_put(t_img *data, int x, int y, int color);
 
 
-void	ft_calcul(t_args *a);
+int	ft_exit(t_args *args);
 
 #endif
