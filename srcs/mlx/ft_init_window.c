@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_window.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
+/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:11:24 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/04/03 15:36:53 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/04 13:07:03 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,9 @@ int	ft_init_window(t_args *args)
 	mlx->mlx = mlx_init();
 	mlx->win = mlx_new_window(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3D");
 	args->mlx = mlx;
+	args->move_left = 0;
+	args->move_up = 0;
+	args->move_right = 0;
+	args->move_down = 0;
 	return (0);
 }

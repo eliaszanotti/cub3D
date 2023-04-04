@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calculate_positions.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
+/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 13:55:35 by elias             #+#    #+#             */
-/*   Updated: 2023/04/03 14:28:30 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/04 13:09:02 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_calculate_positions(t_args *a)
 	a->ray->tex_x = (int)(wall_x * 64.0);
 	if (a->ray->side <= 1 && a->ray->raydir_x > 0)
 		a->ray->tex_x = 64 - a->ray->tex_x - 1;
-	if (a->ray->side >= 2 && a->ray->raydir_y < 0)
+	else if (a->ray->side >= 2 && a->ray->raydir_y < 0)
 		a->ray->tex_x = 64 - a->ray->tex_x - 1;
 	a->ray->step = 1.0 * 64 / line_height;
 	a->ray->tex_pos = (a->ray->draw_start - SCREEN_HEIGHT / 2 + \

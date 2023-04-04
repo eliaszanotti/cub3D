@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_ray.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
+/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:42:42 by elias             #+#    #+#             */
-/*   Updated: 2023/04/03 11:57:45 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/04 13:09:25 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,17 @@ static int	ft_init_direction(t_args *args, char c)
 		ft_set_direction(args, -1, 0);
 		ft_set_plane(args, 0, 0.66);
 	}
-	if (c == 'S')
+	else if (c == 'S')
 	{
 		ft_set_direction(args, 1, 0);
 		ft_set_plane(args, 0, -0.66);
 	}
-	if (c == 'E')
+	else if (c == 'E')
 	{
 		ft_set_direction(args, 0, 1);
 		ft_set_plane(args, 0.66, 0);
 	}
-	if (c == 'W')
+	else if (c == 'W')
 	{
 		ft_set_direction(args, 0, -1);
 		ft_set_plane(args, -0.66, 0);

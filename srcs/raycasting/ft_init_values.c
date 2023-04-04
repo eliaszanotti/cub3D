@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_values.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
+/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 13:01:43 by elias             #+#    #+#             */
-/*   Updated: 2023/04/03 16:12:52 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/04 14:34:30 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_init_values(t_args *args, int x)
 		args->ray->delta_dist_x *= -1;
 	if (args->ray->delta_dist_y < 0)
 		args->ray->delta_dist_y *= -1;
-	args->ray->move_speed = 6 * 0.032;
-	args->ray->rot_speed = 3 * 0.032;
+	args->ray->move_speed = 6 * 0.064;
+	args->ray->rot_speed = 3 * 0.064;
 	return (0);
 }
