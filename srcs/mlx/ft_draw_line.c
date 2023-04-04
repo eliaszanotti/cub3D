@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:11:02 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/04/04 11:49:47 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/04 18:58:11 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,16 @@ void	ft_draw_line(t_args *a, t_img *img, int x)
 			opacity = 1 - ((double)y / (SCREEN_HEIGHT / 2)) - 0.5;
 		if (y < a->ray->draw_start)
 			ft_mlx_pixel_put(img, x, y, \
-		 		ft_reduce_opacity(a->ceiling_color, opacity));
+				ft_reduce_opacity(a->ceiling_color, opacity));
 		ft_flash_light(a, img, x, y);
 		if (a->expanded)
 			opacity = ((double)(y - SCREEN_HEIGHT / 2) \
-		 		/ (SCREEN_HEIGHT / 2)) + 0.6;
+				/ (SCREEN_HEIGHT / 2)) + 0.6;
 		else
 			opacity = ((double)(y - SCREEN_HEIGHT / 2) \
-		 		/ (SCREEN_HEIGHT / 2)) - 0.5;
+				/ (SCREEN_HEIGHT / 2)) - 0.5;
 		if (y > a->ray->draw_end)
 			ft_mlx_pixel_put(img, x, y, \
-		 		ft_reduce_opacity(a->floor_color, opacity));
+				ft_reduce_opacity(a->floor_color, opacity));
 	}
 }

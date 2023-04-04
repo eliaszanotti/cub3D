@@ -6,37 +6,43 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:12:38 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/04/03 17:47:56 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/04 19:02:14 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	ft_put_square(t_args *args, int x, int y, int color)
+static t_point	ft_rotate_point(t_point p, double angle)
 {
-	int	i;
-	int	j;
-	int	dx;
-	int	dy;
+	t_point	new_point;
+	int		xm;
+	int		ym;
 
-	if (x < 0 || y < 0)
+	xm = p.x - P_OFFSET;
+	ym = p.y - P_OFFSET;
+	new_point.x = xm * cos(angle) + ym * sin(angle) + P_OFFSET;
+	new_point.y = -xm * sin(angle) + ym * cos(angle) + P_OFFSET;
+	return (new_point);
+}
+
+void	ft_put_square(t_args *args, t_point p, int color, double angle)
+{
+	int		i;
+	t_point	p1;
+	t_point	p2;
+
+	if (p.x < 0 || p.y < 0)
 		return ;
 	if (args->expanded == 0)
 		color = ft_reduce_opacity(color, 0.3);
 	i = -1;
 	while (++i < CUB_SIZE)
 	{
-		j = -1;
-		dx = abs((x * CUB_SIZE) + i - 110);
-		while (++j < CUB_SIZE)
-		{
-			dy = abs((y * CUB_SIZE) + j - 110);
-			if (args->expanded == 1 && sqrt(dx * dx + dy * dy) < 100)
-				ft_mlx_pixel_put(&args->mlx->img, (x * CUB_SIZE) + i, \
-					(y * CUB_SIZE) + j, color);
-			if (args->expanded == 0 && sqrt(dx * dx + dy * dy) < 40)
-				ft_mlx_pixel_put(&args->mlx->img, (x * CUB_SIZE) + i, \
-					(y * CUB_SIZE) + j, color);
-		}
+		p1.x = P_OFFSET + p.x + i - args->ray->pos_y * CUB_SIZE;
+		p1.y = P_OFFSET + p.y - args->ray->pos_x * CUB_SIZE;
+		p2.x = P_OFFSET + p.x + i - args->ray->pos_y * CUB_SIZE;
+		p2.y = P_OFFSET + p.y + CUB_SIZE - args->ray->pos_x * CUB_SIZE;
+		ft_print_line(&args->mlx->img, ft_rotate_point(p1, angle), \
+			ft_rotate_point(p2, angle), color);
 	}
 }

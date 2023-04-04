@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/04 14:23:03 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/04 19:04:53 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@
 # define EAST 3
 # define SCREEN_WIDTH 960
 # define SCREEN_HEIGHT 600
-# define CUB_SIZE 12
-# define P_OFFSET 8
+# define CUB_SIZE 8
+# define P_OFFSET 100
 # define IMG_SIZE 64
 
 typedef struct s_ray
@@ -133,13 +133,18 @@ typedef struct s_args
 	int		img_size;
 }	t_args;
 
+typedef struct s_point
+{
+	int	x;
+	int y;
+}	t_point;
+
 //	MLX
 int				ft_init_window(t_args *args);
 void			ft_print_colors(t_args *args);
 void			ft_print_cross(t_img *img);
 int				ft_print_minimap(t_args *args, t_img *img);
 void			ft_put_player(t_img *img, int color);
-void			ft_put_square(t_args *args, int x, int y, int color);
 unsigned int	ft_get_color(t_img *img, int x, int y);
 int				ft_create_img(t_args *args, char *path, int side);
 void			ft_draw_line(t_args *args, t_img *img, int x);
@@ -162,6 +167,7 @@ int				ft_is_extension_correct(char *file, char *extension);
 int				ft_reduce_opacity(int color, double opacity);
 
 
+void	ft_print_line(t_img *img, t_point p1, t_point p2, int color);
 
 
 
@@ -183,6 +189,7 @@ int	ft_init_textures(t_args *args);
 
 void	ft_mlx_pixel_put(t_img *data, int x, int y, int color);
 
+void	ft_put_square(t_args *args, t_point p, int color, double angle);
 
 int	ft_exit(t_args *args);
 
