@@ -55,6 +55,7 @@ S_SRC		= main.c							\
 			${D_RAY}ft_throw_ray.c				\
 												\
 			${D_UTILS}ft_error.c				\
+			${D_UTILS}ft_exit.c					\
 			${D_UTILS}ft_free.c					\
 			${D_UTILS}ft_hooks.c				\
 			${D_UTILS}ft_is_extension_correct.c	\
@@ -136,8 +137,8 @@ fclean:		clean
 re:			fclean all
 
 define		ASCII
-${C_C} _____ _____ _____	___ ____
-|	 |  |  | __  |  |_  |	\\
+${C_C} _____ _____ _____    ___ ____
+|     |  |  | __  |  |_  |    \\
 |   --|  |  | __ -|  |_  |  |  |
 |_____|_____|_____|  |___|____/
 ${C_RST}
