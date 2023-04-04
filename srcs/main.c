@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>		  +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2023/03/10 14:10:33 by ezanotti		  #+#	#+#			 */
-/*   Updated: 2023/04/04 13:22:07 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/04 14:31:42 by elias            ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -41,6 +41,5 @@ int	main(int argc, char **argv)
 		return (ft_free_str(args.map), ft_free_struct(&args), 1);
 	if (ft_raycasting(&args))
 		return (1);
-	ft_free_struct(&args);
 	return (0);
 }
