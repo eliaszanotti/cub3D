@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
+/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/03 17:06:34 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/04 11:23:23 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 #  define D_LOWER_KEY 2
 #  define ESC_KEY 53
 #  define F5_KEY 96
-#  define M_KEY 109
+#  define M_KEY 46
 # else
 #  define LEFT_ARROW_KEY 65361
 #  define RIGHT_ARROW_KEY 65363
@@ -51,8 +51,8 @@
 # define SOUTH 1
 # define WEST 2
 # define EAST 3
-# define SCREEN_WIDTH 1280
-# define SCREEN_HEIGHT 800
+# define SCREEN_WIDTH 3640
+# define SCREEN_HEIGHT 2160
 # define CUB_SIZE 12
 # define P_OFFSET 8
 # define IMG_SIZE 64

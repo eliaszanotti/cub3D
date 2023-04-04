@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hooks.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
+/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:43:39 by elias             #+#    #+#             */
-/*   Updated: 2023/04/03 15:48:31 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/04 11:19:16 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,13 @@ int	hook_keypress(int key, t_args *args)
 
 int	hook_keyrelease(int key, t_args *args)
 {
-	(void)key;
-	args->move_down = 0;
-	args->move_left = 0;
-	args->move_up = 0;
-	args->move_right = 0;
+	if (key == LEFT_ARROW_KEY)
+		args->move_left = 0;
+	if (key == UP_ARROW_KEY)
+		args->move_up = 0;
+	if (key == RIGHT_ARROW_KEY)
+		args->move_right = 0;
+	if (key == DOWN_ARROW_KEY)
+		args->move_down = 0;
 	return (0);
 }
