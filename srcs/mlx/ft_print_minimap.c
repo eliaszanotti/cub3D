@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:12:00 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/04/04 19:06:16 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/04 19:15:11 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,20 @@ static void	ft_add_background(t_img *img)
 {
 	int	x;
 	int	y;
+	int	dx;
+	int	dy;
 
-	x = 0;
-	while (x < (P_OFFSET + 10) * 2)
+	x = -1;
+	while (++x < (P_OFFSET + 10) * 2)
 	{
-		y = 0;
-		while (y < (P_OFFSET + 10) * 2)
-			ft_mlx_pixel_put(img, x, y++, 0);
-		x++;
+		dx = abs(x - P_OFFSET);
+		y = -1;
+		while (++y < (P_OFFSET + 10) * 2)
+		{
+			dy = abs(y - P_OFFSET);
+			if (sqrt(dx * dx + dy * dy) < 90)
+				ft_mlx_pixel_put(img, x, y, 0);
+		}
 	}
 }
 

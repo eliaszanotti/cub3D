@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/04 19:04:53 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/04 19:14:11 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@
 # define EAST 3
 # define SCREEN_WIDTH 960
 # define SCREEN_HEIGHT 600
-# define CUB_SIZE 8
+# define CUB_SIZE 16
 # define P_OFFSET 100
 # define IMG_SIZE 64
 

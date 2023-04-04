@@ -6,7 +6,7 @@
 /*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 18:47:32 by elias             #+#    #+#             */
-/*   Updated: 2023/04/04 18:50:00 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/04 19:15:40 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,23 @@
 
 static void	ft_print_border(t_img *img, int x, int y, int color)
 {
-	ft_mlx_pixel_put(img, x, y, color);
-	ft_mlx_pixel_put(img, x + 1, y + 1, color);
-	ft_mlx_pixel_put(img, x - 1, y - 1, color);
-	ft_mlx_pixel_put(img, x + 1, y - 1, color);
-	ft_mlx_pixel_put(img, x - 1, y + 1, color);
-	ft_mlx_pixel_put(img, x, y + 1, color);
-	ft_mlx_pixel_put(img, x, y - 1, color);
-	ft_mlx_pixel_put(img, x + 1, y, color);
-	ft_mlx_pixel_put(img, x + 1, y, color);
+	int	dx;
+	int	dy;
+
+	dx = abs(x - P_OFFSET);
+	dy = abs(y - P_OFFSET);
+	if (sqrt(dx * dx + dy * dy) < 90)
+	{
+		ft_mlx_pixel_put(img, x, y, color);
+		ft_mlx_pixel_put(img, x + 1, y + 1, color);
+		ft_mlx_pixel_put(img, x - 1, y - 1, color);
+		ft_mlx_pixel_put(img, x + 1, y - 1, color);
+		ft_mlx_pixel_put(img, x - 1, y + 1, color);
+		ft_mlx_pixel_put(img, x, y + 1, color);
+		ft_mlx_pixel_put(img, x, y - 1, color);
+		ft_mlx_pixel_put(img, x + 1, y, color);
+		ft_mlx_pixel_put(img, x + 1, y, color);
+	}
 }
 
 void	ft_print_line(t_img *img, t_point p1, t_point p2, int color)
