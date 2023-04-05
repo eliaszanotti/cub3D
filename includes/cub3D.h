@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/05 11:46:08 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/05 13:52:33 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@
 # define SCREEN_HEIGHT 1080
 # define CUB_SIZE 16
 # define P_OFFSET 100
-# define IMG_SIZE 64
+# define IMG_SIZE 256
 
 typedef struct s_ray
 {
@@ -194,5 +194,8 @@ void	ft_mlx_pixel_put(t_img *data, int x, int y, int color);
 void	ft_put_square(t_args *args, t_point p, int color, double angle);
 
 int	ft_exit(t_args *args);
+
+
+void	ft_log(char **map);
 
 #endif

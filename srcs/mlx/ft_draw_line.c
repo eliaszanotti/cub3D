@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:11:02 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/04/04 18:58:11 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/05 13:54:00 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_flash_light(t_args *a, t_img *img, int x, int y)
 		opacity = 1 - ((double)a->ray->draw_start / (SCREEN_HEIGHT / 2)) - 0.1;
 	if (y >= a->ray->draw_start && y <= a->ray->draw_end)
 	{
-		a->ray->tex_y = (int)a->ray->tex_pos & 63;
+		a->ray->tex_y = (int)a->ray->tex_pos & 255;
 		a->ray->tex_pos += a->ray->step;
 		color = ft_get_color(&a->texture[a->ray->side], a->ray->tex_x, \
 			a->ray->tex_y);

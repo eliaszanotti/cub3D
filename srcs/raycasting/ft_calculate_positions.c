@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 13:55:35 by elias             #+#    #+#             */
-/*   Updated: 2023/04/04 13:09:02 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/05 13:53:32 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ int	ft_calculate_positions(t_args *a)
 		wall_x = a->ray->pos_y + a->ray->perp_wall_dist * a->ray->raydir_y;
 	else
 		wall_x = a->ray->pos_x + a->ray->perp_wall_dist * a->ray->raydir_x;
-	a->ray->tex_x = (int)(wall_x * 64.0);
+	a->ray->tex_x = (int)(wall_x * 256.0);
 	if (a->ray->side <= 1 && a->ray->raydir_x > 0)
-		a->ray->tex_x = 64 - a->ray->tex_x - 1;
+		a->ray->tex_x = 256 - a->ray->tex_x - 1;
 	else if (a->ray->side >= 2 && a->ray->raydir_y < 0)
-		a->ray->tex_x = 64 - a->ray->tex_x - 1;
-	a->ray->step = 1.0 * 64 / line_height;
+		a->ray->tex_x = 256 - a->ray->tex_x - 1;
+	a->ray->step = 1.0 * 256 / line_height;
 	a->ray->tex_pos = (a->ray->draw_start - SCREEN_HEIGHT / 2 + \
 	line_height / 2) * a->ray->step;
 	return (0);

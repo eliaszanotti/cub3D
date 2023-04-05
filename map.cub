@@ -1,8 +1,8 @@
-SO textures/CRATE_1I.xpm
-NO textures/CRATE_1N.xpm
+SO textures/cobblestone_mossy.xpm
+NO textures/glass_silver.xpm
 
-WE textures/FLOOR_1B.xpm
-EA textures/TECH_4C.xpm
+WE textures/hardened_clay_stained_gray.xpm
+EA textures/hardened_clay_stained_green.xpm
 C 51,51,51
 F 99,00,00
 
