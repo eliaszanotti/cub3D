@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_list.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
+/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:18:30 by elias             #+#    #+#             */
-/*   Updated: 2023/04/04 13:18:36 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/05 13:23:39 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int	ft_convert_list(t_args *args)
 	int		size;
 
 	list = args->map_list;
-	size = ft_lstsize(list->content);
+	size = ft_lstsize(list);
+	printf("size : %d\n", size);
 	args->map = malloc(sizeof(char *) * (size + 1));
 	if (!args->map)
 		return (ft_error(99));
