@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 13:01:43 by elias             #+#    #+#             */
-/*   Updated: 2023/04/04 14:34:30 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/05 12:30:55 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_init_values(t_args *args, int x)
 		args->ray->delta_dist_x *= -1;
 	if (args->ray->delta_dist_y < 0)
 		args->ray->delta_dist_y *= -1;
-	args->ray->move_speed = 6 * 0.064;
-	args->ray->rot_speed = 3 * 0.064;
+	args->ray->move_speed = 0.5;
+	args->ray->rot_speed = 0.1;
 	return (0);
 }
