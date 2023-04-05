@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/05 14:56:03 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/05 17:08:21 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,13 @@ typedef struct s_mlx
 	t_img	img;
 }	t_mlx;
 
+typedef struct s_anim
+{
+	t_img	img[12];
+	int		current_img;
+	int		anime_frame;
+}	t_anim;
+
 typedef struct s_args
 {
 	char	**map;
@@ -114,7 +121,7 @@ typedef struct s_args
 	t_mlx	*mlx;
 	t_ray	*ray;
 	t_img	texture[4];
-	t_img	animation[12];
+	t_anim	*anim;
 	char	*north_path;
 	char	*south_path;
 	char	*west_path;
