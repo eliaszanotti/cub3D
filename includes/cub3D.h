@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/04 19:14:11 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/05 11:46:08 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@
 # define SOUTH 1
 # define WEST 2
 # define EAST 3
-# define SCREEN_WIDTH 960
-# define SCREEN_HEIGHT 600
+# define SCREEN_WIDTH 1920
+# define SCREEN_HEIGHT 1080
 # define CUB_SIZE 16
 # define P_OFFSET 100
 # define IMG_SIZE 64
@@ -126,10 +126,12 @@ typedef struct s_args
 	int		x_img;
 	int		y_img;
 	int		keypress;
-	int		move_left;
-	int		move_right;
+	int		turn_left;
+	int		turn_right;
 	int		move_up;
 	int		move_down;
+	int		move_right;
+	int		move_left;
 	int		img_size;
 }	t_args;
 
