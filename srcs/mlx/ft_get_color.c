@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:11:12 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/04/05 17:57:06 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/06 14:43:57 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ unsigned int	ft_get_color(t_img *data, int x, int y)
 		x *= -1;
 	if (y < 0)
 		y *= -1;
-	dst = data->addr + (y % 256 * data->line_length + x % 256 * (data->bits_per_pixel / 8));
+	dst = data->addr + (y % 256 * data->line_length + x % 256 * \
+		(data->bits_per_pixel / 8));
 	color = *(unsigned int *)dst;
 	return (color);
 }

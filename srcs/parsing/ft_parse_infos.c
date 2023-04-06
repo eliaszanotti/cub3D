@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:57:56 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/06 13:40:18 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/06 14:45:29 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ static int	ft_convert_hexa(char **split_color)
 	while (split_color[++size])
 	{
 		i = -1;
-		while(split_color[size][++i])
+		while (split_color[size][++i])
 			if (!ft_isdigit(split_color[size][i]))
 				return (-1);
 		atoi = ft_atoi(split_color[size]);
-		if (atoi > 99 || atoi < 0)
+		if (atoi > 255 || atoi < 0)
 			return (-1);
 		total += atoi << (2 - size) * 8;
 	}

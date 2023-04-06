@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud	+#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2023/03/27 17:55:41 by elias			 #+#	#+#			 */
-/*   Updated: 2023/04/04 13:54:51 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/06 14:44:58 by ezanotti         ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	ft_free_mlx(t_args *args)
 {
 	mlx_clear_window(args->mlx->mlx, args->mlx->win);
 	mlx_destroy_window(args->mlx->mlx, args->mlx->win);
-	//free(args->mlx->win);
 	free(args->mlx->mlx);
 	free(args->mlx);
 	free(args->ray);

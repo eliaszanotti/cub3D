@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:43:39 by elias             #+#    #+#             */
-/*   Updated: 2023/04/05 12:04:10 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/06 14:44:51 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	hook_keypress(int key, t_args *args)
 		args->move_right = 1;
 	else if (key == M_KEY)
 		args->expanded = args->expanded ^ 1;
-	// mlx_destroy_image(args->mlx->mlx, args->mlx->img.img);
 	return (0);
 }
 
