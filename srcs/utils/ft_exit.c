@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
+/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 11:49:12 by elias             #+#    #+#             */
-/*   Updated: 2023/04/04 14:32:25 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/06 14:23:01 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 int	ft_exit(t_args *args)
 {
 	mlx_destroy_image(args->mlx->mlx, args->mlx->img.img);
+	mlx_destroy_image(args->mlx->mlx, args->texture[0].img);
+	mlx_destroy_image(args->mlx->mlx, args->texture[1].img);
+	mlx_destroy_image(args->mlx->mlx, args->texture[2].img);
+	mlx_destroy_image(args->mlx->mlx, args->texture[3].img);
 	ft_free_struct(args);
 	ft_free_str(args->map);
 	ft_free_mlx(args);

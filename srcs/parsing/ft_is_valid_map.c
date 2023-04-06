@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_is_valid_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
+/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:27:59 by elias             #+#    #+#             */
-/*   Updated: 2023/03/27 12:09:34 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/06 13:04:21 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ int	ft_is_valid_map(t_args *args)
 {
 	t_list	*list;
 	t_ilst	*current;
+	int		alpha;
 
+	alpha = 0;
 	list = args->map_list;
 	while (list)
 	{
@@ -36,9 +38,13 @@ int	ft_is_valid_map(t_args *args)
 		{
 			if (!ft_is_valid_char((char)current->content))
 				return (0);
+			if (ft_isalpha((char)current->content))
+				alpha++;
 			current = current->next;
 		}
 		list = list->next;
 	}
+	if (alpha > 1 || alpha == 0)
+		return (0);
 	return (1);
 }

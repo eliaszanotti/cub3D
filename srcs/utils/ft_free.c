@@ -49,7 +49,9 @@ void	ft_free_list(t_list *list)
 
 void	ft_free_mlx(t_args *args)
 {
+	mlx_clear_window(args->mlx->mlx, args->mlx->win);
 	mlx_destroy_window(args->mlx->mlx, args->mlx->win);
+	//free(args->mlx->win);
 	free(args->mlx->mlx);
 	free(args->mlx);
 	free(args->ray);
@@ -57,10 +59,16 @@ void	ft_free_mlx(t_args *args)
 
 void	ft_free_struct(t_args *args)
 {
-	free(args->north_path);
-	free(args->south_path);
-	free(args->west_path);
-	free(args->east_path);
-	free(args->floor);
-	free(args->ceiling);
+	if (args->north_path)
+		free(args->north_path);
+	if (args->south_path)
+		free(args->south_path);
+	if (args->west_path)
+		free(args->west_path);
+	if (args->east_path)
+		free(args->east_path);
+	if (args->floor)
+		free(args->floor);
+	if (args->ceiling)
+		free(args->ceiling);
 }

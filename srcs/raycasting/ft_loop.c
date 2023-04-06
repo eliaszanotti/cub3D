@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:58:14 by elias             #+#    #+#             */
-/*   Updated: 2023/04/05 18:01:39 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/06 14:28:26 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,27 +36,26 @@ void	ft_update_animation(t_anim	*anim)
 int	ft_loop(t_args *args)
 {
 	t_mlx	*mlx;
-	// int		x;
+	int		x;
 
 	mlx = args->mlx;
-	// ft_move(args);
-	// x = 0;
-	// while (x++ < SCREEN_WIDTH)
-	// {
-	// 	if (ft_init_values(args, x))
-	// 		return (1);
-	// 	if (ft_calculate_side_dist(args))
-	// 		return (1);
-	// 	if (ft_throw_ray(args))
-	// 		return (1);
-	// 	if (ft_calculate_positions(args))
-	// 		return (1);
-	// 	ft_draw_line(args, &args->mlx->img, x);
-	// }
-	// ft_print_minimap(args, &mlx->img);
-	// ft_print_cross(&mlx->img);
-	// printf("current_img : %d\n", args->anim->current_img);
-	// mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img, 0, 0);
+	ft_move(args);
+	x = 0;
+	while (x++ < SCREEN_WIDTH)
+	{
+		if (ft_init_values(args, x))
+			return (1);
+		if (ft_calculate_side_dist(args))
+			return (1);
+		if (ft_throw_ray(args))
+			return (1);
+		if (ft_calculate_positions(args))
+			return (1);
+		ft_draw_line(args, &args->mlx->img, x);
+	}
+	ft_print_minimap(args, &mlx->img);
+	ft_print_cross(&mlx->img);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img, 0, 0);
 	ft_update_animation(args->anim);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, args->anim->img[args->anim->current_img].img, 0, 0);
 	return (0);

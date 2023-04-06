@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:46:11 by elias             #+#    #+#             */
-/*   Updated: 2023/04/05 17:31:07 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/06 14:28:31 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ int	ft_raycasting(t_args *args)
 	if (ft_init_textures(args))
 		return (ft_free_mlx(args), ft_free_str(args->map), \
 			ft_free_struct(args), 1);
-	args->anim->anime_frame = 1000;
+	args->anim = malloc(sizeof(t_anim));
+	args->anim->anime_frame = 1;
 	if (ft_open_xpm(args, "textures/AnyConv.com__00.xpm", 0))
 		return (1);
 	if (ft_open_xpm(args, "textures/AnyConv.com__10.xpm", 1))
