@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/05 17:08:21 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/11 16:37:49 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@
 # define SOUTH 1
 # define WEST 2
 # define EAST 3
-# define SCREEN_WIDTH 1920
-# define SCREEN_HEIGHT 1080
+# define SCREEN_WIDTH 2580
+# define SCREEN_HEIGHT 1440
 # define CUB_SIZE 16
 # define P_OFFSET 100
 # define IMG_SIZE 256
@@ -146,18 +146,20 @@ typedef struct s_args
 typedef struct s_point
 {
 	int	x;
-	int y;
+	int	y;
 }	t_point;
 
 //	MLX
-int				ft_init_window(t_args *args);
-void			ft_print_colors(t_args *args);
-void			ft_print_cross(t_img *img);
-int				ft_print_minimap(t_args *args, t_img *img);
-void			ft_put_player(t_img *img, int color);
-unsigned int	ft_get_color(t_img *img, int x, int y);
 int				ft_create_img(t_args *args, char *path, int side);
 void			ft_draw_line(t_args *args, t_img *img, int x);
+unsigned int	ft_get_color(t_img *img, int x, int y);
+int				ft_init_window(t_args *args);
+void			ft_mlx_pixel_put(t_img *data, int x, int y, int color);
+void			ft_print_cross(t_img *img);
+void			ft_print_line(t_img *img, t_point p1, t_point p2, int color);
+int				ft_print_minimap(t_args *args, t_img *img);
+void			ft_put_player(t_img *img, int color);
+void			ft_put_square(t_args *args, t_point p, int color, double angle);
 //	PARSING
 int				ft_check_walls(t_args *args);
 int				ft_convert_list(t_args *args);
@@ -167,43 +169,28 @@ int				ft_parse_infos(t_args *args, int fd);
 int				ft_parse_map(t_args *args, int fd);
 int				ft_parsing(t_args *args, char *cub_file);
 int				ft_reset_struct(t_args *args);
+//	RAYCASTING
+int				ft_calculate_positions(t_args *args);
+int				ft_calculate_side_dist(t_args *args);
+int				ft_init_ray(t_args *args);
+int				ft_init_textures(t_args *args);
+int				ft_init_values(t_args *args, int x);
+int				ft_loop(t_args *args);
+void			ft_move(t_args *args);
+int				ft_raycasting(t_args *args);
+int				ft_throw_ray(t_args *args);
+void			ft_turn_left(t_args *args);
+void			ft_turn_right(t_args *args);
 //	UTILS
+int				ft_error(int error_code);
+int				ft_exit(t_args *args);
 void			ft_free_str(char **str);
 void			ft_free_list(t_list *list);
 void			ft_free_mlx(t_args *args);
 void			ft_free_struct(t_args *args);
-int				ft_error(int error_code);
-int				ft_is_extension_correct(char *file, char *extension);
-int				ft_reduce_opacity(int color, double opacity);
-
-
-void	ft_print_line(t_img *img, t_point p1, t_point p2, int color);
-
-
-
-//	CREATE_WINDOW
-int				ft_create_minimap(t_args *args, t_img *img);
-int				ft_raycasting(t_args *args);
-int	ft_loop(t_args *args);
 int				hook_keypress(int key, t_args *args);
 int				hook_keyrelease(int key, t_args *args);
-void			ft_move(t_args *args);
-
-int				ft_init_values(t_args *args, int x);
-int	ft_calculate_side_dist(t_args *args);
-int	ft_throw_ray(t_args *args);
-int	ft_calculate_positions(t_args *args);
-int	ft_init_ray(t_args *args);
-int	ft_init_textures(t_args *args);
-
-
-void	ft_mlx_pixel_put(t_img *data, int x, int y, int color);
-
-void	ft_put_square(t_args *args, t_point p, int color, double angle);
-
-int	ft_exit(t_args *args);
-
-
-void	ft_log(char **map);
+int				ft_is_extension_correct(char *file, char *extension);
+int				ft_reduce_opacity(int color, double opacity);
 
 #endif

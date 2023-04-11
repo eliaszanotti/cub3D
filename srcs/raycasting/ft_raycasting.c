@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:46:11 by elias             #+#    #+#             */
-/*   Updated: 2023/04/06 14:28:31 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/06 15:41:10 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	ft_open_xpm(t_args *args, char *path, int i)
 	img.img = mlx_xpm_file_to_image(args->mlx->mlx, path, &width, &height);
 	if (!img.img)
 	{
-		printf("Can't open texture : \
-			%d\n0 : NO\n1 : SO\n2 : WE\n3 : EA\n", i);
+		printf("Can't open texture : ");
+		printf("%d\n0 : NO\n1 : SO\n2 : WE\n3 : EA\n", i);
 		return (ft_error(9));
 	}
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, \

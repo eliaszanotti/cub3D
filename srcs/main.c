@@ -6,26 +6,11 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>		  +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2023/03/10 14:10:33 by ezanotti		  #+#	#+#			 */
-/*   Updated: 2023/04/04 14:31:42 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/11 16:26:07 by ezanotti         ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-void	ft_log(char **map)
-{
-	int	i;
-	int	j;
-
-	i = -1;
-	while (map[++i])
-	{
-		j = -1;
-		while (map[i][++j])
-			printf("%c", map[i][j]);
-		printf("\n");
-	}
-}
 
 int	main(int argc, char **argv)
 {
