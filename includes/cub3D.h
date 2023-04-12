@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/11 16:37:49 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:48:11 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@
 # define SOUTH 1
 # define WEST 2
 # define EAST 3
-# define SCREEN_WIDTH 2580
-# define SCREEN_HEIGHT 1440
+# define SCREEN_WIDTH 1920
+# define SCREEN_HEIGHT 1080
 # define CUB_SIZE 16
 # define P_OFFSET 100
 # define IMG_SIZE 256
