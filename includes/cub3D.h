@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/12 14:48:11 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/22 15:25:19 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,12 @@ typedef struct s_anim
 	int		anime_frame;
 }	t_anim;
 
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}	t_point;
+
 typedef struct s_args
 {
 	char	**map;
@@ -141,13 +147,8 @@ typedef struct s_args
 	int		move_right;
 	int		move_left;
 	int		img_size;
+	int		last_x;
 }	t_args;
-
-typedef struct s_point
-{
-	int	x;
-	int	y;
-}	t_point;
 
 //	MLX
 int				ft_create_img(t_args *args, char *path, int side);
