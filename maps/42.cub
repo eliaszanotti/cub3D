@@ -1,8 +1,7 @@
-SO textures/cobblestone_mossy.xpm
-NO textures/glass_silver.xpm
-
-WE textures/hardened_clay_stained_gray.xpm
-EA textures/hardened_clay_stained_green.xpm
+NO textures/cobble.xpm
+SO textures/dirt.xpm
+EA textures/gold.xpm
+WE textures/wood.xpm
 C 51,51,51
 F 99,00,00
 

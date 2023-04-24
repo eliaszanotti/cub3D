@@ -6,13 +6,13 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:58:14 by elias             #+#    #+#             */
-/*   Updated: 2023/04/22 17:11:32 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/04/24 15:32:36 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void	ft_update_animation(t_anim	*anim)
+void	ft_update_animation(t_anim	*anim)
 {
 	static int	frame;
 
@@ -33,9 +33,9 @@ static void	ft_update_animation(t_anim	*anim)
 
 void	ft_reset_moves(t_args *args)
 {
-	if (args->turn_left == 1)
+	if (args->turn_left == 2)
 		args->turn_left = 0;
-	if (args->turn_right == 1)
+	if (args->turn_right == 2)
 		args->turn_right = 0;
 }
 
@@ -65,8 +65,8 @@ int	ft_loop(t_args *args)
 	ft_print_minimap(args, &mlx->img);
 	ft_print_cross(&mlx->img);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img, 0, 0);
-	ft_update_animation(args->anim);
-	mlx_put_image_to_window(mlx->mlx, mlx->win, args->anim->img[args->anim->current_img].img, 0, 0);
+	//ft_update_animation(args->anim);
+	//mlx_put_image_to_window(mlx->mlx, mlx->win, args->anim->img[args->anim->current_img].img, 0, 0);
 	//ft_reset_moves(args);
 	return (0);
 }

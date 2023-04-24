@@ -39,12 +39,12 @@ int	ft_calculate_positions(t_args *a)
 		wall_x = a->ray->pos_y + a->ray->perp_wall_dist * a->ray->raydir_y;
 	else
 		wall_x = a->ray->pos_x + a->ray->perp_wall_dist * a->ray->raydir_x;
-	a->ray->tex_x = (int)(wall_x * 256.0);
+	a->ray->tex_x = (int)(wall_x * IMG_SIZE);
 	if (a->ray->side <= 1 && a->ray->raydir_x > 0)
-		a->ray->tex_x = 256 - a->ray->tex_x - 1;
+		a->ray->tex_x = IMG_SIZE - a->ray->tex_x - 1;
 	else if (a->ray->side >= 2 && a->ray->raydir_y < 0)
-		a->ray->tex_x = 256 - a->ray->tex_x - 1;
-	a->ray->step = 1.0 * 256 / line_height;
+		a->ray->tex_x = IMG_SIZE - a->ray->tex_x - 1;
+	a->ray->step = 1.0 * IMG_SIZE / line_height;
 	a->ray->tex_pos = (a->ray->draw_start - SCREEN_HEIGHT / 2 + \
 	line_height / 2) * a->ray->step;
 	return (0);

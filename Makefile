@@ -104,7 +104,7 @@ all:		${NAME}
 ${D_OBJS}%.o: %.c		${D_MLX}mlx.h ${D_INC}${NAME}.h ${D_INC}get_next_line.h Makefile
 			@mkdir		-p $(shell dirname $@)
 			@${PRINT}	"${C_Y}${C_DEL}Creating ${NAME}'s objects : $@"
-			@${CC}		${CFLAGS} -I${D_LMLX} -I${D_LIB} -I${D_INC} -c $< -o $@
+			@${CC}		${CFLAGS} -I${D_LMLX} -I${D_LIB} -I${D_INC} -O3 -c $< -o $@
 
 ${NAME}:	ascii mlx lib ${O_SRC}
 			@${PRINT}	"${C_G}${C_DEL}Creating ${NAME}'s objects : DONE\n"

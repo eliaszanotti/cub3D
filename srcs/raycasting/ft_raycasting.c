@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:46:11 by elias             #+#    #+#             */
-/*   Updated: 2023/04/22 17:14:58 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/04/24 16:53:07 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,14 @@ int	ft_open_xpm(t_args *args, char *path, int i)
 int	mouse_hook(int x, int y, t_args *args)
 {
 	(void)y;
-	args->turn_left = 0;
-	args->turn_right = 0;
-	if (args->last_x > x && x != (int)(SCREEN_WIDTH / 2))
+	if (x != args->last_x)
+	{
+		args->turn_left = 0;
+		args->turn_right = 0;
+	}
+	if (args->last_x > x + 5 && x != (int)(SCREEN_WIDTH / 2))
 		args->turn_left = 1;
-	else if (args->last_x < x && x != (int)(SCREEN_WIDTH / 2))
+	else if (args->last_x < x - 5 && x != (int)(SCREEN_WIDTH / 2))
 		args->turn_right = 1;
 	args->last_x = x;
 	return (0);
@@ -85,9 +88,9 @@ int	ft_raycasting(t_args *args)
 	if (ft_open_xpm(args, "textures/AnyConv.com__110.xpm", 11))
 		return (1);
 	args->anim->current_img = 0;
-	//mlx_hook(args->mlx->win, 6, 1L << 6, mouse_hook, args);
 	mlx_hook(args->mlx->win, 2, 1L << 0, hook_keypress, args);
 	mlx_hook(args->mlx->win, 3, 1L << 1, hook_keyrelease, args);
+	mlx_hook(args->mlx->win, 6, 1L << 6, mouse_hook, args);
 	mlx_hook(args->mlx->win, 17, 0, ft_exit, args);
 	mlx_loop_hook(args->mlx->mlx, ft_loop, args);
 	mlx_loop(args->mlx->mlx);
