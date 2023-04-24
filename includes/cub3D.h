@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/24 14:40:50 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/24 17:04:33 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@
 # define SCREEN_HEIGHT 1080
 # define CUB_SIZE 16
 # define P_OFFSET 100
-# define IMG_SIZE 16
+# define IMG_SIZE 256
 
 typedef struct s_ray
 {
@@ -191,6 +191,7 @@ void			ft_free_mlx(t_args *args);
 void			ft_free_struct(t_args *args);
 int				hook_keypress(int key, t_args *args);
 int				hook_keyrelease(int key, t_args *args);
+int				ft_mouse_hook(int x, int y, t_args *args);
 int				ft_is_extension_correct(char *file, char *extension);
 int				ft_reduce_opacity(int color, double opacity);
 

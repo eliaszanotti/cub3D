@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:43:39 by elias             #+#    #+#             */
-/*   Updated: 2023/04/22 17:13:27 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/04/24 17:03:27 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,23 @@ int	hook_keyrelease(int key, t_args *args)
 		args->move_left = 0;
 	else if (key == D_LOWER_KEY)
 		args->move_right = 0;
+	return (0);
+}
+
+int	ft_mouse_hook(int x, int y, t_args *args)
+{
+	(void)y;
+	if (args->last_x == -1)
+		x = SCREEN_WIDTH / 2;
+	if (x != args->last_x)
+	{
+		args->turn_left = 0;
+		args->turn_right = 0;
+	}
+	if (args->last_x > x + 5 && x != (int)(SCREEN_WIDTH / 2))
+		args->turn_left = 1;
+	else if (args->last_x < x - 5 && x != (int)(SCREEN_WIDTH / 2))
+		args->turn_right = 1;
+	args->last_x = x;
 	return (0);
 }

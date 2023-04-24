@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:46:11 by elias             #+#    #+#             */
-/*   Updated: 2023/04/24 16:53:07 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/24 17:03:55 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,6 @@ int	ft_open_xpm(t_args *args, char *path, int i)
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, \
 		&img.line_length, &img.endian);
 	args->anim->img[i] = img;
-	return (0);
-}
-
-int	mouse_hook(int x, int y, t_args *args)
-{
-	(void)y;
-	if (x != args->last_x)
-	{
-		args->turn_left = 0;
-		args->turn_right = 0;
-	}
-	if (args->last_x > x + 5 && x != (int)(SCREEN_WIDTH / 2))
-		args->turn_left = 1;
-	else if (args->last_x < x - 5 && x != (int)(SCREEN_WIDTH / 2))
-		args->turn_right = 1;
-	args->last_x = x;
 	return (0);
 }
 
@@ -90,7 +74,7 @@ int	ft_raycasting(t_args *args)
 	args->anim->current_img = 0;
 	mlx_hook(args->mlx->win, 2, 1L << 0, hook_keypress, args);
 	mlx_hook(args->mlx->win, 3, 1L << 1, hook_keyrelease, args);
-	mlx_hook(args->mlx->win, 6, 1L << 6, mouse_hook, args);
+	mlx_hook(args->mlx->win, 6, 1L << 6, ft_mouse_hook, args);
 	mlx_hook(args->mlx->win, 17, 0, ft_exit, args);
 	mlx_loop_hook(args->mlx->mlx, ft_loop, args);
 	mlx_loop(args->mlx->mlx);
