@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/25 14:32:20 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/04/25 14:50:32 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,9 @@ typedef struct s_ray
 	t_dpoint	raydir;
 	t_dpoint	side_dist;
 	t_dpoint	delta_dist;
+	t_point		map;
+	t_point		step_pos;
+	t_point		tex;
 	double		move_speed;
 	double		rot_speed;
 	double		tex_pos;
@@ -84,9 +87,6 @@ typedef struct s_ray
 	double		perp_wall_dist;
 	int			draw_start;
 	int			draw_end;
-	t_point		map;
-	t_point		step_pos;
-	t_point		tex;
 	int			side;
 }	t_ray;
 
@@ -132,16 +132,12 @@ typedef struct s_args
 	char	*ceiling;
 	int		ceiling_color;
 	int		expanded;
-	int		x_img;
-	int		y_img;
-	int		keypress;
 	int		turn_left;
 	int		turn_right;
 	int		move_up;
 	int		move_down;
 	int		move_right;
 	int		move_left;
-	int		img_size;
 	int		last_x;
 }	t_args;
 
