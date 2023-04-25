@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 13:55:35 by elias             #+#    #+#             */
-/*   Updated: 2023/04/05 13:53:32 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/25 16:31:50 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_calculate_height(t_args *args)
 {
-	if (args->ray->side == 0 || args->ray->side == 1)
+	if (args->ray->bool)
 		args->ray->perp_wall_dist = \
 			(args->ray->side_dist.x - args->ray->delta_dist.x);
 	else
@@ -35,7 +35,7 @@ int	ft_calculate_positions(t_args *a)
 	a->ray->draw_end = line_height / 2 + SCREEN_HEIGHT / 2;
 	if (a->ray->draw_end >= SCREEN_HEIGHT)
 		a->ray->draw_end = SCREEN_HEIGHT - 1;
-	if (a->ray->side == 0 || a->ray->side == 1)
+	if (a->ray->bool)
 		wall_x = a->ray->pos.y + a->ray->perp_wall_dist * a->ray->raydir.y;
 	else
 		wall_x = a->ray->pos.x + a->ray->perp_wall_dist * a->ray->raydir.x;

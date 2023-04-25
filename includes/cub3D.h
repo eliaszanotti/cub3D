@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/25 15:16:29 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/25 16:22:49 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct s_ray
 	t_point		step_pos;
 	t_point		tex;
 	int			side;
+	int			bool;
 }	t_ray;
 
 typedef struct s_img
