@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:43:39 by elias             #+#    #+#             */
-/*   Updated: 2023/04/25 16:00:38 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/25 18:50:06 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ void	ft_state_door(t_args *args)
 
 int	hook_keypress(int key, t_args *args)
 {
+	if (key == P_KEY)
+		args->is_paused = args->is_paused ^ 1;
+	if (args->is_paused)
+		return (0);
 	if (key == ESC_KEY)
 		ft_exit(args);
 	if (key == LEFT_ARROW_KEY)
@@ -74,6 +78,8 @@ int	hook_keyrelease(int key, t_args *args)
 int	ft_mouse_hook(int x, int y, t_args *args)
 {
 	(void)y;
+	if (args->is_paused)
+		return (0);
 	if (args->last_x == -1)
 		x = SCREEN_WIDTH / 2;
 	if (x != args->last_x)

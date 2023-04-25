@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:46:11 by elias             #+#    #+#             */
-/*   Updated: 2023/04/25 15:16:48 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/25 18:41:15 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ int	ft_raycasting(t_args *args)
 		return (1);
 	args->anim->current_img = 0;
 	ft_log(args);
+	//if (1 == 2)
+	
 	mlx_hook(args->mlx->win, 2, 1L << 0, hook_keypress, args);
 	mlx_hook(args->mlx->win, 3, 1L << 1, hook_keyrelease, args);
 	mlx_hook(args->mlx->win, 6, 1L << 6, ft_mouse_hook, args);

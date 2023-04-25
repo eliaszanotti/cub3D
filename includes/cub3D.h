@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/25 16:22:49 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/25 18:42:52 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@
 #  define ESC_KEY 65307
 #  define F5_KEY 65474
 #  define M_KEY 109
+#  define P_KEY 112
 # endif
 
 # define NORTH 0
@@ -142,6 +143,7 @@ typedef struct s_args
 	int		move_left;
 	int		space_press;
 	int		last_x;
+	int		is_paused;
 }	t_args;
 
 //	MLX
