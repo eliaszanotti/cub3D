@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 13:26:52 by elias             #+#    #+#             */
-/*   Updated: 2023/04/05 12:35:45 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/25 15:26:34 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ int	ft_throw_ray(t_args *args)
 		}
 		if (args->map[args->ray->map.x][args->ray->map.y] == '1')
 			hit = 1;
+		if (args->map[args->ray->map.x][args->ray->map.y] == '3')
+		{
+			args->ray->side = 4;
+			hit = 1;
+		}
 	}
 	return (0);
 }

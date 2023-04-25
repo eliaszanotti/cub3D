@@ -6,11 +6,29 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:43:39 by elias             #+#    #+#             */
-/*   Updated: 2023/04/24 17:03:27 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/25 15:33:34 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+void	ft_state_door(t_args *args)
+{
+	if (args->map[(int)(args->ray->pos.x + round(args->ray->dir.x))]\
+		[(int)(args->ray->pos.y + round(args->ray->dir.y))] == '3')
+	{
+		args->map[(int)(args->ray->pos.x + round(args->ray->dir.x))]\
+			[(int)(args->ray->pos.y + round(args->ray->dir.y))] = '4';
+			printf("%c\n", args->map[(int)(args->ray->pos.x + round(args->ray->dir.x))]\
+			[(int)(args->ray->pos.y + round(args->ray->dir.y))]);
+	}
+	else if (args->map[(int)(args->ray->pos.x + round(args->ray->dir.x))]\
+		[(int)(args->ray->pos.y + round(args->ray->dir.y))] == '4')
+		args->map[(int)(args->ray->pos.x + round(args->ray->dir.x))]\
+			[(int)(args->ray->pos.y + round(args->ray->dir.y))] = '3';
+	printf("%c\n", args->map[(int)(args->ray->pos.x + round(args->ray->dir.x))]\
+	[(int)(args->ray->pos.y + round(args->ray->dir.y))]);
+}
 
 int	hook_keypress(int key, t_args *args)
 {
@@ -30,6 +48,8 @@ int	hook_keypress(int key, t_args *args)
 		args->move_right = 1;
 	else if (key == M_KEY)
 		args->expanded = args->expanded ^ 1;
+	else if (key == SPACE_KEY)
+		ft_state_door(args);
 	return (0);
 }
 
@@ -48,6 +68,8 @@ int	hook_keyrelease(int key, t_args *args)
 		args->move_left = 0;
 	else if (key == D_LOWER_KEY)
 		args->move_right = 0;
+	else if (key == SPACE_KEY)
+		args->space_press = 0;
 	return (0);
 }
 

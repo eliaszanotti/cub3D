@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:58:14 by elias             #+#    #+#             */
-/*   Updated: 2023/04/24 15:32:36 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/25 14:46:15 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int	ft_loop(t_args *args)
 	int		x;
 
 	mlx = args->mlx;
-	printf("new win\n");
 	mlx_mouse_hide(mlx->mlx, mlx->win);
 	mlx_mouse_move(mlx->mlx, mlx->win, (int)(SCREEN_WIDTH / 2), (int)(SCREEN_HEIGHT / 2));
 	ft_move(args);
