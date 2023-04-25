@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:11:02 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/04/25 18:52:51 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/04/25 18:36:34 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ void	ft_flash_light(t_args *a, t_img *img, int x, int y)
 	{
 		a->ray->tex.y = (int)a->ray->tex_pos & 255;
 		a->ray->tex_pos += a->ray->step;
-		// if (a->ray->side == 3)
-		// 	printf("side: %d\n", a->ray->side);
 		color = ft_get_color(&a->texture[a->ray->side], a->ray->tex.x, \
 			a->ray->tex.y);
 		ft_mlx_pixel_put(img, x, y, ft_reduce_opacity(color, opacity));
