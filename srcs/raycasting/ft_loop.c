@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:58:14 by elias             #+#    #+#             */
-/*   Updated: 2023/04/25 14:41:11 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:07:28 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_loop(t_args *args)
 	ft_print_minimap(args, &mlx->img);
 	ft_print_cross(&mlx->img);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img, 0, 0);
-	ft_update_animation(args->anim);
-	mlx_put_image_to_window(mlx->mlx, mlx->win, args->anim->img[args->anim->current_img].img, 0, 0);
+	// ft_update_animation(args->anim);
+	// mlx_put_image_to_window(mlx->mlx, mlx->win, args->anim->img[args->anim->current_img].img, 0, 0);
 	return (0);
 }

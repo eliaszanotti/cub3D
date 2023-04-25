@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:12:00 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/04/05 12:49:21 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:08:03 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int	ft_print_minimap(t_args *args, t_img *img)
 			c = args->map[img->y][img->x];
 			if (c == '1')
 				ft_put_square(args, p, args->floor_color, angle);
+			else if (c == '3' || c == '4')
+				ft_put_square(args, p, 0xA9CCE3, angle);
 			else if (c != '1' && c != '2')
 				ft_put_square(args, p, 0xFFFFFF, angle);
 		}	
