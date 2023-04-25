@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:43:39 by elias             #+#    #+#             */
-/*   Updated: 2023/04/25 15:33:34 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/25 16:00:38 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	ft_state_door(t_args *args)
 	{
 		args->map[(int)(args->ray->pos.x + round(args->ray->dir.x))]\
 			[(int)(args->ray->pos.y + round(args->ray->dir.y))] = '4';
-			printf("%c\n", args->map[(int)(args->ray->pos.x + round(args->ray->dir.x))]\
-			[(int)(args->ray->pos.y + round(args->ray->dir.y))]);
 	}
 	else if (args->map[(int)(args->ray->pos.x + round(args->ray->dir.x))]\
 		[(int)(args->ray->pos.y + round(args->ray->dir.y))] == '4')

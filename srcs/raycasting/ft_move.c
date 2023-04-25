@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 12:13:46 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/04/25 15:48:34 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/25 16:41:43 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	ft_move_up(t_args *args)
 {
 	if (args->map[(int)(args->ray->pos.x + args->ray->dir.x * \
-	args->ray->move_speed)][(int)args->ray->pos.y] == '0' && \
+	args->ray->move_speed)][(int)args->ray->pos.y] != '1' && \
 	args->map[(int)(args->ray->pos.x + args->ray->dir.x * \
 	args->ray->move_speed)][(int)args->ray->pos.y] != '3')
 		args->ray->pos.x += args->ray->dir.x * args->ray->move_speed;
