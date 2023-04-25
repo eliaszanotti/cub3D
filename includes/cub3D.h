@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/24 17:04:33 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/25 14:32:20 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,37 +54,40 @@
 # define SCREEN_WIDTH 1920
 # define SCREEN_HEIGHT 1080
 # define CUB_SIZE 16
-# define P_OFFSET 100
+# define P_OFFSET 150
 # define IMG_SIZE 256
+
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}	t_point;
+
+typedef struct s_dpoint
+{
+	double	x;
+	double	y;
+}	t_dpoint;
 
 typedef struct s_ray
 {
-	double	pos_x;
-	double	pos_y;
-	double	dir_x;
-	double	dir_y;
-	double	plane_x;
-	double	plane_y;
-	double	raydir_x;
-	double	raydir_y;
-	double	side_dist_x;
-	double	side_dist_y;
-	double	delta_dist_x;
-	double	delta_dist_y;
-	double	move_speed;
-	double	rot_speed;
-	double	tex_pos;
-	double	step;
-	double	perp_wall_dist;
-	int		draw_start;
-	int		draw_end;
-	int		map_x;
-	int		map_y;
-	int		step_x;
-	int		step_y;
-	int		tex_x;
-	int		tex_y;
-	int		side;
+	t_dpoint	pos;
+	t_dpoint	dir;
+	t_dpoint	plane;
+	t_dpoint	raydir;
+	t_dpoint	side_dist;
+	t_dpoint	delta_dist;
+	double		move_speed;
+	double		rot_speed;
+	double		tex_pos;
+	double		step;
+	double		perp_wall_dist;
+	int			draw_start;
+	int			draw_end;
+	t_point		map;
+	t_point		step_pos;
+	t_point		tex;
+	int			side;
 }	t_ray;
 
 typedef struct s_img
@@ -94,8 +97,6 @@ typedef struct s_img
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-	int		width;
-	int		height;
 	int		x;
 	int		y;
 }	t_img;
@@ -113,12 +114,6 @@ typedef struct s_anim
 	int		current_img;
 	int		anime_frame;
 }	t_anim;
-
-typedef struct s_point
-{
-	int	x;
-	int	y;
-}	t_point;
 
 typedef struct s_args
 {

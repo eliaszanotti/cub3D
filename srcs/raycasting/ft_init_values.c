@@ -17,16 +17,16 @@ int	ft_init_values(t_args *args, int x)
 	double	camera_x;
 
 	camera_x = 2 * x / (double)SCREEN_WIDTH - 1;
-	args->ray->raydir_x = args->ray->dir_x + args->ray->plane_x * camera_x;
-	args->ray->raydir_y = args->ray->dir_y + args->ray->plane_y * camera_x;
-	args->ray->map_x = (int)args->ray->pos_x;
-	args->ray->map_y = (int)args->ray->pos_y;
-	args->ray->delta_dist_x = 1 / args->ray->raydir_x;
-	args->ray->delta_dist_y = 1 / args->ray->raydir_y;
-	if (args->ray->delta_dist_x < 0)
-		args->ray->delta_dist_x *= -1;
-	if (args->ray->delta_dist_y < 0)
-		args->ray->delta_dist_y *= -1;
+	args->ray->raydir.x = args->ray->dir.x + args->ray->plane.x * camera_x;
+	args->ray->raydir.y = args->ray->dir.y + args->ray->plane.y * camera_x;
+	args->ray->map.x = (int)args->ray->pos.x;
+	args->ray->map.y = (int)args->ray->pos.y;
+	args->ray->delta_dist.x = 1 / args->ray->raydir.x;
+	args->ray->delta_dist.y = 1 / args->ray->raydir.y;
+	if (args->ray->delta_dist.x < 0)
+		args->ray->delta_dist.x *= -1;
+	if (args->ray->delta_dist.y < 0)
+		args->ray->delta_dist.y *= -1;
 	args->ray->move_speed = 0.15;
 	args->ray->rot_speed = 0.66 * args->ray->move_speed;
 	return (0);

@@ -38,10 +38,10 @@ void	ft_put_square(t_args *args, t_point p, int color, double angle)
 	i = -1;
 	while (++i < CUB_SIZE)
 	{
-		p1.x = P_OFFSET + p.x + i - args->ray->pos_y * CUB_SIZE;
-		p1.y = P_OFFSET + p.y - args->ray->pos_x * CUB_SIZE;
-		p2.x = P_OFFSET + p.x + i - args->ray->pos_y * CUB_SIZE;
-		p2.y = P_OFFSET + p.y + CUB_SIZE - args->ray->pos_x * CUB_SIZE;
+		p1.x = P_OFFSET + p.x + i - args->ray->pos.y * CUB_SIZE;
+		p1.y = P_OFFSET + p.y - args->ray->pos.x * CUB_SIZE;
+		p2.x = P_OFFSET + p.x + i - args->ray->pos.y * CUB_SIZE;
+		p2.y = P_OFFSET + p.y + CUB_SIZE - args->ray->pos.x * CUB_SIZE;
 		ft_print_line(&args->mlx->img, ft_rotate_point(p1, angle), \
 			ft_rotate_point(p2, angle), color);
 	}

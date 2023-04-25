@@ -14,42 +14,42 @@
 
 static void	ft_move_up(t_args *args)
 {
-	if (args->map[(int)(args->ray->pos_x + args->ray->dir_x * \
-	args->ray->move_speed)][(int)args->ray->pos_y] != '1')
-		args->ray->pos_x += args->ray->dir_x * args->ray->move_speed;
-	if (args->map[(int)args->ray->pos_x][(int)(args->ray->pos_y + \
-	args->ray->dir_y * args->ray->move_speed)] != '1')
-		args->ray->pos_y += args->ray->dir_y * args->ray->move_speed;
+	if (args->map[(int)(args->ray->pos.x + args->ray->dir.x * \
+	args->ray->move_speed)][(int)args->ray->pos.y] != '1')
+		args->ray->pos.x += args->ray->dir.x * args->ray->move_speed;
+	if (args->map[(int)args->ray->pos.x][(int)(args->ray->pos.y + \
+	args->ray->dir.y * args->ray->move_speed)] != '1')
+		args->ray->pos.y += args->ray->dir.y * args->ray->move_speed;
 }
 
 static void	ft_move_down(t_args *args)
 {
-	if (args->map[(int)(args->ray->pos_x - args->ray->dir_x * \
-	args->ray->move_speed)][(int)args->ray->pos_y] != '1')
-		args->ray->pos_x -= args->ray->dir_x * args->ray->move_speed;
-	if (args->map[(int)args->ray->pos_x][(int)(args->ray->pos_y - \
-	args->ray->dir_y * args->ray->move_speed)] != '1')
-		args->ray->pos_y -= args->ray->dir_y * args->ray->move_speed;
+	if (args->map[(int)(args->ray->pos.x - args->ray->dir.x * \
+	args->ray->move_speed)][(int)args->ray->pos.y] != '1')
+		args->ray->pos.x -= args->ray->dir.x * args->ray->move_speed;
+	if (args->map[(int)args->ray->pos.x][(int)(args->ray->pos.y - \
+	args->ray->dir.y * args->ray->move_speed)] != '1')
+		args->ray->pos.y -= args->ray->dir.y * args->ray->move_speed;
 }
 
 static void	ft_move_right(t_args *args)
 {
-	if (args->map[(int)(args->ray->pos_x + args->ray->dir_y * \
-	args->ray->move_speed)][(int)args->ray->pos_y] != '1')
-		args->ray->pos_x += args->ray->dir_y * args->ray->move_speed;
-	if (args->map[(int)args->ray->pos_x][(int)(args->ray->pos_y - \
-	args->ray->dir_x * args->ray->move_speed)] != '1')
-		args->ray->pos_y -= args->ray->dir_x * args->ray->move_speed;
+	if (args->map[(int)(args->ray->pos.x + args->ray->dir.y * \
+	args->ray->move_speed)][(int)args->ray->pos.y] != '1')
+		args->ray->pos.x += args->ray->dir.y * args->ray->move_speed;
+	if (args->map[(int)args->ray->pos.x][(int)(args->ray->pos.y - \
+	args->ray->dir.x * args->ray->move_speed)] != '1')
+		args->ray->pos.y -= args->ray->dir.x * args->ray->move_speed;
 }
 
 static void	ft_move_left(t_args *args)
 {
-	if (args->map[(int)(args->ray->pos_x - args->ray->dir_y * \
-	args->ray->move_speed)][(int)args->ray->pos_y] != '1')
-		args->ray->pos_x -= args->ray->dir_y * args->ray->move_speed;
-	if (args->map[(int)args->ray->pos_x][(int)(args->ray->pos_y + \
-	args->ray->dir_x * args->ray->move_speed)] != '1')
-		args->ray->pos_y += args->ray->dir_x * args->ray->move_speed;
+	if (args->map[(int)(args->ray->pos.x - args->ray->dir.y * \
+	args->ray->move_speed)][(int)args->ray->pos.y] != '1')
+		args->ray->pos.x -= args->ray->dir.y * args->ray->move_speed;
+	if (args->map[(int)args->ray->pos.x][(int)(args->ray->pos.y + \
+	args->ray->dir.x * args->ray->move_speed)] != '1')
+		args->ray->pos.y += args->ray->dir.x * args->ray->move_speed;
 }
 
 void	ft_move(t_args *args)

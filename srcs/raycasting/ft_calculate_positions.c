@@ -16,10 +16,10 @@ static int	ft_calculate_height(t_args *args)
 {
 	if (args->ray->side == 0 || args->ray->side == 1)
 		args->ray->perp_wall_dist = \
-			(args->ray->side_dist_x - args->ray->delta_dist_x);
+			(args->ray->side_dist.x - args->ray->delta_dist.x);
 	else
 		args->ray->perp_wall_dist = \
-			(args->ray->side_dist_y - args->ray->delta_dist_y);
+			(args->ray->side_dist.y - args->ray->delta_dist.y);
 	return ((int)(SCREEN_HEIGHT / args->ray->perp_wall_dist));
 }
 
@@ -36,14 +36,14 @@ int	ft_calculate_positions(t_args *a)
 	if (a->ray->draw_end >= SCREEN_HEIGHT)
 		a->ray->draw_end = SCREEN_HEIGHT - 1;
 	if (a->ray->side == 0 || a->ray->side == 1)
-		wall_x = a->ray->pos_y + a->ray->perp_wall_dist * a->ray->raydir_y;
+		wall_x = a->ray->pos.y + a->ray->perp_wall_dist * a->ray->raydir.y;
 	else
-		wall_x = a->ray->pos_x + a->ray->perp_wall_dist * a->ray->raydir_x;
-	a->ray->tex_x = (int)(wall_x * IMG_SIZE);
-	if (a->ray->side <= 1 && a->ray->raydir_x > 0)
-		a->ray->tex_x = IMG_SIZE - a->ray->tex_x - 1;
-	else if (a->ray->side >= 2 && a->ray->raydir_y < 0)
-		a->ray->tex_x = IMG_SIZE - a->ray->tex_x - 1;
+		wall_x = a->ray->pos.x + a->ray->perp_wall_dist * a->ray->raydir.x;
+	a->ray->tex.x = (int)(wall_x * IMG_SIZE);
+	if (a->ray->side <= 1 && a->ray->raydir.x > 0)
+		a->ray->tex.x = IMG_SIZE - a->ray->tex.x - 1;
+	else if (a->ray->side >= 2 && a->ray->raydir.y < 0)
+		a->ray->tex.x = IMG_SIZE - a->ray->tex.		x - 1;
 	a->ray->step = 1.0 * IMG_SIZE / line_height;
 	a->ray->tex_pos = (a->ray->draw_start - SCREEN_HEIGHT / 2 + \
 	line_height / 2) * a->ray->step;

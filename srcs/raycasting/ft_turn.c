@@ -19,16 +19,16 @@ void	ft_turn_left(t_args *args)
 	double	rot;
 
 	rot = args->ray->rot_speed;
-	olddir_x = args->ray->dir_x;
-	args->ray->dir_x = args->ray->dir_x * cos(rot) - \
-		args->ray->dir_y * sin(rot);
-	args->ray->dir_y = olddir_x * sin(rot) + \
-		args->ray->dir_y * cos(rot);
-	oldplane_x = args->ray->plane_x;
-	args->ray->plane_x = args->ray->plane_x * cos(rot) \
-		- args->ray->plane_y * sin(rot);
-	args->ray->plane_y = oldplane_x * sin(rot) \
-		+ args->ray->plane_y * cos(rot);
+	olddir_x = args->ray->dir.x;
+	args->ray->dir.x = args->ray->dir.x * cos(rot) - \
+		args->ray->dir.y * sin(rot);
+	args->ray->dir.y = olddir_x * sin(rot) + \
+		args->ray->dir.y * cos(rot);
+	oldplane_x = args->ray->plane.x;
+	args->ray->plane.x = args->ray->plane.x * cos(rot) \
+		- args->ray->plane.y * sin(rot);
+	args->ray->plane.y = oldplane_x * sin(rot) \
+		+ args->ray->plane.y * cos(rot);
 }
 
 void	ft_turn_right(t_args *args)
@@ -38,14 +38,14 @@ void	ft_turn_right(t_args *args)
 	double	rot;
 
 	rot = args->ray->rot_speed;
-	olddir_x = args->ray->dir_x;
-	args->ray->dir_x = args->ray->dir_x * cos(-rot) \
-		- args->ray->dir_y * sin(-rot);
-	args->ray->dir_y = olddir_x * sin(-rot) \
-		+ args->ray->dir_y * cos(-rot);
-	oldplane_x = args->ray->plane_x;
-	args->ray->plane_x = args->ray->plane_x * cos(-rot) \
-		- args->ray->plane_y * sin(-rot);
-	args->ray->plane_y = oldplane_x * sin(-rot) \
-		+ args->ray->plane_y * cos(-rot);
+	olddir_x = args->ray->dir.x;
+	args->ray->dir.x = args->ray->dir.x * cos(-rot) \
+		- args->ray->dir.y * sin(-rot);
+	args->ray->dir.y = olddir_x * sin(-rot) \
+		+ args->ray->dir.y * cos(-rot);
+	oldplane_x = args->ray->plane.x;
+	args->ray->plane.x = args->ray->plane.x * cos(-rot) \
+		- args->ray->plane.y * sin(-rot);
+	args->ray->plane.y = oldplane_x * sin(-rot) \
+		+ args->ray->plane.y * cos(-rot);
 }

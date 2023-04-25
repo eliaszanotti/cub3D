@@ -37,10 +37,10 @@ static double	ft_get_angle(t_args *args)
 {
 	double	angle;
 
-	if (args->ray->dir_y >= 0)
-		angle = acos(args->ray->dir_x);
+	if (args->ray->dir.y >= 0)
+		angle = acos(args->ray->dir.x);
 	else
-		angle = (2 * M_PI) - acos(args->ray->dir_x);
+		angle = (2 * M_PI) - acos(args->ray->dir.x);
 	angle = M_PI - angle;
 	return (angle);
 }
@@ -68,8 +68,8 @@ int	ft_print_minimap(t_args *args, t_img *img)
 				ft_put_square(args, p, 0xFFFFFF, angle);
 		}	
 	}
-	args->mlx->img.y = args->ray->pos_x - 1;
-	args->mlx->img.x = args->ray->pos_y - 1;
+	args->mlx->img.y = args->ray->pos.x - 1;
+	args->mlx->img.x = args->ray->pos.y - 1;
 	ft_put_player(img, 0x00002A);
 	return (0);
 }

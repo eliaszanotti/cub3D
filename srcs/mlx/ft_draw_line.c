@@ -23,10 +23,10 @@ void	ft_flash_light(t_args *a, t_img *img, int x, int y)
 		opacity = 1 - ((double)a->ray->draw_start / (SCREEN_HEIGHT / 2)) - 0.1;
 	if (y >= a->ray->draw_start && y <= a->ray->draw_end)
 	{
-		a->ray->tex_y = (int)a->ray->tex_pos & 255;
+		a->ray->tex.y = (int)a->ray->tex_pos & 255;
 		a->ray->tex_pos += a->ray->step;
-		color = ft_get_color(&a->texture[a->ray->side], a->ray->tex_x, \
-			a->ray->tex_y);
+		color = ft_get_color(&a->texture[a->ray->side], a->ray->tex.x, \
+			a->ray->tex.y);
 		ft_mlx_pixel_put(img, x, y, ft_reduce_opacity(color, opacity));
 	}
 }

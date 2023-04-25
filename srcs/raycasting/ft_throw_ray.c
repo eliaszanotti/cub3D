@@ -19,23 +19,23 @@ int	ft_throw_ray(t_args *args)
 	hit = 0;
 	while (!hit)
 	{
-		if (args->ray->side_dist_x < args->ray->side_dist_y)
+		if (args->ray->side_dist.x < args->ray->side_dist.y)
 		{
-			args->ray->side_dist_x += args->ray->delta_dist_x;
-			args->ray->map_x += args->ray->step_x;
+			args->ray->side_dist.x += args->ray->delta_dist.x;
+			args->ray->map.x += args->ray->step_pos.x;
 			args->ray->side = NORTH;
-			if (args->ray->map_x > args->ray->pos_x)
+			if (args->ray->map.x > args->ray->pos.x)
 				args->ray->side = SOUTH;
 		}
 		else
 		{
-			args->ray->side_dist_y += args->ray->delta_dist_y;
-			args->ray->map_y += args->ray->step_y;
+			args->ray->side_dist.y += args->ray->delta_dist.y;
+			args->ray->map.y += args->ray->step_pos.y;
 			args->ray->side = WEST;
-			if (args->ray->map_y > args->ray->pos_y)
+			if (args->ray->map.y > args->ray->pos.y)
 				args->ray->side = EAST;
 		}
-		if (args->map[args->ray->map_x][args->ray->map_y] == '1')
+		if (args->map[args->ray->map.x][args->ray->map.y] == '1')
 			hit = 1;
 	}
 	return (0);
