@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 12:13:46 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/04/25 16:41:43 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:02:53 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,57 +14,57 @@
 
 static void	ft_move_up(t_args *args)
 {
-	if (args->map[(int)(args->ray->pos.x + args->ray->dir.x * \
-	args->ray->move_speed)][(int)args->ray->pos.y] != '1' && \
-	args->map[(int)(args->ray->pos.x + args->ray->dir.x * \
-	args->ray->move_speed)][(int)args->ray->pos.y] != '3')
+	t_point	value;
+	
+	value.x = args->map[(int)(args->ray->pos.x + args->ray->dir.x * \
+		args->ray->move_speed)][(int)args->ray->pos.y];
+	value.y = args->map[(int)args->ray->pos.x][(int)(args->ray->pos.y + \
+		args->ray->dir.y * args->ray->move_speed)];
+	if (value.x != '1' && value.x != '3')
 		args->ray->pos.x += args->ray->dir.x * args->ray->move_speed;
-	if (args->map[(int)args->ray->pos.x][(int)(args->ray->pos.y + \
-	args->ray->dir.y * args->ray->move_speed)] != '1' && \
-	args->map[(int)args->ray->pos.x][(int)(args->ray->pos.y + \
-	args->ray->dir.y * args->ray->move_speed)] != '3')
+	if (value.y != '1' && value.y != '3')
 		args->ray->pos.y += args->ray->dir.y * args->ray->move_speed;
 }
 
 static void	ft_move_down(t_args *args)
 {
-	if (args->map[(int)(args->ray->pos.x - args->ray->dir.x * \
-	args->ray->move_speed)][(int)args->ray->pos.y] != '1' && \
-	args->map[(int)(args->ray->pos.x - args->ray->dir.x * \
-	args->ray->move_speed)][(int)args->ray->pos.y] != '3')
+	t_point	value;
+
+	value.x = args->map[(int)(args->ray->pos.x - args->ray->dir.x * \
+		args->ray->move_speed)][(int)args->ray->pos.y];
+	value.y = args->map[(int)args->ray->pos.x][(int)(args->ray->pos.y - \
+		args->ray->dir.y * args->ray->move_speed)];
+	if (value.x != '1' && value.y != '3')
 		args->ray->pos.x -= args->ray->dir.x * args->ray->move_speed;
-	if (args->map[(int)args->ray->pos.x][(int)(args->ray->pos.y - \
-	args->ray->dir.y * args->ray->move_speed)] != '1' && \
-	args->map[(int)args->ray->pos.x][(int)(args->ray->pos.y - \
-	args->ray->dir.y * args->ray->move_speed)] != '3')
+	if (value.y != '1' && value.y != '3')
 		args->ray->pos.y -= args->ray->dir.y * args->ray->move_speed;
 }
 
 static void	ft_move_right(t_args *args)
 {
-	if (args->map[(int)(args->ray->pos.x + args->ray->dir.y * \
-	args->ray->move_speed)][(int)args->ray->pos.y] != '1' && \
-	args->map[(int)(args->ray->pos.x + args->ray->dir.y * \
-	args->ray->move_speed)][(int)args->ray->pos.y] != '3')
+	t_point	value;
+
+	value.x = args->map[(int)(args->ray->pos.x + args->ray->dir.y * \
+		args->ray->move_speed)][(int)args->ray->pos.y];
+	value.y = args->map[(int)args->ray->pos.x][(int)(args->ray->pos.y - \
+		args->ray->dir.x * args->ray->move_speed)];
+	if (value.x != '1' && value.x != '3')
 		args->ray->pos.x += args->ray->dir.y * args->ray->move_speed;
-	if (args->map[(int)args->ray->pos.x][(int)(args->ray->pos.y - \
-	args->ray->dir.x * args->ray->move_speed)] != '1' && \
-	args->map[(int)args->ray->pos.x][(int)(args->ray->pos.y - \
-	args->ray->dir.x * args->ray->move_speed)] != '3')
+	if (value.y != '1' && value.y != '3')
 		args->ray->pos.y -= args->ray->dir.x * args->ray->move_speed;
 }
 
 static void	ft_move_left(t_args *args)
 {
-	if (args->map[(int)(args->ray->pos.x - args->ray->dir.y * \
-	args->ray->move_speed)][(int)args->ray->pos.y] != '1' && \
-	args->map[(int)(args->ray->pos.x - args->ray->dir.y * \
-	args->ray->move_speed)][(int)args->ray->pos.y] != '3')
+	t_point	value;
+
+	value.x = args->map[(int)(args->ray->pos.x - args->ray->dir.y * \
+		args->ray->move_speed)][(int)args->ray->pos.y];
+	value.y = args->map[(int)args->ray->pos.x][(int)(args->ray->pos.y + \
+		args->ray->dir.x * args->ray->move_speed)];
+	if (value.x != '1' && value.x != '3')
 		args->ray->pos.x -= args->ray->dir.y * args->ray->move_speed;
-	if (args->map[(int)args->ray->pos.x][(int)(args->ray->pos.y + \
-	args->ray->dir.x * args->ray->move_speed)] != '1' && \
-	args->map[(int)args->ray->pos.x][(int)(args->ray->pos.y + \
-	args->ray->dir.x * args->ray->move_speed)] != '3')
+	if (value.y != '1' && value.y != '3')
 		args->ray->pos.y += args->ray->dir.x * args->ray->move_speed;
 }
 
