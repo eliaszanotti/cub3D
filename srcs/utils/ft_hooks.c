@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:43:39 by elias             #+#    #+#             */
-/*   Updated: 2023/04/25 18:32:37 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/25 19:24:34 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,8 @@ void	ft_state_door(t_args *args)
 	{
 		args->map[(int)(args->ray->pos.x + round(args->ray->dir.x))] \
 			[(int)(args->ray->pos.y + round(args->ray->dir.y))] = '4';
+		args->door_delay = 0;
 	}
-	else if (args->map[(int)(args->ray->pos.x + round(args->ray->dir.x))] \
-		[(int)(args->ray->pos.y + round(args->ray->dir.y))] == '4')
-		args->map[(int)(args->ray->pos.x + round(args->ray->dir.x))] \
-			[(int)(args->ray->pos.y + round(args->ray->dir.y))] = '3';
-	printf("%c\n", args->map[(int)(args->ray->pos.x + round(args->ray->dir.x))] \
-	[(int)(args->ray->pos.y + round(args->ray->dir.y))]);
 }
 
 int	hook_keypress(int key, t_args *args)

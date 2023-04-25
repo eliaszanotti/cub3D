@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/25 18:42:15 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/25 19:17:18 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ typedef struct s_args
 	int		space_press;
 	int		last_x;
 	int		is_paused;
+	int		door_delay;
 }	t_args;
 
 //	MLX
