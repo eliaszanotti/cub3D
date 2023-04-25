@@ -42,6 +42,7 @@
 #  define S_LOWER_KEY 115
 #  define A_LOWER_KEY 97
 #  define D_LOWER_KEY 100
+#  define SPACE_KEY 32
 #  define ESC_KEY 65307
 #  define F5_KEY 65474
 #  define M_KEY 109
@@ -121,7 +122,7 @@ typedef struct s_args
 	t_list	*map_list;
 	t_mlx	*mlx;
 	t_ray	*ray;
-	t_img	texture[4];
+	t_img	texture[5];
 	t_anim	*anim;
 	char	*north_path;
 	char	*south_path;
@@ -138,6 +139,7 @@ typedef struct s_args
 	int		move_down;
 	int		move_right;
 	int		move_left;
+	int		space_press;
 	int		last_x;
 }	t_args;
 
@@ -185,5 +187,6 @@ int				hook_keyrelease(int key, t_args *args);
 int				ft_mouse_hook(int x, int y, t_args *args);
 int				ft_is_extension_correct(char *file, char *extension);
 int				ft_reduce_opacity(int color, double opacity);
+void			ft_log(t_args *args);
 
 #endif
