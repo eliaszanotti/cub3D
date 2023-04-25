@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 12:13:46 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/04/25 17:02:53 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/04/25 18:35:50 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	ft_move_up(t_args *args)
 {
 	t_point	value;
-	
+
 	value.x = args->map[(int)(args->ray->pos.x + args->ray->dir.x * \
 		args->ray->move_speed)][(int)args->ray->pos.y];
 	value.y = args->map[(int)args->ray->pos.x][(int)(args->ray->pos.y + \

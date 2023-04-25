@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/25 16:22:49 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/25 18:42:15 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ typedef struct s_ray
 	int			draw_start;
 	int			draw_end;
 	int			side;
-	int			bool;
+	int			boolean;
 }	t_ray;
 
 typedef struct s_img
