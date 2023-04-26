@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:58:14 by elias             #+#    #+#             */
-/*   Updated: 2023/04/26 16:05:38 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/26 19:20:23 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,11 @@ static int	ft_check_end(t_args *args)
 	return (0);
 }
 
-
 static void	ft_print_square(t_img *img, int x, int y)
 {
 	int	i;
 	int	j;
-	
+
 	i = x - 1;
 	while (++i < x + 20)
 	{
@@ -76,7 +75,7 @@ static void	ft_print_square(t_img *img, int x, int y)
 	}
 }
 
-static int	ft_print_flashlight(t_args *args, t_img *img)
+static int	ft_print_flashlight(t_args *args, t_img *img) // TODO a virer ailleurs
 {
 	if (args->flash_timer <= 0)
 		args->expanded = 0;
@@ -95,18 +94,15 @@ static int	ft_print_flashlight(t_args *args, t_img *img)
 	return (0);
 }
 
-
 static int	ft_check_state(t_args *args)
 {
 	t_mlx	*mlx;
 
 	mlx = args->mlx;
-
 	if (args->expanded && args->flash_timer > 0)
 		args->flash_timer -= 10;
 	else if (!args->expanded && args->flash_timer < 1000)
 		args->flash_timer++;
-	printf("args = %d\n", args->flash_timer);
 	if (!args->is_paused)
 	{
 		ft_print_minimap(args, &mlx->img);
