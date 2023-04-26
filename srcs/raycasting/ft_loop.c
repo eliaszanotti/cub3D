@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:58:14 by elias             #+#    #+#             */
-/*   Updated: 2023/04/26 15:40:31 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/26 16:05:38 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,22 @@ int	ft_check_screamer(t_args *args)
 	return (0);
 }
 
+int	ft_check_end(t_args *args)
+{
+	t_point	pos;
+
+	pos.x = args->ray->pos.x;
+	pos.y = args->ray->pos.y;
+	if (args->map[pos.x][pos.y] == '6')
+	{
+		args->is_paused = 1;
+		args->end = 1;
+	}
+	else
+		args->end = 0;
+	return (0);
+}
+
 int	ft_loop(t_args *args)
 {
 	t_mlx	*mlx;
@@ -110,15 +126,13 @@ int	ft_loop(t_args *args)
 	if (args->door_delay++ > 100)
 		ft_close_doors(args);
 	ft_check_screamer(args);
-	if (!args->screamer)
-		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img, 0, 0);
-	else
+	ft_check_end(args);
+	if (args->screamer)
 		mlx_put_image_to_window(mlx->mlx, mlx->win, args->texture[5].img, 0, 0);
-	if (args->map[(int)args->ray->pos.x][(int)args->ray->pos.y] == '6')
-	{
-		mlx_string_put(mlx->mlx, mlx->win, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0x0, "END");
-		args->is_paused = 1;
-	}
+	else if (args->end)
+		mlx_put_image_to_window(mlx->mlx, mlx->win, args->texture[6].img, 0, 0);
+	else
+		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img, 0, 0);
 	//ft_update_animation(args->anim);
 	//mlx_put_image_to_window(mlx->mlx, mlx->win, args->anim->img[args->anim->current_img].img, 0, 0);
 	return (0);

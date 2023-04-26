@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/26 13:53:47 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/26 16:02:47 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ typedef struct s_args
 	t_list	*map_list;
 	t_mlx	*mlx;
 	t_ray	*ray;
-	t_img	texture[6];
+	t_img	texture[7];
 	t_anim	*anim;
 	char	*north_path;
 	char	*south_path;
@@ -146,6 +146,7 @@ typedef struct s_args
 	int		is_paused;
 	int		door_delay;
 	int		screamer;
+	int		end;
 }	t_args;
 
 //	MLX
