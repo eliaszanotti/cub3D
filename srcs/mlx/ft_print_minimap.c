@@ -45,11 +45,23 @@ static double	ft_get_angle(t_args *args)
 	return (angle);
 }
 
+static void	ft_choose_color(t_args *args, t_point p, t_img *img, double angle)
+{
+	char	c;
+
+	c = args->map[img->y][img->x];
+	if (c == '1')
+		ft_put_square(args, p, args->floor_color, angle);
+	else if (c == '3' || c == '4')
+		ft_put_square(args, p, 0xA9CCE3, angle);
+	else if (c != '1' && c != '2')
+		ft_put_square(args, p, 0xFFFFFF, angle);
+}
+
 int	ft_print_minimap(t_args *args, t_img *img)
 {
 	t_point	p;
 	double	angle;
-	char	c;
 
 	angle = ft_get_angle(args);
 	ft_add_background(img);
@@ -61,13 +73,7 @@ int	ft_print_minimap(t_args *args, t_img *img)
 		{
 			p.x = img->x * CUB_SIZE;
 			p.y = img->y * CUB_SIZE;
-			c = args->map[img->y][img->x];
-			if (c == '1')
-				ft_put_square(args, p, args->floor_color, angle);
-			else if (c == '3' || c == '4')
-				ft_put_square(args, p, 0xA9CCE3, angle);
-			else if (c != '1' && c != '2')
-				ft_put_square(args, p, 0xFFFFFF, angle);
+			ft_choose_color(args, p, img, angle);
 		}	
 	}
 	args->mlx->img.y = args->ray->pos.x - 1;

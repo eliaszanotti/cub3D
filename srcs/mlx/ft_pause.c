@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_window.c                                   :+:      :+:    :+:   */
+/*   ft_pause.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/31 19:11:24 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/04/26 13:58:20 by elias            ###   ########.fr       */
+/*   Created: 2023/04/26 17:58:56 by elias             #+#    #+#             */
+/*   Updated: 2023/04/26 17:58:57 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	ft_init_window(t_args *args)
+int	ft_pause(t_args *args)
 {
 	t_mlx	*mlx;
 
-	mlx = malloc(sizeof(t_mlx));
-	if (!mlx)
-		return (ft_error(99));
-	mlx->mlx = mlx_init();
-	mlx->win = mlx_new_window(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3D");
-	args->mlx = mlx;
-	args->last_x = -1;
-	args->is_paused = 0;
+	mlx = args->mlx;
+	if (!args->is_paused)
+	{
+		mlx_mouse_hide(mlx->mlx, mlx->win);
+		mlx_mouse_move(mlx->mlx, mlx->win, (int)(SCREEN_WIDTH / 2), \
+			(int)(SCREEN_HEIGHT / 2));
+	}
+	else
+		mlx_mouse_show(mlx->mlx, mlx->win);
 	return (0);
 }

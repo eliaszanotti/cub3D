@@ -30,6 +30,7 @@ S_SRC		= main.c							\
 			${D_MLX}ft_get_color.c				\
 			${D_MLX}ft_init_window.c			\
 			${D_MLX}ft_mlx_pixel_put.c			\
+			${D_MLX}ft_pause.c					\
 			${D_MLX}ft_print_cross.c			\
 			${D_MLX}ft_print_line.c				\
 			${D_MLX}ft_print_minimap.c			\

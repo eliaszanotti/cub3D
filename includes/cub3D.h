@@ -155,6 +155,7 @@ void			ft_draw_line(t_args *args, t_img *img, int x);
 unsigned int	ft_get_color(t_img *img, int x, int y);
 int				ft_init_window(t_args *args);
 void			ft_mlx_pixel_put(t_img *data, int x, int y, int color);
+int				ft_pause(t_args *args);
 void			ft_print_cross(t_img *img);
 void			ft_print_line(t_img *img, t_point p1, t_point p2, int color);
 int				ft_print_minimap(t_args *args, t_img *img);
