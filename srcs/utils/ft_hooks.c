@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:43:39 by elias             #+#    #+#             */
-/*   Updated: 2023/04/25 19:24:34 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/04/26 15:49:25 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int	hook_keypress(int key, t_args *args)
 {
 	if (key == P_KEY)
 		args->is_paused = args->is_paused ^ 1;
-	if (args->is_paused)
-		return (0);
 	if (key == ESC_KEY)
 		ft_exit(args);
+	if (args->is_paused)
+		return (0);
 	if (key == LEFT_ARROW_KEY)
 		args->turn_left = 1;
 	else if (key == RIGHT_ARROW_KEY)

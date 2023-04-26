@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:58:14 by elias             #+#    #+#             */
-/*   Updated: 2023/04/26 14:09:17 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/26 15:40:31 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,11 @@ int	ft_loop(t_args *args)
 		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img, 0, 0);
 	else
 		mlx_put_image_to_window(mlx->mlx, mlx->win, args->texture[5].img, 0, 0);
+	if (args->map[(int)args->ray->pos.x][(int)args->ray->pos.y] == '6')
+	{
+		mlx_string_put(mlx->mlx, mlx->win, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0x0, "END");
+		args->is_paused = 1;
+	}
 	//ft_update_animation(args->anim);
 	//mlx_put_image_to_window(mlx->mlx, mlx->win, args->anim->img[args->anim->current_img].img, 0, 0);
 	return (0);
