@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:46:11 by elias             #+#    #+#             */
-/*   Updated: 2023/04/26 16:01:10 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/26 19:17:10 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	ft_raycasting(t_args *args)
 	if (ft_init_textures(args))
 		return (ft_free_mlx(args), ft_free_str(args->map), \
 			ft_free_struct(args), 1);
-	ft_log(args);
 	mlx_hook(args->mlx->win, 2, 1L << 0, hook_keypress, args);
 	mlx_hook(args->mlx->win, 3, 1L << 1, hook_keyrelease, args);
 	mlx_hook(args->mlx->win, 6, 1L << 6, ft_mouse_hook, args);
