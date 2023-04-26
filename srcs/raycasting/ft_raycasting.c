@@ -27,7 +27,6 @@ int	ft_open_xpm(t_args *args, char *path, int i)
 	}
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, \
 		&img.line_length, &img.endian);
-	args->anim->img[i] = img;
 	return (0);
 }
 
@@ -46,8 +45,6 @@ int	ft_raycasting(t_args *args)
 		return (ft_free_mlx(args), ft_free_str(args->map), \
 			ft_free_struct(args), 1);
 	ft_log(args);
-	ft_create_img(args, "textures/scream.xpm", 5);
-	ft_create_img(args, "textures/end.xpm", 6);
 	mlx_hook(args->mlx->win, 2, 1L << 0, hook_keypress, args);
 	mlx_hook(args->mlx->win, 3, 1L << 1, hook_keyrelease, args);
 	mlx_hook(args->mlx->win, 6, 1L << 6, ft_mouse_hook, args);

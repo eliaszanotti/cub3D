@@ -56,7 +56,7 @@
 # define SCREEN_WIDTH 1920
 # define SCREEN_HEIGHT 1080
 # define CUB_SIZE 16
-# define P_OFFSET 150
+# define P_OFFSET 180
 # define IMG_SIZE 256
 
 typedef struct s_point
@@ -111,13 +111,6 @@ typedef struct s_mlx
 	t_img	img;
 }	t_mlx;
 
-typedef struct s_anim
-{
-	t_img	img[12];
-	int		current_img;
-	int		anime_frame;
-}	t_anim;
-
 typedef struct s_args
 {
 	char	**map;
@@ -125,7 +118,6 @@ typedef struct s_args
 	t_mlx	*mlx;
 	t_ray	*ray;
 	t_img	texture[7];
-	t_anim	*anim;
 	char	*north_path;
 	char	*south_path;
 	char	*west_path;
@@ -147,6 +139,7 @@ typedef struct s_args
 	int		door_delay;
 	int		screamer;
 	int		end;
+	int		flash_timer;
 }	t_args;
 
 //	MLX
@@ -157,7 +150,7 @@ int				ft_init_window(t_args *args);
 void			ft_mlx_pixel_put(t_img *data, int x, int y, int color);
 int				ft_pause(t_args *args);
 void			ft_print_cross(t_img *img);
-void			ft_print_line(t_img *img, t_point p1, t_point p2, int color);
+void			ft_print_line(t_args *args, t_point p1, t_point p2, int color);
 int				ft_print_minimap(t_args *args, t_img *img);
 void			ft_put_player(t_img *img, int color);
 void			ft_put_square(t_args *args, t_point p, int color, double angle);

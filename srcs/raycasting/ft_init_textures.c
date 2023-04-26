@@ -24,5 +24,7 @@ int	ft_init_textures(t_args *args)
 		return (1);
 	if (ft_create_img(args, "textures/door.xpm", 4))
 		return (1);
+	ft_create_img(args, "textures/scream.xpm", 5);
+	ft_create_img(args, "textures/end.xpm", 6);
 	return (0);
 }

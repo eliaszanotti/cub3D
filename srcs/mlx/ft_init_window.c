@@ -22,7 +22,5 @@ int	ft_init_window(t_args *args)
 	mlx->mlx = mlx_init();
 	mlx->win = mlx_new_window(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3D");
 	args->mlx = mlx;
-	args->last_x = -1;
-	args->is_paused = 0;
 	return (0);
 }

@@ -12,7 +12,7 @@
 
 #include "cub3D.h"
 
-void	ft_state_door(t_args *args)
+static void	ft_state_door(t_args *args)
 {
 	if (args->map[(int)(args->ray->pos.x + round(args->ray->dir.x))] \
 		[(int)(args->ray->pos.y + round(args->ray->dir.y))] == '3')
@@ -43,7 +43,7 @@ int	hook_keypress(int key, t_args *args)
 		args->move_left = 1;
 	else if (key == D_LOWER_KEY)
 		args->move_right = 1;
-	else if (key == M_KEY)
+	else if (key == M_KEY && args->flash_timer > 100 && !args->expanded)
 		args->expanded = args->expanded ^ 1;
 	else if (key == SPACE_KEY)
 		ft_state_door(args);

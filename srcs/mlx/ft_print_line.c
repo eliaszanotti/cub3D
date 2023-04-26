@@ -12,28 +12,35 @@
 
 #include "cub3D.h"
 
-static void	ft_print_border(t_img *img, int x, int y, int color)
+static void	ft_put_all_pixel(t_img *img, int x, int y, int color)
 {
-	int	dx;
-	int	dy;
-
-	dx = abs(x - P_OFFSET);
-	dy = abs(y - P_OFFSET);
-	if (sqrt(dx * dx + dy * dy) < 90)
-	{
-		ft_mlx_pixel_put(img, x, y, color);
-		ft_mlx_pixel_put(img, x + 1, y + 1, color);
-		ft_mlx_pixel_put(img, x - 1, y - 1, color);
-		ft_mlx_pixel_put(img, x + 1, y - 1, color);
-		ft_mlx_pixel_put(img, x - 1, y + 1, color);
-		ft_mlx_pixel_put(img, x, y + 1, color);
-		ft_mlx_pixel_put(img, x, y - 1, color);
-		ft_mlx_pixel_put(img, x + 1, y, color);
-		ft_mlx_pixel_put(img, x + 1, y, color);
-	}
+	ft_mlx_pixel_put(img, x, y, color);
+	ft_mlx_pixel_put(img, x + 1, y + 1, color);
+	ft_mlx_pixel_put(img, x - 1, y - 1, color);
+	ft_mlx_pixel_put(img, x + 1, y - 1, color);
+	ft_mlx_pixel_put(img, x - 1, y + 1, color);
+	ft_mlx_pixel_put(img, x, y + 1, color);
+	ft_mlx_pixel_put(img, x, y - 1, color);
+	ft_mlx_pixel_put(img, x + 1, y, color);
+	ft_mlx_pixel_put(img, x + 1, y, color);
 }
 
-void	ft_print_line(t_img *img, t_point p1, t_point p2, int color)
+static void	ft_print_border(t_args *args, int x, int y, int color)
+{
+	t_img	*img;
+	int		dx;
+	int		dy;
+
+	img = &args->mlx->img;
+	dx = abs(x - P_OFFSET);
+	dy = abs(y - P_OFFSET);
+	if (sqrt(dx * dx + dy * dy) < 150 && args->expanded)
+		ft_put_all_pixel(img, x, y, color);
+	if (sqrt(dx * dx + dy * dy) < 40 && !args->expanded)
+		ft_put_all_pixel(img, x, y, color);
+}
+
+void	ft_print_line(t_args *args, t_point p1, t_point p2, int color)
 {
 	double	delta_x;
 	double	delta_y;
@@ -50,7 +57,7 @@ void	ft_print_line(t_img *img, t_point p1, t_point p2, int color)
 	pixel_y = p1.y;
 	while (pixels--)
 	{
-		ft_print_border(img, pixel_x, pixel_y, color);
+		ft_print_border(args, pixel_x, pixel_y, color);
 		pixel_x += delta_x;
 		pixel_y += delta_y;
 	}

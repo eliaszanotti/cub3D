@@ -21,12 +21,15 @@ int	ft_reset_struct(t_args *args)
 	args->floor = NULL;
 	args->ceiling = NULL;
 	args->map_list = NULL;
-	args->expanded = 1;
+	args->expanded = 0;
 	args->turn_left = 0;
 	args->turn_right = 0;
 	args->move_up = 0;
 	args->move_down = 0;
 	args->move_left = 0;
 	args->move_right = 0;
+	args->last_x = -1;
+	args->is_paused = 0;
+	args->flash_timer = 0;
 	return (0);
 }

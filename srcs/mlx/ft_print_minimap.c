@@ -12,7 +12,7 @@
 
 #include "cub3D.h"
 
-static void	ft_add_background(t_img *img)
+static void	ft_add_background(t_args *args, t_img *img)
 {
 	int	x;
 	int	y;
@@ -27,7 +27,9 @@ static void	ft_add_background(t_img *img)
 		while (++y < (P_OFFSET + 10) * 2)
 		{
 			dy = abs(y - P_OFFSET);
-			if (sqrt(dx * dx + dy * dy) < 90)
+			if (sqrt(dx * dx + dy * dy) < 150 && args->expanded)
+				ft_mlx_pixel_put(img, x, y, 0);
+			else if (sqrt(dx * dx + dy * dy) < 40 && !args->expanded)
 				ft_mlx_pixel_put(img, x, y, 0);
 		}
 	}
@@ -64,7 +66,7 @@ int	ft_print_minimap(t_args *args, t_img *img)
 	double	angle;
 
 	angle = ft_get_angle(args);
-	ft_add_background(img);
+	ft_add_background(args, img);
 	img->y = -1;
 	while (args->map[++img->y])
 	{
