@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:58:14 by elias             #+#    #+#             */
-/*   Updated: 2023/04/26 19:25:28 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/26 19:27:19 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ static int	ft_check_state(t_args *args)
 		args->flash_timer -= 10;
 	else if (!args->expanded && args->flash_timer < 1000)
 		args->flash_timer++;
-	printf("args = %d\n", args->flash_timer);
 	if (!args->is_paused)
 	{
 		ft_print_minimap(args, &mlx->img);

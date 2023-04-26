@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:43:39 by elias             #+#    #+#             */
-/*   Updated: 2023/04/26 15:49:25 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/26 19:28:12 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	hook_keypress(int key, t_args *args)
 		args->move_left = 1;
 	else if (key == D_LOWER_KEY)
 		args->move_right = 1;
-	else if (key == M_KEY && args->flash_timer > 100 && !args->expanded)
+	else if (key == M_KEY && args->flash_timer > 100)
 		args->expanded = args->expanded ^ 1;
 	else if (key == SPACE_KEY)
 		ft_state_door(args);
