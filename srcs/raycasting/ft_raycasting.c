@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:46:11 by elias             #+#    #+#             */
-/*   Updated: 2023/04/26 13:52:28 by elias            ###   ########.fr       */
+/*   Updated: 2023/04/26 14:41:17 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,34 +45,6 @@ int	ft_raycasting(t_args *args)
 	if (ft_init_textures(args))
 		return (ft_free_mlx(args), ft_free_str(args->map), \
 			ft_free_struct(args), 1);
-	args->anim = malloc(sizeof(t_anim));
-	//TODO
-	args->anim->anime_frame = 1;
-	if (ft_open_xpm(args, "textures/AnyConv.com__00.xpm", 0))
-		return (1);
-	if (ft_open_xpm(args, "textures/AnyConv.com__10.xpm", 1))
-		return (1);
-	if (ft_open_xpm(args, "textures/AnyConv.com__20.xpm", 2))
-		return (1);
-	if (ft_open_xpm(args, "textures/AnyConv.com__30.xpm", 3))
-		return (1);
-	if (ft_open_xpm(args, "textures/AnyConv.com__40.xpm", 4))
-		return (1);
-	if (ft_open_xpm(args, "textures/AnyConv.com__50.xpm", 5))
-		return (1);
-	if (ft_open_xpm(args, "textures/AnyConv.com__60.xpm", 6))
-		return (1);
-	if (ft_open_xpm(args, "textures/AnyConv.com__70.xpm", 7))
-		return (1);
-	if (ft_open_xpm(args, "textures/AnyConv.com__80.xpm", 8))
-		return (1);
-	if (ft_open_xpm(args, "textures/AnyConv.com__90.xpm", 9))
-		return (1);
-	if (ft_open_xpm(args, "textures/AnyConv.com__100.xpm", 10))
-		return (1);
-	if (ft_open_xpm(args, "textures/AnyConv.com__110.xpm", 11))
-		return (1);
-	args->anim->current_img = 0;
 	ft_log(args);
 	//if (1 == 2)
 	
