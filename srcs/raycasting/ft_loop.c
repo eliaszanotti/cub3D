@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:58:14 by elias             #+#    #+#             */
-/*   Updated: 2023/04/25 19:43:34 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/04/26 14:09:17 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,19 @@ int	ft_close_doors(t_args *args)
 	return (0);
 }
 
+int	ft_check_screamer(t_args *args)
+{
+	t_point	pos;
+
+	pos.x = args->ray->pos.x;
+	pos.y = args->ray->pos.y;
+	if (args->map[pos.x][pos.y] == '5')
+		args->screamer = 1;
+	else
+		args->screamer = 0;
+	return (0);
+}
+
 int	ft_loop(t_args *args)
 {
 	t_mlx	*mlx;
@@ -96,7 +109,11 @@ int	ft_loop(t_args *args)
 	}
 	if (args->door_delay++ > 100)
 		ft_close_doors(args);
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img, 0, 0);
+	ft_check_screamer(args);
+	if (!args->screamer)
+		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img, 0, 0);
+	else
+		mlx_put_image_to_window(mlx->mlx, mlx->win, args->texture[5].img, 0, 0);
 	//ft_update_animation(args->anim);
 	//mlx_put_image_to_window(mlx->mlx, mlx->win, args->anim->img[args->anim->current_img].img, 0, 0);
 	return (0);

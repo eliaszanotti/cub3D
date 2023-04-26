@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:27:59 by elias             #+#    #+#             */
-/*   Updated: 2023/04/25 15:05:41 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/26 14:02:43 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	ft_is_valid_char(char c)
 {
 	char	*charset;
 
-	charset = " 013NSEW";
+	charset = " 0135NSEW";
 	while (*charset)
 		if (*charset++ == c)
 			return (1);
