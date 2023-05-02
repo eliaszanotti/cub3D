@@ -1,10 +1,9 @@
-SO textures/cobblestone_mossy.xpm
-NO textures/glass_silver.xpm
-
-WE textures/hardened_clay_stained_gray.xpm
-EA textures/hardened_clay_stained_green.xpm
-C 51,51,51
-F 99,00,00
+SO textures/south1.xpm
+NO textures/south1.xpm
+WE textures/south1.xpm
+EA textures/south1.xpm
+C 177,174,177
+F 50,47,49
 
 11111
 10001
@@ -14,11 +13,3 @@ F 99,00,00
 10N01
 10001
 11111
-
-
-
-
-
-
-
-
