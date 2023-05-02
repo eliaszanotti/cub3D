@@ -6,7 +6,7 @@
 /*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 21:31:52 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/04/03 17:02:50 by elias            ###   ########.fr       */
+/*   Updated: 2023/05/02 16:39:25 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ int	ft_create_img(t_args *args, char *path, int side)
 	img.img = mlx_xpm_file_to_image(args->mlx->mlx, path, &width, &height);
 	if (!img.img)
 	{
-		printf("Can't open texture : \
-			%d\n0 : NO\n1 : SO\n2 : WE\n3 : EA\n", side);
+		printf("Can't open texture : "\
+			"%d\n0 : NO\n1 : SO\n2 : WE\n3 : EA\n", side);
+		mlx_destroy_image(args->mlx->mlx, args->mlx->img.img);
 		return (ft_error(9));
 	}
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, \

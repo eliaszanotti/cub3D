@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:58:57 by elias             #+#    #+#             */
-/*   Updated: 2023/04/26 14:43:39 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/05/02 16:20:24 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ int	ft_init_textures(t_args *args)
 		return (1);
 	if (ft_create_img(args, "textures/door.xpm", 4))
 		return (1);
-	ft_create_img(args, "textures/scream.xpm", 5);
-	ft_create_img(args, "textures/end.xpm", 6);
+	if (ft_create_img(args, "textures/scream.xpm", 5))
+		return (1);
+	if (ft_create_img(args, "textures/end.xpm", 6))
+		return (1);
 	return (0);
 }

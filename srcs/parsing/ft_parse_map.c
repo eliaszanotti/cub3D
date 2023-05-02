@@ -6,7 +6,7 @@
 /*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:12:47 by elias             #+#    #+#             */
-/*   Updated: 2023/03/28 12:23:16 by elias            ###   ########.fr       */
+/*   Updated: 2023/05/02 16:56:41 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,17 @@ static t_ilst	*ft_get_ilst(char *line)
 	return (ilst);
 }
 
+static int	ft_finish_gnl(int fd, char *line)
+{
+	while (line)
+	{
+		free(line);
+		line = get_next_line(fd);
+	}
+	free(line);
+	return (0);
+}
+
 int	ft_parse_map(t_args *args, int fd)
 {	
 	char	*line;
@@ -66,6 +77,7 @@ int	ft_parse_map(t_args *args, int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
+	ft_finish_gnl(fd, line);
 	args->map_list = list;
 	return (0);
 }
