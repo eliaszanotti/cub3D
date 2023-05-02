@@ -57,6 +57,7 @@ S_SRC		= main.c							\
 			${D_RAY}ft_throw_ray.c				\
 			${D_RAY}ft_turn.c					\
 												\
+			${D_UTILS}ft_check.c				\
 			${D_UTILS}ft_error.c				\
 			${D_UTILS}ft_exit.c					\
 			${D_UTILS}ft_free.c					\

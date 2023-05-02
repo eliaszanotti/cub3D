@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/26 16:02:47 by elias            ###   ########.fr       */
+/*   Updated: 2023/05/02 12:51:33 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@
 #  define ESC_KEY 53
 #  define F5_KEY 96
 #  define M_KEY 46
+#  define P_KEY 35
+#  define SPACE_KEY 49
 # else
 #  define LEFT_ARROW_KEY 65361
 #  define RIGHT_ARROW_KEY 65363
@@ -188,5 +190,10 @@ int				ft_mouse_hook(int x, int y, t_args *args);
 int				ft_is_extension_correct(char *file, char *extension);
 int				ft_reduce_opacity(int color, double opacity);
 void			ft_log(t_args *args);
+int				ft_close_doors(t_args *args);
+int				ft_check_screamer(t_args *args);
+int				ft_check_end(t_args *args);
+void			ft_print_square(t_img *img, int x, int y);
+int				ft_print_flashlight(t_args *args, t_img *img);
 
 #endif
