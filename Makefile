@@ -12,13 +12,14 @@
 
 OS			= $(shell uname -s)
 
+D_MLX		= minilibx/
 ifeq ($(OS), Linux)
-	D_LMLX	= mlx/
-	MLX		= -Lmlx -lmlx -lXext -lX11 -lm
+	D_LMLX	= ${D_MLX}linux/
+	MLX		= -L${D_LMLX} -lmlx -lXext -lX11 -lm
 endif
 ifeq ($(OS), Darwin)
-	D_LMLX	= mlx_mac/
-	MLX		= -Lmlx_mac -lmlx -framework OpenGL -framework AppKit
+	D_LMLX	= ${D_MLX}mac/
+	MLX		= -L${D_LMLX} -lmlx -framework OpenGL -framework AppKit
 endif
 
 S_SRC		= main.c							\
@@ -88,7 +89,6 @@ D_LIB		= libft/includes/
 D_SRC		= srcs/
 D_PARSE		= parsing/
 D_UTILS		= utils/
-D_MLX		= mlx/
 D_RAY		= raycasting/
 
 # COLORS
@@ -105,7 +105,7 @@ all:		ascii	\
 			mlx		\
 			${NAME}
 
-${D_OBJS}%.o: %.c		${D_MLX}mlx.h ${HDRS} Makefile
+${D_OBJS}%.o: %.c		${D_LMLX}mlx.h ${HDRS} Makefile
 			@mkdir		-p $(shell dirname $@)
 			@${PRINT}	"${C_Y}${C_DEL}Creating ${NAME}'s objects : $@"
 			@${CC}		${CFLAGS} -I${D_LMLX} -I${D_LIB} -I${D_INCLUDES} -O3 -c $< -o $@
@@ -120,14 +120,14 @@ lib:
 			@${MAKE}	-C ./libft
 
 mlx:
-			@${MAKE}	-C ${D_LMLX}
+			@${MAKE}	-C ./${D_LMLX}
 			@${PRINT}	"${C_G}${C_DEL}\nCompiling MLX : DONE\n${C_RST}"
 
 ascii:
 			@${PRINT}	"$$ASCII\n"
 
 clean:
-			@${MAKE}	clean -C ./mlx
+			@${MAKE}	clean -C ./${D_LMLX}
 			@${PRINT}	"${C_R}${C_DEL}Cleaning MLX : DONE\n"
 			@${PRINT}	"${C_R}Cleaning libft : DONE\n"
 			@${MAKE}	clean -C ./libft
