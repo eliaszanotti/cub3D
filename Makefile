@@ -84,7 +84,7 @@ PRINT		= @printf
 # DIRECTORIES
 D_OBJS		= .objs/
 D_INCLUDES	= includes/
-D_LIB		= libft/
+D_LIB		= libft/includes/
 D_SRC		= srcs/
 D_PARSE		= parsing/
 D_UTILS		= utils/
@@ -101,8 +101,8 @@ C_RST		= \033[0m
 C_DEL		= \r\033[2K
 
 all:		ascii	\
-			mlx		\
 			lib		\
+			mlx		\
 			${NAME}
 
 ${D_OBJS}%.o: %.c		${D_MLX}mlx.h ${HDRS} Makefile
@@ -113,7 +113,7 @@ ${D_OBJS}%.o: %.c		${D_MLX}mlx.h ${HDRS} Makefile
 ${NAME}:	${O_SRC}
 			@${PRINT}	"${C_G}${C_DEL}Creating ${NAME}'s objects : DONE\n"
 			@${PRINT}	"${C_Y}Compiling ${NAME}...${C_RST}"
-			@${CC}		-fsanitize=address ${O_SRC} -o ${NAME} ${LIBFT} ${MLX}
+			@${CC}		${O_SRC} -o ${NAME} ${LIBFT} ${MLX}
 			@${PRINT}	"${C_G}${C_DEL}Compiling ${NAME} : DONE ${C_RST}\n"
 
 lib:
