@@ -22,9 +22,6 @@ ifeq ($(OS), Darwin)
 endif
 
 S_SRC		= main.c							\
-			${D_GNL}get_next_line.c				\
-			${D_GNL}get_next_line_utils.c		\
-												\
 			${D_MLX}ft_create_img.c				\
 			${D_MLX}ft_draw_line.c				\
 			${D_MLX}ft_get_color.c				\
