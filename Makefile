@@ -14,11 +14,11 @@ OS			= $(shell uname -s)
 
 ifeq ($(OS), Linux)
 	D_LMLX	= mlx/
-	MLX	=	-Lmlx -lmlx -lXext -lX11 -lm
+	MLX		= -Lmlx -lmlx -lXext -lX11 -lm
 endif
 ifeq ($(OS), Darwin)
 	D_LMLX	= mlx_mac/
-	MLX	=	-Lmlx_mac -lmlx -framework OpenGL -framework AppKit
+	MLX		= -Lmlx_mac -lmlx -framework OpenGL -framework AppKit
 endif
 
 S_SRC		= main.c							\
@@ -62,7 +62,7 @@ S_SRC		= main.c							\
 			${D_UTILS}ft_is_extension_correct.c	\
 			${D_UTILS}ft_reduce_opacity.c		\
 
-HDRS_LIST =	cub3D.h	\
+HDRS_LIST	= cub3D.h	\
 
 S_TMP		= ${addprefix ${D_SRC}, ${S_SRC}}
 O_SRC		= $(patsubst %.c, ${D_OBJS}%.o, $(S_TMP))
@@ -86,7 +86,6 @@ D_OBJS		= .objs/
 D_INCLUDES	= includes/
 D_LIB		= libft/
 D_SRC		= srcs/
-D_GNL		= gnl/
 D_PARSE		= parsing/
 D_UTILS		= utils/
 D_MLX		= mlx/
@@ -101,18 +100,21 @@ C_C			= \033[1;36m
 C_RST		= \033[0m
 C_DEL		= \r\033[2K
 
-all:		${NAME}
+all:		ascii	\
+			mlx		\
+			lib		\
+			${NAME}
 
 ${D_OBJS}%.o: %.c		${D_MLX}mlx.h ${HDRS} Makefile
 			@mkdir		-p $(shell dirname $@)
 			@${PRINT}	"${C_Y}${C_DEL}Creating ${NAME}'s objects : $@"
 			@${CC}		${CFLAGS} -I${D_LMLX} -I${D_LIB} -I${D_INCLUDES} -O3 -c $< -o $@
 
-${NAME}:	ascii mlx lib ${O_SRC}
+${NAME}:	${O_SRC}
 			@${PRINT}	"${C_G}${C_DEL}Creating ${NAME}'s objects : DONE\n"
 			@${PRINT}	"${C_Y}Compiling ${NAME}...${C_RST}"
 			@${CC}		-fsanitize=address ${O_SRC} -o ${NAME} ${LIBFT} ${MLX}
-			@${PRINT}	"${C_G}${C_DEL}Compiling ${NAME} : DONE ${C_RST}\n\n"
+			@${PRINT}	"${C_G}${C_DEL}Compiling ${NAME} : DONE ${C_RST}\n"
 
 lib:
 			@${MAKE}	-C ./libft
@@ -124,9 +126,9 @@ mlx:
 ascii:
 			@${PRINT}	"$$ASCII\n"
 
-clean:		ascii
+clean:
 			@${MAKE}	clean -C ./mlx
-			@${PRINT}	"${C_R}${C_DEL}\nCleaning MLX : DONE\n"
+			@${PRINT}	"${C_R}${C_DEL}Cleaning MLX : DONE\n"
 			@${PRINT}	"${C_R}Cleaning libft : DONE\n"
 			@${MAKE}	clean -C ./libft
 			@${PRINT}	"${C_R}Deleting objects : DONE\n"
@@ -135,7 +137,7 @@ clean:		ascii
 fclean:		clean
 			@${PRINT}	"${C_R}Cleaning libft : DONE\n"
 			@${MAKE}	fclean -C ./libft
-			@${PRINT}	"${C_R}Deleting executable : DONE${C_RST}\n\n"
+			@${PRINT}	"${C_R}Deleting executable : DONE${C_RST}\n"
 			@${RM}		${NAME}
 
 re:			fclean all
