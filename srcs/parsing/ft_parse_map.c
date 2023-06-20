@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
+/*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:12:47 by elias             #+#    #+#             */
-/*   Updated: 2023/05/02 16:56:41 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/20 15:38:56 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,14 @@ static t_ilst	*ft_get_ilst(char *line)
 	int		i;
 
 	ilst = NULL;
-	i = -1;
-	while (line[++i] != '\n')
+	i = 0;
+	while (line[i] && line[i] != '\n')
 	{
 		new = ft_ilstnew(line[i]);
 		if (!new)
 			return (NULL);
 		ft_ilstadd_back(&ilst, new);
+		i++;
 	}
 	return (ilst);
 }
