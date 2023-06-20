@@ -12,22 +12,6 @@
 
 #include "cub3D.h"
 
-void	ft_log(t_args *args)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (args->map[i])
-	{
-		j = -1;
-		while (args->map[i][++j])
-			printf("%c", args->map[i][j]);
-		printf("\n");
-		i++;
-	}
-}
-
 int	main(int argc, char **argv)
 {
 	t_args	args;
