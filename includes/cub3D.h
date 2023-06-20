@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/06/20 13:04:37 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/20 15:04:24 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,7 +188,6 @@ int				hook_keyrelease(int key, t_args *args);
 int				ft_mouse_hook(int x, int y, t_args *args);
 int				ft_is_extension_correct(char *file, char *extension);
 int				ft_reduce_opacity(int color, double opacity);
-void			ft_log(t_args *args);
 int				ft_close_doors(t_args *args);
 int				ft_check_screamer(t_args *args);
 int				ft_check_end(t_args *args);
