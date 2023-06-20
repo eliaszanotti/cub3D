@@ -33,7 +33,7 @@ S_SRC		= main.c							\
 			${D_MLX}ft_print_minimap.c			\
 			${D_MLX}ft_put_player.c				\
 			${D_MLX}ft_put_square.c				\
-												\
+			\
 			${D_PARSE}ft_check_walls.c			\
 			${D_PARSE}ft_convert_list.c			\
 			${D_PARSE}ft_fill_map.c				\
@@ -42,7 +42,7 @@ S_SRC		= main.c							\
 			${D_PARSE}ft_parse_map.c			\
 			${D_PARSE}ft_parsing.c				\
 			${D_PARSE}ft_reset_struct.c			\
-												\
+			\
 			${D_RAY}ft_calculate_positions.c	\
 			${D_RAY}ft_calculate_side_dist.c	\
 			${D_RAY}ft_init_ray.c				\
@@ -53,7 +53,7 @@ S_SRC		= main.c							\
 			${D_RAY}ft_raycasting.c				\
 			${D_RAY}ft_throw_ray.c				\
 			${D_RAY}ft_turn.c					\
-												\
+			\
 			${D_UTILS}ft_check.c				\
 			${D_UTILS}ft_error.c				\
 			${D_UTILS}ft_exit.c					\
@@ -62,8 +62,11 @@ S_SRC		= main.c							\
 			${D_UTILS}ft_is_extension_correct.c	\
 			${D_UTILS}ft_reduce_opacity.c		\
 
+HDRS_LIST =	cub3D.h	\
+
 S_TMP		= ${addprefix ${D_SRC}, ${S_SRC}}
 O_SRC		= $(patsubst %.c, ${D_OBJS}%.o, $(S_TMP))
+HDRS		= ${addprefix ${D_INCLUDES}, ${HDRS_LIST}}
 
 # VARIABLES
 NAME		= cub3D
@@ -80,7 +83,7 @@ PRINT		= @printf
 
 # DIRECTORIES
 D_OBJS		= .objs/
-D_INC		= includes/
+D_INCLUDES	= includes/
 D_LIB		= libft/
 D_SRC		= srcs/
 D_GNL		= gnl/
@@ -100,10 +103,10 @@ C_DEL		= \r\033[2K
 
 all:		${NAME}
 
-${D_OBJS}%.o: %.c		${D_MLX}mlx.h ${D_INC}${NAME}.h ${D_INC}get_next_line.h Makefile
+${D_OBJS}%.o: %.c		${D_MLX}mlx.h ${HDRS} Makefile
 			@mkdir		-p $(shell dirname $@)
 			@${PRINT}	"${C_Y}${C_DEL}Creating ${NAME}'s objects : $@"
-			@${CC}		${CFLAGS} -I${D_LMLX} -I${D_LIB} -I${D_INC} -O3 -c $< -o $@
+			@${CC}		${CFLAGS} -I${D_LMLX} -I${D_LIB} -I${D_INCLUDES} -O3 -c $< -o $@
 
 ${NAME}:	ascii mlx lib ${O_SRC}
 			@${PRINT}	"${C_G}${C_DEL}Creating ${NAME}'s objects : DONE\n"
