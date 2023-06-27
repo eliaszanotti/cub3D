@@ -39,7 +39,7 @@ static int	ft_compare_line(t_args *args, char *line)
 	return (0);
 }
 
-int	ft_get_infos(t_args *args, int fd)
+static int	ft_fill_infos(t_args *args, int fd)
 {
 	char	*line;
 	int		i;
@@ -56,6 +56,13 @@ int	ft_get_infos(t_args *args, int fd)
 			return (free(line), 1);
 		free(line);
 	}
+	return (0);
+}
+
+int	ft_get_infos(t_args *args, int fd)
+{
+	if (ft_fill_infos(args, fd))
+		return (1);
 	if (ft_parse_colors(args))
 		return (1);
 	return (0);
