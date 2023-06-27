@@ -6,7 +6,7 @@
 #    By: elias <elias@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/20 14:43:07 by elias             #+#    #+#              #
-#    Updated: 2023/06/27 12:46:36 by elias            ###   ########.fr        #
+#    Updated: 2023/06/27 13:07:38 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,9 @@ S_SRC		= main.c							\
 			${D_PARSE}ft_convert_list.c			\
 			${D_PARSE}ft_fill_map.c				\
 			${D_PARSE}ft_is_valid_map.c			\
-			${D_PARSE}ft_get_infos.c			\
-			${D_PARSE}ft_get_map.c			\
+			${D_PARSE}${D_FD}ft_get_infos.c			\
+			${D_PARSE}${D_FD}ft_get_map.c			\
+			${D_PARSE}${D_FD}ft_parse_colors.c			\
 			${D_PARSE}ft_parsing.c				\
 			\
 			${D_RAY}ft_calculate_positions.c	\
@@ -59,7 +60,7 @@ S_SRC		= main.c							\
 			${D_UTILS}ft_exit.c					\
 			${D_UTILS}ft_free.c					\
 			${D_UTILS}ft_hooks.c				\
-			${D_UTILS}ft_is_extension_correct.c	\
+			${D_UTILS}ft_is_correct_extension.c	\
 			${D_UTILS}ft_reduce_opacity.c		\
 			${D_UTILS}ft_reset_struct.c			\
 
@@ -88,6 +89,8 @@ D_INCLUDES	= includes/
 D_LIB		= libft/includes/
 D_SRC		= srcs/
 D_PARSE		= parsing/
+D_FD		= fd/
+D_MAP		= map/
 D_UTILS		= utils/
 D_RAY		= raycasting/
 

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*																			*/
 /*														:::	  ::::::::   */
-/*   ft_is_extension_correct.c						  :+:	  :+:	:+:   */
+/*   ft_is_correct_extension.c						  :+:	  :+:	:+:   */
 /*													+:+ +:+		 +:+	 */
 /*   By: ezanotti <marvin@42.fr>					+#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
@@ -12,7 +12,7 @@
 
 #include "cub3D.h"
 
-int	ft_is_extension_correct(char *file, char *extension)
+int	ft_is_correct_extension(char *file, char *extension)
 {
 	int	len_file;
 	int	len_extension;
@@ -25,7 +25,7 @@ int	ft_is_extension_correct(char *file, char *extension)
 	i = 0;
 	while (*file && i++ < len_file - len_extension)
 		file++;
-	if (ft_strcmp(file, extension))
-		return (0);
-	return (1);
+	if (!ft_strcmp(file, extension))
+		return (1);
+	return (0);
 }

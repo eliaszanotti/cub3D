@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:57:06 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/06/27 12:46:24 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/27 12:50:55 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	ft_parse_fd(t_args *args, char *cub_file)
 
 	if (!*cub_file)
 		return (ft_error(3));
-	if (!ft_is_extension_correct(cub_file, ".cub"))
+	if (!ft_is_correct_extension(cub_file, ".cub"))
 		return (ft_error(4));
 	fd = open(cub_file, O_RDONLY);
 	if (fd < 0)

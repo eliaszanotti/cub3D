@@ -39,53 +39,6 @@ static int	ft_compare_line(t_args *args, char *line)
 	return (0);
 }
 
-static int	ft_convert_hexa(char **split_color)
-{
-	int	total;
-	int	atoi;
-	int	size;
-	int	i;
-
-	total = 0;
-	size = -1;
-	while (split_color[++size])
-	{
-		i = -1;
-		while (split_color[size][++i])
-			if (!ft_isdigit(split_color[size][i]))
-				return (-1);
-		atoi = ft_atoi(split_color[size]);
-		if (atoi > 255 || atoi < 0)
-			return (-1);
-		total += atoi << (2 - size) * 8;
-	}
-	return (total);
-}
-
-static int	ft_parse_colors(char *element)
-{
-	char	**split_color;
-	int		size;
-	int		total;
-
-	split_color = ft_split(element, ',');
-	if (!split_color)
-		return (-1);
-	size = 0;
-	while (split_color[size])
-		size++;
-	if (size != 3)
-		return (-1);
-	total = ft_convert_hexa(split_color);
-	if (total == -1)
-		return (-1);
-	size = -1;
-	while (split_color[++size])
-		free(split_color[size]);
-	free(split_color);
-	return (total);
-}
-
 int	ft_get_infos(t_args *args, int fd)
 {
 	char	*line;
@@ -103,9 +56,7 @@ int	ft_get_infos(t_args *args, int fd)
 			return (free(line), 1);
 		free(line);
 	}
-	args->floor_color = ft_parse_colors(args->floor);
-	args->ceiling_color = ft_parse_colors(args->ceiling);
-	if (args->floor_color == -1 || args->ceiling_color == -1)
-		return (ft_error(8));
+	if (ft_parse_colors(args))
+		return (1);
 	return (0);
 }

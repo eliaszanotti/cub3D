@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/06/27 12:46:37 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/27 13:06:23 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,12 +186,14 @@ void			ft_free_struct(t_args *args);
 int				hook_keypress(int key, t_args *args);
 int				hook_keyrelease(int key, t_args *args);
 int				ft_mouse_hook(int x, int y, t_args *args);
-int				ft_is_extension_correct(char *file, char *extension);
+int				ft_is_correct_extension(char *file, char *extension);
 int				ft_reduce_opacity(int color, double opacity);
 int				ft_close_doors(t_args *args);
 int				ft_check_screamer(t_args *args);
 int				ft_check_end(t_args *args);
 void			ft_print_square(t_img *img, int x, int y);
 int				ft_print_flashlight(t_args *args, t_img *img);
+
+int	ft_parse_colors(t_args *args);
 
 #endif
