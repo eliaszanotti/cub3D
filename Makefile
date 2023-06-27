@@ -6,7 +6,7 @@
 #    By: elias <elias@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/20 14:43:07 by elias             #+#    #+#              #
-#    Updated: 2023/06/20 14:43:10 by elias            ###   ########.fr        #
+#    Updated: 2023/06/27 12:46:36 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,10 +39,9 @@ S_SRC		= main.c							\
 			${D_PARSE}ft_convert_list.c			\
 			${D_PARSE}ft_fill_map.c				\
 			${D_PARSE}ft_is_valid_map.c			\
-			${D_PARSE}ft_parse_infos.c			\
-			${D_PARSE}ft_parse_map.c			\
+			${D_PARSE}ft_get_infos.c			\
+			${D_PARSE}ft_get_map.c			\
 			${D_PARSE}ft_parsing.c				\
-			${D_PARSE}ft_reset_struct.c			\
 			\
 			${D_RAY}ft_calculate_positions.c	\
 			${D_RAY}ft_calculate_side_dist.c	\
@@ -62,6 +61,7 @@ S_SRC		= main.c							\
 			${D_UTILS}ft_hooks.c				\
 			${D_UTILS}ft_is_extension_correct.c	\
 			${D_UTILS}ft_reduce_opacity.c		\
+			${D_UTILS}ft_reset_struct.c			\
 
 HDRS_LIST	= cub3D.h	\
 

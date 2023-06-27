@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parse_map.c                                     :+:      :+:    :+:   */
+/*   ft_get_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -55,7 +55,7 @@ static int	ft_finish_gnl(int fd, char *line)
 	return (0);
 }
 
-int	ft_parse_map(t_args *args, int fd)
+int	ft_get_map(t_args *args, int fd)
 {	
 	char	*line;
 	t_list	*list;

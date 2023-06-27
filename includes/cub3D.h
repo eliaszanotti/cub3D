@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/06/20 15:04:24 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/27 12:46:37 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,8 +160,8 @@ int				ft_check_walls(t_args *args);
 int				ft_convert_list(t_args *args);
 int				ft_fill_map(t_args *args);
 int				ft_is_valid_map(t_args *args);
-int				ft_parse_infos(t_args *args, int fd);
-int				ft_parse_map(t_args *args, int fd);
+int				ft_get_infos(t_args *args, int fd);
+int				ft_get_map(t_args *args, int fd);
 int				ft_parsing(t_args *args, char *cub_file);
 int				ft_reset_struct(t_args *args);
 //	RAYCASTING

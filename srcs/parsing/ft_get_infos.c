@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parse_infos.c                                   :+:      :+:    :+:   */
+/*   ft_get_infos.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -86,7 +86,7 @@ static int	ft_parse_colors(char *element)
 	return (total);
 }
 
-int	ft_parse_infos(t_args *args, int fd)
+int	ft_get_infos(t_args *args, int fd)
 {
 	char	*line;
 	int		i;
