@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:03:27 by elias             #+#    #+#             */
-/*   Updated: 2023/06/27 14:11:30 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/27 16:10:05 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,8 @@ static int	ft_convert_hexa(char **split_color)
 			return (-1);
 		total += atoi << (2 - size) * 8;
 	}
-	i = -1;
-	while (split_color[++i])
-		free(split_color[i]);
-	return (free(split_color), total);
+	ft_free_str(split_color);
+	return (total);
 }
 
 int	ft_parse_colors(t_args *args)
@@ -80,15 +78,15 @@ int	ft_parse_colors(t_args *args)
 	if (!split_color)
 		return (ft_error(99));
 	if (ft_split_size(split_color) != 3)
-		return (ft_error(8));
+		return (ft_free_str(split_color), ft_error(8));
 	args->floor_color = ft_convert_hexa(split_color);
 	split_color = ft_split_color(args->ceiling);
 	if (!split_color)
 		return (ft_error(99));
 	if (ft_split_size(split_color) != 3)
-		return (ft_error(8));
+		return (ft_free_str(split_color), ft_error(8));
 	args->ceiling_color = ft_convert_hexa(split_color);
 	if (args->floor_color == -1 || args->ceiling_color == -1)
-		return (ft_error(8));
+		return (ft_free_str(split_color), ft_error(8));
 	return (0);
 }
