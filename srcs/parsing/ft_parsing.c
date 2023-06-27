@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:57:06 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/06/27 12:50:55 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/27 16:04:45 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static int	ft_parse_fd(t_args *args, char *cub_file)
 	if (ft_get_infos(args, fd))
 		return (close(fd), ft_free_struct(args), close(fd), 1);
 	if (ft_get_map(args, fd))
-		return (close(fd), ft_free_list(args->map_list), ft_free_struct(args), 1);
+		return (close(fd), ft_free_list(args->map_list), \
+			ft_free_struct(args), 1);
 	close(fd);
 	return (0);
 }
