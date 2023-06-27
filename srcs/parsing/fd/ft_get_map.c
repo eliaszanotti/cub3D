@@ -35,7 +35,10 @@ static t_ilst	*ft_get_ilst(char *line)
 	i = 0;
 	while (line[i] && line[i] != '\n')
 	{
-		new = ft_ilstnew(line[i]);
+		if (line[i] == ' ')
+			new = ft_ilstnew('2');
+		else
+			new = ft_ilstnew(line[i]);
 		if (!new)
 			return (NULL);
 		ft_ilstadd_back(&ilst, new);
@@ -62,7 +65,7 @@ int	ft_get_map(t_args *args, int fd)
 	t_list	*new;
 	t_ilst	*ilst;
 
-	list = args->map_list;
+	list = NULL;
 	line = ft_skip_empty_line(fd);
 	if (!line)
 		return (ft_error(99));
@@ -80,5 +83,6 @@ int	ft_get_map(t_args *args, int fd)
 	}
 	ft_finish_gnl(fd, line);
 	args->map_list = list;
+	ft_log(list);
 	return (0);
 }
