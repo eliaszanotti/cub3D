@@ -3,34 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fill_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
+/*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 13:56:05 by elias             #+#    #+#             */
-/*   Updated: 2023/03/28 11:48:51 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/27 16:00:50 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-static int	ft_replace_void(t_ilst **ilst)
-{
-	t_ilst	*current;
-	t_ilst	*first;
-	int		i;
-
-	i = 0;
-	first = *ilst;
-	current = *ilst;
-	while (current)
-	{
-		if (current->content == ' ')
-			current->content = '2';
-		current = current->next;
-		i++;
-	}
-	*ilst = first;
-	return (0);
-}
 
 static int	ft_finish_line(t_ilst **ilst, int size)
 {
@@ -68,8 +48,6 @@ int	ft_fill_map(t_args *args)
 	list = args->map_list;
 	while (list)
 	{
-		if (ft_replace_void((t_ilst **)&list->content))
-			return (1);
 		if (ft_finish_line((t_ilst **)&list->content, size))
 			return (1);
 		list = list->next;
