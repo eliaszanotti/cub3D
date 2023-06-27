@@ -83,6 +83,5 @@ int	ft_get_map(t_args *args, int fd)
 	}
 	ft_finish_gnl(fd, line);
 	args->map_list = list;
-	ft_log(list);
 	return (0);
 }

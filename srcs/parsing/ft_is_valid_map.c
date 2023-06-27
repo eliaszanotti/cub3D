@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_is_valid_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:27:59 by elias             #+#    #+#             */
-/*   Updated: 2023/04/26 15:37:43 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/06/27 15:58:52 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	ft_is_valid_char(char c)
 {
 	char	*charset;
 
-	charset = " 01356NSEW";
+	charset = " 012356NSEW";
 	while (*charset)
 		if (*charset++ == c)
 			return (1);
