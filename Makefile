@@ -6,7 +6,7 @@
 #    By: elias <elias@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/20 14:43:07 by elias             #+#    #+#              #
-#    Updated: 2023/06/29 16:37:54 by elias            ###   ########.fr        #
+#    Updated: 2023/06/29 16:41:25 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ S_SRC		= main.c									\
 			${D_RAY}${D_LOOP}ft_loop.c					\
 			${D_RAY}${D_LOOP}ft_pause.c					\
 			${D_RAY}${D_LOOP}ft_print_cross.c			\
+			${D_RAY}${D_LOOP}ft_print_flashlight.c		\
 			${D_RAY}${D_LOOP}ft_print_minimap.c			\
 			${D_RAY}${D_LOOP}ft_throw_ray.c				\
 			${D_RAY}${D_MOVE}ft_move.c					\
