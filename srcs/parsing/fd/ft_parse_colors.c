@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:03:27 by elias             #+#    #+#             */
-/*   Updated: 2023/06/27 16:10:05 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/29 14:26:44 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,26 +45,35 @@ static char	**ft_split_color(char *element)
 	return (split_color);
 }
 
+static int	ft_get_total(char *current_char, int size, int total)
+{
+	int	i;
+	int	atoi;
+
+	i = -1;
+	while (current_char[++i])
+		if (current_char[i] != ' ' && \
+			!ft_isdigit(current_char[i]))
+			return (-1);
+	atoi = ft_atoi(current_char);
+	if (atoi > 255 || atoi < 0)
+		return (-1);
+	total += atoi << (2 - size) * 8;
+	return (total);
+}
+
 static int	ft_convert_hexa(char **split_color)
 {
 	int	total;
-	int	atoi;
 	int	size;
-	int	i;
 
 	total = 0;
 	size = -1;
 	while (split_color[++size])
 	{
-		i = -1;
-		while (split_color[size][++i])
-			if (split_color[size][i] != ' ' && \
-				!ft_isdigit(split_color[size][i]))
-				return (-1);
-		atoi = ft_atoi(split_color[size]);
-		if (atoi > 255 || atoi < 0)
+		total = ft_get_total(split_color[size], size, total);
+		if (total == -1)
 			return (-1);
-		total += atoi << (2 - size) * 8;
 	}
 	ft_free_str(split_color);
 	return (total);
