@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/06/27 13:06:23 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/29 15:36:33 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ typedef struct s_args
 
 //	MLX
 int				ft_create_img(t_args *args, char *path, int side);
-void			ft_draw_line(t_args *args, t_img *img, int x);
+int				ft_draw_line(t_args *args, t_img *img, int x);
 unsigned int	ft_get_color(t_img *img, int x, int y);
 int				ft_init_window(t_args *args);
 void			ft_mlx_pixel_put(t_img *data, int x, int y, int color);

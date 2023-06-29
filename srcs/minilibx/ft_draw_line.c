@@ -3,58 +3,80 @@
 /*                                                        :::      ::::::::   */
 /*   ft_draw_line.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:11:02 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/04/25 18:36:34 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/06/29 15:40:57 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"cub3D.h"
 
-void	ft_flash_light(t_args *a, t_img *img, int x, int y)
+static int	ft_flash_light(t_args *args, t_img *img, int x, int y)
 {
 	int		color;
 	double	opacity;
 
-	if (a->expanded)
-		opacity = 1 - ((double)a->ray->draw_start / (SCREEN_HEIGHT / 2)) + 0.5;
+	if (args->expanded)
+		opacity = 1 - ((double)args->ray->draw_start / (SCREEN_HEIGHT / 2)) \
+			+ 0.5;
 	else
-		opacity = 1 - ((double)a->ray->draw_start / (SCREEN_HEIGHT / 2)) - 0.1;
-	if (y >= a->ray->draw_start && y <= a->ray->draw_end)
+		opacity = 1 - ((double)args->ray->draw_start / (SCREEN_HEIGHT / 2)) \
+			- 0.1;
+	if (y >= args->ray->draw_start && y <= args->ray->draw_end)
 	{
-		a->ray->tex.y = (int)a->ray->tex_pos & 255;
-		a->ray->tex_pos += a->ray->step;
-		color = ft_get_color(&a->texture[a->ray->side], a->ray->tex.x, \
-			a->ray->tex.y);
+		args->ray->tex.y = (int)args->ray->tex_pos & 255;
+		args->ray->tex_pos += args->ray->step;
+		color = ft_get_color(&args->texture[args->ray->side], args->ray->tex.x, \
+			args->ray->tex.y);
 		ft_mlx_pixel_put(img, x, y, ft_reduce_opacity(color, opacity));
 	}
+	return (0);
 }
 
-void	ft_draw_line(t_args *a, t_img *img, int x)
+static int	ft_draw_ceiling(t_args *args, t_img *img, int x, int y)
+{
+	double	opacity;
+
+	if (args->expanded)
+		opacity = 1 - ((double)y / (SCREEN_HEIGHT / 2)) + 0.6;
+	else
+		opacity = 1 - ((double)y / (SCREEN_HEIGHT / 2)) - 0.5;
+	if (y < args->ray->draw_start)
+		ft_mlx_pixel_put(img, x, y, \
+			ft_reduce_opacity(args->ceiling_color, opacity));
+	return (0);
+}
+
+static int	ft_draw_floor(t_args *args, t_img *img, int x, int y)
+{
+	double	opacity;
+
+	if (args->expanded)
+		opacity = ((double)(y - SCREEN_HEIGHT / 2) \
+			/ (SCREEN_HEIGHT / 2)) + 0.6;
+	else
+		opacity = ((double)(y - SCREEN_HEIGHT / 2) \
+			/ (SCREEN_HEIGHT / 2)) - 0.5;
+	if (y > args->ray->draw_end)
+		ft_mlx_pixel_put(img, x, y, \
+				ft_reduce_opacity(args->floor_color, opacity));
+	return (0);
+}
+
+int	ft_draw_line(t_args *args, t_img *img, int x)
 {
 	int		y;
-	double	opacity;
 
 	y = 0;
 	while (y++ <= SCREEN_HEIGHT)
 	{
-		if (a->expanded)
-			opacity = 1 - ((double)y / (SCREEN_HEIGHT / 2)) + 0.6;
-		else
-			opacity = 1 - ((double)y / (SCREEN_HEIGHT / 2)) - 0.5;
-		if (y < a->ray->draw_start)
-			ft_mlx_pixel_put(img, x, y, \
-				ft_reduce_opacity(a->ceiling_color, opacity));
-		ft_flash_light(a, img, x, y);
-		if (a->expanded)
-			opacity = ((double)(y - SCREEN_HEIGHT / 2) \
-				/ (SCREEN_HEIGHT / 2)) + 0.6;
-		else
-			opacity = ((double)(y - SCREEN_HEIGHT / 2) \
-				/ (SCREEN_HEIGHT / 2)) - 0.5;
-		if (y > a->ray->draw_end)
-			ft_mlx_pixel_put(img, x, y, \
-				ft_reduce_opacity(a->floor_color, opacity));
+		if (ft_draw_ceiling(args, img, x, y))
+			return (1);
+		if (ft_flash_light(args, img, x, y))
+			return (1);
+		if (ft_draw_floor(args, img, x, y))
+			return (1);
 	}
+	return (0);
 }
