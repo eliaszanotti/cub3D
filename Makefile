@@ -6,7 +6,7 @@
 #    By: elias <elias@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/20 14:43:07 by elias             #+#    #+#              #
-#    Updated: 2023/06/29 14:35:31 by elias            ###   ########.fr        #
+#    Updated: 2023/06/29 14:53:05 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,47 +22,48 @@ ifeq ($(OS), Darwin)
 	MLX		= -L${D_LMLX} -lmlx -framework OpenGL -framework AppKit
 endif
 
-S_SRC		= main.c							\
-			${D_MLX}ft_create_img.c				\
-			${D_MLX}ft_draw_line.c				\
-			${D_MLX}ft_get_color.c				\
-			${D_MLX}ft_init_window.c			\
-			${D_MLX}ft_mlx_pixel_put.c			\
-			${D_MLX}ft_pause.c					\
-			${D_MLX}ft_print_cross.c			\
-			${D_MLX}ft_print_line.c				\
-			${D_MLX}ft_print_minimap.c			\
-			${D_MLX}ft_put_player.c				\
-			${D_MLX}ft_put_square.c				\
+S_SRC		= main.c								\
+			${D_MLX}ft_create_img.c					\
+			${D_MLX}ft_draw_line.c					\
+			${D_MLX}ft_get_color.c					\
+			${D_MLX}ft_init_window.c				\
+			${D_MLX}ft_mlx_pixel_put.c				\
+			${D_MLX}ft_pause.c						\
+			${D_MLX}ft_print_cross.c				\
+			${D_MLX}ft_print_line.c					\
+			${D_MLX}ft_print_minimap.c				\
+			${D_MLX}ft_put_player.c					\
+			${D_MLX}ft_put_square.c					\
 			\
-			${D_PARSE}${D_MAP}ft_check_walls.c	\
-			${D_PARSE}${D_MAP}ft_convert_list.c	\
-			${D_PARSE}${D_MAP}ft_fill_map.c		\
-			${D_PARSE}${D_MAP}ft_is_valid_map.c	\
+			${D_PARSE}${D_MAP}ft_check_walls.c		\
+			${D_PARSE}${D_MAP}ft_convert_list.c		\
+			${D_PARSE}${D_MAP}ft_fill_map.c			\
+			${D_PARSE}${D_MAP}ft_is_valid_map.c		\
 			${D_PARSE}${D_FD}ft_get_infos.c			\
 			${D_PARSE}${D_FD}ft_get_map.c			\
-			${D_PARSE}${D_FD}ft_parse_colors.c			\
-			${D_PARSE}ft_parsing.c				\
+			${D_PARSE}${D_FD}ft_parse_colors.c		\
+			${D_PARSE}ft_parsing.c					\
 			\
-			${D_RAY}ft_calculate_positions.c	\
-			${D_RAY}ft_calculate_side_dist.c	\
-			${D_RAY}ft_init_ray.c				\
-			${D_RAY}ft_init_textures.c			\
-			${D_RAY}ft_init_values.c			\
-			${D_RAY}ft_loop.c					\
-			${D_RAY}ft_move.c					\
-			${D_RAY}ft_raycasting.c				\
-			${D_RAY}ft_throw_ray.c				\
-			${D_RAY}ft_turn.c					\
+			${D_RAY}ft_calculate_positions.c		\
+			${D_RAY}ft_calculate_side_dist.c		\
+			${D_RAY}ft_init_ray.c					\
+			${D_RAY}ft_init_textures.c				\
+			${D_RAY}ft_init_values.c				\
+			${D_RAY}ft_loop.c						\
+			${D_RAY}ft_move.c						\
+			${D_RAY}ft_open_xpm.c					\
+			${D_RAY}ft_raycasting.c					\
+			${D_RAY}ft_throw_ray.c					\
+			${D_RAY}ft_turn.c						\
 			\
-			${D_UTILS}ft_check.c				\
-			${D_UTILS}ft_error.c				\
-			${D_UTILS}ft_exit.c					\
-			${D_UTILS}ft_free.c					\
-			${D_UTILS}ft_hooks.c				\
-			${D_UTILS}ft_is_correct_extension.c	\
-			${D_UTILS}ft_reduce_opacity.c		\
-			${D_UTILS}ft_reset_struct.c			\
+			${D_UTILS}ft_check.c					\
+			${D_UTILS}ft_error.c					\
+			${D_UTILS}ft_exit.c						\
+			${D_UTILS}ft_free.c						\
+			${D_UTILS}ft_hooks.c					\
+			${D_UTILS}ft_is_correct_extension.c		\
+			${D_UTILS}ft_reduce_opacity.c			\
+			${D_UTILS}ft_reset_struct.c				\
 
 HDRS_LIST	= cub3D.h	\
 

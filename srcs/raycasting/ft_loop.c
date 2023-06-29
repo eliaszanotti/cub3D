@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_loop.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
+/*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:58:14 by elias             #+#    #+#             */
-/*   Updated: 2023/05/02 12:52:12 by thibaultgir      ###   ########.fr       */
+/*   Updated: 2023/06/29 15:00:54 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int	ft_check_state(t_args *args)
+static int	ft_check_flashlight(t_args *args)
 {
 	t_mlx	*mlx;
 
@@ -27,10 +27,21 @@ static int	ft_check_state(t_args *args)
 		ft_print_cross(&mlx->img);
 		ft_print_flashlight(args, &mlx->img);
 	}
+	args->mlx = mlx;
+	return (0);
+}
+
+static int	ft_check_state(t_args *args)
+{
+	t_mlx	*mlx;
+
+	if (ft_check_flashlight(args))
+		return (1);
 	if (args->door_delay++ > 100)
 		ft_close_doors(args);
-	ft_check_screamer(args);
 	ft_check_end(args);
+	mlx = args->mlx;
+	ft_check_screamer(args);
 	if (args->screamer)
 		mlx_put_image_to_window(mlx->mlx, mlx->win, args->texture[5].img, 0, 0);
 	else if (args->end)
@@ -59,6 +70,7 @@ int	ft_loop(t_args *args)
 			return (1);
 		ft_draw_line(args, &args->mlx->img, x);
 	}
-	ft_check_state(args);
+	if (ft_check_state(args))
+		return (1);
 	return (0);
 }
