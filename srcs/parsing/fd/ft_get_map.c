@@ -58,12 +58,25 @@ static int	ft_finish_gnl(int fd, char *line)
 	return (0);
 }
 
+static int	ft_add_to_list(t_list **list, char *line)
+{
+	t_ilst	*ilst;
+	t_list	*new;
+
+	ilst = ft_get_ilst(line);
+	if (!ilst)
+		return (ft_error(99));
+	new = ft_lstnew(ilst);
+	if (!new)
+		return (ft_error(99));
+	ft_lstadd_back(list, new);
+	return (0);
+}
+
 int	ft_get_map(t_args *args, int fd)
 {	
 	char	*line;
 	t_list	*list;
-	t_list	*new;
-	t_ilst	*ilst;
 
 	list = NULL;
 	line = ft_skip_empty_line(fd);
@@ -71,13 +84,8 @@ int	ft_get_map(t_args *args, int fd)
 		return (ft_error(99));
 	while (line && ft_strcmp(line, "\n"))
 	{
-		ilst = ft_get_ilst(line);
-		if (!ilst)
-			return (ft_error(99));
-		new = ft_lstnew(ilst);
-		if (!new)
-			return (ft_error(99));
-		ft_lstadd_back(&list, new);
+		if (ft_add_to_list(&list, line))
+			return (1);
 		free(line);
 		line = get_next_line(fd);
 	}
