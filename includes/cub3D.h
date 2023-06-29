@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/06/29 15:36:33 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/29 16:38:33 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,6 @@ int				ft_pause(t_args *args);
 void			ft_print_cross(t_img *img);
 void			ft_print_line(t_args *args, t_point p1, t_point p2, int color);
 int				ft_print_minimap(t_args *args, t_img *img);
-void			ft_put_player(t_img *img, int color);
 void			ft_put_square(t_args *args, t_point p, int color, double angle);
 //	PARSING
 int				ft_check_walls(t_args *args);

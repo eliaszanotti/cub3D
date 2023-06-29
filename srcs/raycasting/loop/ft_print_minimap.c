@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_minimap.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:12:00 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/04/25 17:08:03 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/06/29 16:37:00 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,21 @@ static void	ft_choose_color(t_args *args, t_point p, t_img *img, double angle)
 		ft_put_square(args, p, 0xA9CCE3, angle);
 	else if (c != '1' && c != '2')
 		ft_put_square(args, p, 0xFFFFFF, angle);
+}
+
+static void	ft_put_player(t_img *img, int color)
+{
+	int	x;
+	int	y;
+
+	x = P_OFFSET - 2;
+	while (x <= P_OFFSET + 2)
+	{
+		y = P_OFFSET - 2;
+		while (y <= P_OFFSET + 2)
+			ft_mlx_pixel_put(img, x, y++, color);
+		x++;
+	}
 }
 
 int	ft_print_minimap(t_args *args, t_img *img)
