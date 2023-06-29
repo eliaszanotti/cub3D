@@ -6,7 +6,7 @@
 #    By: elias <elias@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/20 14:43:07 by elias             #+#    #+#              #
-#    Updated: 2023/06/29 16:41:25 by elias            ###   ########.fr        #
+#    Updated: 2023/06/29 16:46:38 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ S_SRC		= main.c									\
 			${D_RAY}${D_INIT}ft_init_textures.c			\
 			${D_RAY}${D_LOOP}ft_calculate_positions.c	\
 			${D_RAY}${D_LOOP}ft_calculate_side_dist.c	\
+			${D_RAY}${D_LOOP}ft_close_doors.c			\
 			${D_RAY}${D_LOOP}ft_draw_line.c				\
 			${D_RAY}${D_LOOP}ft_init_values.c			\
 			${D_RAY}${D_LOOP}ft_loop.c					\
@@ -55,7 +56,7 @@ S_SRC		= main.c									\
 			${D_RAY}${D_MOVE}ft_turn.c					\
 			${D_RAY}ft_raycasting.c						\
 			\
-			${D_UTILS}ft_check.c						\
+			${D_UTILS}check/ft_check.c						\
 			${D_UTILS}ft_open_xpm.c						\
 			${D_UTILS}ft_error.c						\
 			${D_UTILS}ft_exit.c							\

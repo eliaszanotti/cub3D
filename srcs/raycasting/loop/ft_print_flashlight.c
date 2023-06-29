@@ -6,11 +6,25 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:40:06 by elias             #+#    #+#             */
-/*   Updated: 2023/06/29 16:40:46 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/29 16:44:14 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+static void	ft_print_square(t_img *img, int x, int y)
+{
+	int	i;
+	int	j;
+
+	i = x - 1;
+	while (++i < x + 20)
+	{
+		j = y - 1;
+		while (++j < y + 20)
+			ft_mlx_pixel_put(img, i, j, 0xFCA510);
+	}
+}
 
 int	ft_print_flashlight(t_args *args, t_img *img)
 {

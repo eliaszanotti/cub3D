@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hooks.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:43:39 by elias             #+#    #+#             */
-/*   Updated: 2023/04/26 19:28:12 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/06/29 16:42:50 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void	ft_state_door(t_args *args)
+static void	ft_change_state_door(t_args *args)
 {
 	if (args->map[(int)(args->ray->pos.x + round(args->ray->dir.x))] \
 		[(int)(args->ray->pos.y + round(args->ray->dir.y))] == '3')
@@ -46,7 +46,7 @@ int	hook_keypress(int key, t_args *args)
 	else if (key == M_KEY && args->flash_timer > 100)
 		args->expanded = args->expanded ^ 1;
 	else if (key == SPACE_KEY)
-		ft_state_door(args);
+		ft_change_state_door(args);
 	return (0);
 }
 

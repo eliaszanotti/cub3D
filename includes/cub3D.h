@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/06/29 16:40:57 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/29 16:44:28 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,7 +190,6 @@ int				ft_reduce_opacity(int color, double opacity);
 int				ft_close_doors(t_args *args);
 int				ft_check_screamer(t_args *args);
 int				ft_check_end(t_args *args);
-void			ft_print_square(t_img *img, int x, int y);
 int				ft_print_flashlight(t_args *args, t_img *img);
 
 int	ft_parse_colors(t_args *args);
