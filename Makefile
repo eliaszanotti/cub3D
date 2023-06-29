@@ -6,7 +6,7 @@
 #    By: elias <elias@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/20 14:43:07 by elias             #+#    #+#              #
-#    Updated: 2023/06/29 14:53:05 by elias            ###   ########.fr        #
+#    Updated: 2023/06/29 16:27:44 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,11 +24,9 @@ endif
 
 S_SRC		= main.c								\
 			${D_MLX}ft_create_img.c					\
-			${D_MLX}ft_draw_line.c					\
 			${D_MLX}ft_get_color.c					\
 			${D_MLX}ft_init_window.c				\
 			${D_MLX}ft_mlx_pixel_put.c				\
-			${D_MLX}ft_pause.c						\
 			${D_MLX}ft_print_cross.c				\
 			${D_MLX}ft_print_line.c					\
 			${D_MLX}ft_print_minimap.c				\
@@ -44,19 +42,21 @@ S_SRC		= main.c								\
 			${D_PARSE}${D_FD}ft_parse_colors.c		\
 			${D_PARSE}ft_parsing.c					\
 			\
-			${D_RAY}ft_calculate_positions.c		\
-			${D_RAY}ft_calculate_side_dist.c		\
-			${D_RAY}ft_init_ray.c					\
-			${D_RAY}ft_init_textures.c				\
-			${D_RAY}ft_init_values.c				\
-			${D_RAY}ft_loop.c						\
-			${D_RAY}ft_move.c						\
-			${D_RAY}ft_open_xpm.c					\
+			${D_RAY}${D_LOOP}ft_draw_line.c					\
+			${D_RAY}${D_LOOP}ft_calculate_positions.c		\
+			${D_RAY}${D_LOOP}ft_calculate_side_dist.c		\
+			${D_RAY}${D_INIT}ft_init_ray.c					\
+			${D_RAY}${D_INIT}ft_init_textures.c				\
+			${D_RAY}${D_LOOP}ft_init_values.c				\
+			${D_RAY}${D_LOOP}ft_pause.c						\
+			${D_RAY}${D_LOOP}ft_loop.c						\
+			${D_RAY}${D_MOVE}ft_move.c						\
 			${D_RAY}ft_raycasting.c					\
-			${D_RAY}ft_throw_ray.c					\
-			${D_RAY}ft_turn.c						\
+			${D_RAY}${D_LOOP}ft_throw_ray.c					\
+			${D_RAY}${D_MOVE}ft_turn.c						\
 			\
 			${D_UTILS}ft_check.c					\
+			${D_UTILS}ft_open_xpm.c					\
 			${D_UTILS}ft_error.c					\
 			${D_UTILS}ft_exit.c						\
 			${D_UTILS}ft_free.c						\
@@ -94,6 +94,9 @@ D_FD		= fd/
 D_MAP		= map/
 D_UTILS		= utils/
 D_RAY		= raycasting/
+D_INIT		= init/
+D_LOOP		= loop/
+D_MOVE		= move/
 
 # COLORS
 C_R			= \033[1;31m

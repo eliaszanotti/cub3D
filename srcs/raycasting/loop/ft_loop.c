@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:58:14 by elias             #+#    #+#             */
-/*   Updated: 2023/06/29 15:00:54 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/29 15:44:13 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ int	ft_loop(t_args *args)
 			return (1);
 		if (ft_calculate_positions(args))
 			return (1);
-		ft_draw_line(args, &args->mlx->img, x);
+		if (ft_draw_line(args, &args->mlx->img, x))
+			return (1);
 	}
 	if (ft_check_state(args))
 		return (1);
