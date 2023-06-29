@@ -6,7 +6,7 @@
 #    By: elias <elias@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/20 14:43:07 by elias             #+#    #+#              #
-#    Updated: 2023/06/27 14:31:43 by elias            ###   ########.fr        #
+#    Updated: 2023/06/29 14:35:31 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,10 +35,10 @@ S_SRC		= main.c							\
 			${D_MLX}ft_put_player.c				\
 			${D_MLX}ft_put_square.c				\
 			\
-			${D_PARSE}ft_check_walls.c			\
-			${D_PARSE}ft_convert_list.c			\
-			${D_PARSE}ft_fill_map.c				\
-			${D_PARSE}ft_is_valid_map.c			\
+			${D_PARSE}${D_MAP}ft_check_walls.c	\
+			${D_PARSE}${D_MAP}ft_convert_list.c	\
+			${D_PARSE}${D_MAP}ft_fill_map.c		\
+			${D_PARSE}${D_MAP}ft_is_valid_map.c	\
 			${D_PARSE}${D_FD}ft_get_infos.c			\
 			${D_PARSE}${D_FD}ft_get_map.c			\
 			${D_PARSE}${D_FD}ft_parse_colors.c			\

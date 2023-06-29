@@ -6,11 +6,29 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 13:56:05 by elias             #+#    #+#             */
-/*   Updated: 2023/06/27 16:00:50 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/29 14:34:55 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+static int	ft_get_width_size(t_args *args)
+{
+	t_list	*list;
+	int		size;
+	int		current;
+
+	list = args->map_list;
+	size = 0;
+	while (list)
+	{
+		current = ft_ilstsize(list->content);
+		if (current > size)
+			size = current;
+		list = list->next;
+	}
+	return (size);
+}
 
 static int	ft_finish_line(t_ilst **ilst, int size)
 {
@@ -34,17 +52,10 @@ int	ft_fill_map(t_args *args)
 {
 	t_list	*list;
 	int		size;
-	int		current;
 
-	list = args->map_list;
-	size = 0;
-	while (list)
-	{
-		current = ft_ilstsize(list->content);
-		if (current > size)
-			size = current;
-		list = list->next;
-	}
+	size = ft_get_width_size(args);
+	if (size == -1)
+		return (1);
 	list = args->map_list;
 	while (list)
 	{
