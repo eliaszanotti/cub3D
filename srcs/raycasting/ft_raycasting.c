@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:46:11 by elias             #+#    #+#             */
-/*   Updated: 2023/06/30 12:20:18 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/30 12:58:44 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static int	ft_init_images(t_args *args)
 	mlx->img.img = mlx_new_image(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	mlx->img.addr = mlx_get_data_addr(mlx->img.img, &mlx->img.bits_per_pixel, \
 		&mlx->img.line_length, &mlx->img.endian);
+	args->mlx = mlx;
 	return (0);
 }
 
