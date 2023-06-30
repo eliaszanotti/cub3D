@@ -6,7 +6,7 @@
 #    By: elias <elias@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/20 14:43:07 by elias             #+#    #+#              #
-#    Updated: 2023/06/29 16:46:38 by elias            ###   ########.fr        #
+#    Updated: 2023/06/30 12:22:14 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,12 +56,18 @@ S_SRC		= main.c									\
 			${D_RAY}${D_MOVE}ft_turn.c					\
 			${D_RAY}ft_raycasting.c						\
 			\
-			${D_UTILS}check/ft_check.c						\
+			${D_UTILS}${D_CHECK}ft_check_screamer.c		\
+			${D_UTILS}${D_CHECK}ft_check_end.c			\
+			${D_UTILS}${D_FREE}ft_free_list.c			\
+			${D_UTILS}${D_FREE}ft_free_mlx.c			\
+			${D_UTILS}${D_FREE}ft_free_str.c			\
+			${D_UTILS}${D_FREE}ft_free_struct.c			\
+			${D_UTILS}${D_HOOKS}ft_hook_keypress.c		\
+			${D_UTILS}${D_HOOKS}ft_hook_keyrelease.c	\
+			${D_UTILS}${D_HOOKS}ft_mouse_hook.c			\
 			${D_UTILS}ft_open_xpm.c						\
 			${D_UTILS}ft_error.c						\
 			${D_UTILS}ft_exit.c							\
-			${D_UTILS}ft_free.c							\
-			${D_UTILS}ft_hooks.c						\
 			${D_UTILS}ft_is_correct_extension.c			\
 			${D_UTILS}ft_reduce_opacity.c				\
 			${D_UTILS}ft_reset_struct.c					\
@@ -93,11 +99,14 @@ D_SRC		= srcs/
 D_PARSE		= parsing/
 D_FD		= fd/
 D_MAP		= map/
-D_UTILS		= utils/
 D_RAY		= raycasting/
 D_INIT		= init/
 D_LOOP		= loop/
 D_MOVE		= move/
+D_UTILS		= utils/
+D_CHECK		= check/
+D_FREE		= free/
+D_HOOKS		= hooks/
 
 # COLORS
 C_R			= \033[1;31m

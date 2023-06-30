@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:46:11 by elias             #+#    #+#             */
-/*   Updated: 2023/06/29 16:17:22 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/30 12:20:18 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static int	ft_init_images(t_args *args)
 
 static int	ft_mlx_hook_loop(t_args *args)
 {
-	mlx_hook(args->mlx->win, 2, 1L << 0, hook_keypress, args);
-	mlx_hook(args->mlx->win, 3, 1L << 1, hook_keyrelease, args);
+	mlx_hook(args->mlx->win, 2, 1L << 0, ft_hook_keypress, args);
+	mlx_hook(args->mlx->win, 3, 1L << 1, ft_hook_keyrelease, args);
 	mlx_hook(args->mlx->win, 6, 1L << 6, ft_mouse_hook, args);
 	mlx_hook(args->mlx->win, 17, 0, ft_exit, args);
 	mlx_loop_hook(args->mlx->mlx, ft_loop, args);
