@@ -6,7 +6,7 @@
 #    By: elias <elias@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/20 14:43:07 by elias             #+#    #+#              #
-#    Updated: 2023/06/30 12:22:14 by elias            ###   ########.fr        #
+#    Updated: 2023/06/30 12:43:32 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,13 +30,13 @@ S_SRC		= main.c									\
 			${D_MLX}ft_print_line.c						\
 			${D_MLX}ft_put_square.c						\
 			\
+			${D_PARSE}${D_FD}ft_get_infos.c				\
+			${D_PARSE}${D_FD}ft_get_map.c				\
+			${D_PARSE}${D_FD}ft_parse_colors.c			\
 			${D_PARSE}${D_MAP}ft_check_walls.c			\
 			${D_PARSE}${D_MAP}ft_convert_list.c			\
 			${D_PARSE}${D_MAP}ft_fill_map.c				\
 			${D_PARSE}${D_MAP}ft_is_valid_map.c			\
-			${D_PARSE}${D_FD}ft_get_infos.c				\
-			${D_PARSE}${D_FD}ft_get_map.c				\
-			${D_PARSE}${D_FD}ft_parse_colors.c			\
 			${D_PARSE}ft_parsing.c						\
 			\
 			${D_RAY}${D_INIT}ft_init_ray.c				\
@@ -56,8 +56,8 @@ S_SRC		= main.c									\
 			${D_RAY}${D_MOVE}ft_turn.c					\
 			${D_RAY}ft_raycasting.c						\
 			\
-			${D_UTILS}${D_CHECK}ft_check_screamer.c		\
 			${D_UTILS}${D_CHECK}ft_check_end.c			\
+			${D_UTILS}${D_CHECK}ft_check_screamer.c		\
 			${D_UTILS}${D_FREE}ft_free_list.c			\
 			${D_UTILS}${D_FREE}ft_free_mlx.c			\
 			${D_UTILS}${D_FREE}ft_free_str.c			\
@@ -65,7 +65,6 @@ S_SRC		= main.c									\
 			${D_UTILS}${D_HOOKS}ft_hook_keypress.c		\
 			${D_UTILS}${D_HOOKS}ft_hook_keyrelease.c	\
 			${D_UTILS}${D_HOOKS}ft_mouse_hook.c			\
-			${D_UTILS}ft_open_xpm.c						\
 			${D_UTILS}ft_error.c						\
 			${D_UTILS}ft_exit.c							\
 			${D_UTILS}ft_is_correct_extension.c			\

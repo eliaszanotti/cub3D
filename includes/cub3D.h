@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/06/30 12:20:18 by elias            ###   ########.fr       */
+/*   Updated: 2023/06/30 12:50:04 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,56 +143,62 @@ typedef struct s_args
 	int		flash_timer;
 }	t_args;
 
-//	MLX
+//	MINILIBX
 int				ft_create_img(t_args *args, char *path, int side);
-int				ft_draw_line(t_args *args, t_img *img, int x);
 unsigned int	ft_get_color(t_img *img, int x, int y);
 int				ft_init_window(t_args *args);
 void			ft_mlx_pixel_put(t_img *data, int x, int y, int color);
-int				ft_pause(t_args *args);
-void			ft_print_cross(t_img *img);
-void			ft_print_line(t_args *args, t_point p1, t_point p2, int color);
-int				ft_print_minimap(t_args *args, t_img *img);
+void			ft_print_line(t_args *args, t_point p0, t_point p2, int color);
 void			ft_put_square(t_args *args, t_point p, int color, double angle);
 //	PARSING
+int				ft_parsing(t_args *args, char *cub_file);
+//		FD
+int				ft_get_infos(t_args *args, int fd);
+int				ft_get_map(t_args *args, int fd);
+int				ft_parse_colors(t_args *args);
+//		MAP
 int				ft_check_walls(t_args *args);
 int				ft_convert_list(t_args *args);
 int				ft_fill_map(t_args *args);
 int				ft_is_valid_map(t_args *args);
-int				ft_get_infos(t_args *args, int fd);
-int				ft_get_map(t_args *args, int fd);
-int				ft_parsing(t_args *args, char *cub_file);
-int				ft_reset_struct(t_args *args);
 //	RAYCASTING
-int				ft_calculate_positions(t_args *args);
-int				ft_calculate_side_dist(t_args *args);
+int				ft_raycasting(t_args *args);
+//		INIT
 int				ft_init_ray(t_args *args);
 int				ft_init_textures(t_args *args);
+//		LOOP
+int				ft_calculate_positions(t_args *args);
+int				ft_calculate_side_dist(t_args *args);
+int				ft_close_doors(t_args *args);
+int				ft_draw_line(t_args *args, t_img *img, int x);
 int				ft_init_values(t_args *args, int x);
 int				ft_loop(t_args *args);
-void			ft_move(t_args *args);
-int				ft_raycasting(t_args *args);
+int				ft_pause(t_args *args);
+void			ft_print_cross(t_img *img);
+int				ft_print_flashlight(t_args *args, t_img *img);
+int				ft_print_minimap(t_args *args, t_img *img);
 int				ft_throw_ray(t_args *args);
+//		MOVE
+void			ft_move(t_args *args);
 void			ft_turn_left(t_args *args);
 void			ft_turn_right(t_args *args);
 //	UTILS
 int				ft_error(int error_code);
 int				ft_exit(t_args *args);
-void			ft_free_str(char **str);
+int				ft_is_correct_extension(char *file, char *extension);
+int				ft_reduce_opacity(int color, double opacity);
+int				ft_reset_struct(t_args *args);
+//		CHECK
+int				ft_check_end(t_args *args);
+int				ft_check_screamer(t_args *args);
+//		FREE
 void			ft_free_list(t_list *list);
 void			ft_free_mlx(t_args *args);
+void			ft_free_str(char **str);
 void			ft_free_struct(t_args *args);
+//		HOOKS
 int				ft_hook_keypress(int key, t_args *args);
 int				ft_hook_keyrelease(int key, t_args *args);
 int				ft_mouse_hook(int x, int y, t_args *args);
-int				ft_is_correct_extension(char *file, char *extension);
-int				ft_reduce_opacity(int color, double opacity);
-int				ft_close_doors(t_args *args);
-int				ft_check_screamer(t_args *args);
-int				ft_check_end(t_args *args);
-int				ft_print_flashlight(t_args *args, t_img *img);
-
-int	ft_parse_colors(t_args *args);
-int	ft_print_flashlight(t_args *args, t_img *img);
 
 #endif
