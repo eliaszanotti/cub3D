@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_draw_line.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:11:02 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/06/29 15:40:57 by elias            ###   ########.fr       */
+/*   Updated: 2023/08/29 14:25:43 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"cub3D.h"
+#include "cub3D.h"
 
 static int	ft_flash_light(t_args *args, t_img *img, int x, int y)
 {

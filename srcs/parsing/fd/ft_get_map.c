@@ -74,7 +74,7 @@ static int	ft_add_to_list(t_list **list, char *line)
 }
 
 int	ft_get_map(t_args *args, int fd)
-{	
+{
 	char	*line;
 	t_list	*list;
 

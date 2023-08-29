@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_minimap.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:12:00 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/06/29 16:37:00 by elias            ###   ########.fr       */
+/*   Updated: 2023/08/29 14:26:27 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	ft_print_minimap(t_args *args, t_img *img)
 			p.x = img->x * CUB_SIZE;
 			p.y = img->y * CUB_SIZE;
 			ft_choose_color(args, p, img, angle);
-		}	
+		}
 	}
 	args->mlx->img.y = args->ray->pos.x - 1;
 	args->mlx->img.x = args->ray->pos.y - 1;

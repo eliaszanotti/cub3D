@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_img.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 21:31:52 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/06/30 12:47:42 by elias            ###   ########.fr       */
+/*   Updated: 2023/08/29 14:26:55 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"cub3D.h"
+#include "cub3D.h"
 
 int	ft_create_img(t_args *args, char *path, int side)
 {

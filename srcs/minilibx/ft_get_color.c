@@ -6,11 +6,11 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:11:12 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/04/24 17:05:05 by elias            ###   ########.fr       */
+/*   Updated: 2023/08/29 14:27:02 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"cub3D.h"
+#include "cub3D.h"
 
 unsigned int	ft_get_color(t_img *data, int x, int y)
 {
