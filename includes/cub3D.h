@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/06/30 12:50:04 by elias            ###   ########.fr       */
+/*   Updated: 2023/08/29 17:12:08 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,7 @@ int				ft_exit(t_args *args);
 int				ft_is_correct_extension(char *file, char *extension);
 int				ft_reduce_opacity(int color, double opacity);
 int				ft_reset_struct(t_args *args);
+void			ft_reset_ray(t_ray *ray);
 //		CHECK
 int				ft_check_end(t_args *args);
 int				ft_check_screamer(t_args *args);

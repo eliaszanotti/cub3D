@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:42:42 by elias             #+#    #+#             */
-/*   Updated: 2023/04/04 14:48:00 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/08/29 17:12:25 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int	ft_init_ray(t_args *args)
 	args->ray = malloc(sizeof(t_ray));
 	if (!args->ray)
 		return (ft_error(99));
+	ft_reset_ray(args->ray);
 	i = -1;
 	while (args->map[++i])
 	{
