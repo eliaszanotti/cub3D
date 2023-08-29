@@ -61,9 +61,19 @@ static int	ft_fill_infos(t_args *args, int fd)
 
 int	ft_get_infos(t_args *args, int fd)
 {
+	char	*line;
+
 	if (ft_fill_infos(args, fd))
 		return (1);
 	if (ft_parse_colors(args))
-		return (1);
+	{
+		line = get_next_line(fd);
+		while (line)
+		{
+			free(line);
+			line = get_next_line(fd);
+		}
+		return (free(line), 1);
+	}
 	return (0);
 }
