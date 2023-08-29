@@ -1,7 +1,8 @@
 SO textures/south1.xpm
-NO textures/south1.xpm
-WE textures/south1.xpm
-EA textures/south1.xpm
+NO textures/north1.xpm
+WE textures/west1.xpm
+EA textures/east1.xpm
+
 C 51,51,51
 F 112,112,100
 
