@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:08:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/06/30 12:50:04 by elias            ###   ########.fr       */
+/*   Updated: 2023/08/29 17:15:30 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ void			ft_put_square(t_args *args, t_point p, int color, double angle);
 //	PARSING
 int				ft_parsing(t_args *args, char *cub_file);
 //		FD
+void			ft_clear_gnl(int fd);
 int				ft_get_infos(t_args *args, int fd);
 int				ft_get_map(t_args *args, int fd);
 int				ft_parse_colors(t_args *args);

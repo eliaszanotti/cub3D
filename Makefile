@@ -6,7 +6,7 @@
 #    By: elias <elias@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/20 14:43:07 by elias             #+#    #+#              #
-#    Updated: 2023/08/29 16:55:12 by elias            ###   ########.fr        #
+#    Updated: 2023/08/29 17:14:18 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ S_SRC		= main.c									\
 			${D_MLX}ft_print_line.c						\
 			${D_MLX}ft_put_square.c						\
 			\
+			${D_PARSE}${D_FD}ft_clear_gnl.c				\
 			${D_PARSE}${D_FD}ft_get_infos.c				\
 			${D_PARSE}${D_FD}ft_get_map.c				\
 			${D_PARSE}${D_FD}ft_parse_colors.c			\
