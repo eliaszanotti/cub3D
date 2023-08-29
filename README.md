@@ -21,8 +21,11 @@ make
 ## Map
 
 0 is for an empty space
-1 is for a wall
+
+1 is for a wall 
+
 3 is for a door
+
 N,E,S,W is for orientation of the player
 
 ## Errors
