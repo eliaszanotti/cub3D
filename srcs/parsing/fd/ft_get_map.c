@@ -81,7 +81,7 @@ int	ft_get_map(t_args *args, int fd)
 	list = NULL;
 	line = ft_skip_empty_line(fd);
 	if (!line)
-		return (ft_error(99));
+		return (ft_error(6));
 	while (line && ft_strcmp(line, "\n"))
 	{
 		if (ft_add_to_list(&list, line))
