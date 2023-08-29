@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:11:24 by thibaultgir       #+#    #+#             */
-/*   Updated: 2023/08/29 15:37:20 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/08/29 17:50:08 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ int	ft_init_window(t_args *args)
 		return (ft_error(99));
 	mlx->mlx = mlx_init();
 	if (!mlx->mlx)
-		return (ft_error(99));
+		return (free(mlx), ft_error(99));
 	mlx->win = mlx_new_window(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3D");
 	if (!mlx->win)
-		return (ft_error(99));
+		return (free(mlx), ft_error(99));
 	args->mlx = mlx;
 	return (0);
 }
