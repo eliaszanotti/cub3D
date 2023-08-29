@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_raycasting.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:46:11 by elias             #+#    #+#             */
-/*   Updated: 2023/06/30 12:58:44 by elias            ###   ########.fr       */
+/*   Updated: 2023/08/29 16:32:56 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	ft_mlx_hook_loop(t_args *args)
 {
 	mlx_hook(args->mlx->win, 2, 1L << 0, ft_hook_keypress, args);
 	mlx_hook(args->mlx->win, 3, 1L << 1, ft_hook_keyrelease, args);
-	mlx_hook(args->mlx->win, 6, 1L << 6, ft_mouse_hook, args);
+	// mlx_hook(args->mlx->win, 6, 1L << 6, ft_mouse_hook, args);
 	mlx_hook(args->mlx->win, 17, 0, ft_exit, args);
 	mlx_loop_hook(args->mlx->mlx, ft_loop, args);
 	mlx_loop(args->mlx->mlx);
