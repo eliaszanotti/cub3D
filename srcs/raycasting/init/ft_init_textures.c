@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_textures.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:58:57 by elias             #+#    #+#             */
-/*   Updated: 2023/08/29 16:46:53 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/08/29 17:43:28 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void ft_free_tab(t_args *args, int i)
+static void	ft_free_tab(t_args *args, int i)
 {
 	while (i >= 0)
 	{

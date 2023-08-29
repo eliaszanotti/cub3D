@@ -35,7 +35,6 @@ static int	ft_compare_line_1(t_args *args, char *line)
 		if (args->south_path)
 			return (ft_error(6));
 		args->south_path = ft_substr(line, 3, ft_strlen(line) - 4);
-
 	}
 	else if (!ft_strncmp("WE", line, 2))
 	{
