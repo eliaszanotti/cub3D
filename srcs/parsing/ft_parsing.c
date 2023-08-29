@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:57:06 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/06/27 16:04:45 by elias            ###   ########.fr       */
+/*   Updated: 2023/08/29 13:43:42 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	ft_parse_map(t_args *args)
 {
 	if (!ft_is_valid_map(args))
 		return (ft_free_list(args->map_list), ft_free_struct(args), \
-			ft_error(6));
+			ft_error(10));
 	if (ft_fill_map(args))
 		return (ft_free_list(args->map_list), ft_free_struct(args), 1);
 	if (ft_convert_list(args))

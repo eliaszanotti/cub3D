@@ -12,7 +12,7 @@
 
 #include "cub3D.h"
 
-static int	ft_error_range_1(int error_code)
+static int	ft_error_range(int error_code)
 {
 	if (error_code == 2)
 		printf("Wrong amount of arguments "\
@@ -31,6 +31,8 @@ static int	ft_error_range_1(int error_code)
 		printf("Invalid color format (R,G,B)\n");
 	if (error_code == 9)
 		printf("Invalid texture path\n");
+	if (error_code == 10)
+		printf("Invalid map (wrong character)\n");
 	return (1);
 }
 
@@ -38,8 +40,8 @@ int	ft_error(int error_code)
 {
 	if (error_code)
 		printf("\e[1;31m[ERROR:%d]\e[0m ", error_code);
-	if (error_code < 10)
-		return (ft_error_range_1(error_code));
+	if (error_code < 99)
+		return (ft_error_range(error_code));
 	else if (error_code == 99)
 		printf("Malloc cannot be created\n");
 	else

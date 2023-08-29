@@ -8,7 +8,7 @@
 ## Instalation 
 
 ```bash
-git clone https://github.com/eliaszanotti/cub3D.git
+git clone https://github.com/eliaszanotti/cub3D.git --recursive
 ```
 
 To install cub3D you just have to clone the project and run the following command:
