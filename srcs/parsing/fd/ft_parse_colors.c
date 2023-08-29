@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:03:27 by elias             #+#    #+#             */
-/*   Updated: 2023/06/29 14:26:44 by elias            ###   ########.fr       */
+/*   Updated: 2023/08/29 14:21:48 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,15 @@ int	ft_parse_colors(t_args *args)
 	if (ft_split_size(split_color) != 3)
 		return (ft_free_str(split_color), ft_error(8));
 	args->floor_color = ft_convert_hexa(split_color);
+	if (args->floor_color == -1)
+		return (ft_free_str(split_color), ft_error(8));
 	split_color = ft_split_color(args->ceiling);
 	if (!split_color)
 		return (ft_error(99));
 	if (ft_split_size(split_color) != 3)
 		return (ft_free_str(split_color), ft_error(8));
 	args->ceiling_color = ft_convert_hexa(split_color);
-	if (args->floor_color == -1 || args->ceiling_color == -1)
+	if (args->ceiling_color == -1)
 		return (ft_free_str(split_color), ft_error(8));
 	return (0);
 }
