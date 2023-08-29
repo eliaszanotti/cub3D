@@ -22,20 +22,50 @@ static int	ft_is_filled(t_args *args)
 	return (1);
 }
 
-static int	ft_compare_line(t_args *args, char *line)
+static int	ft_compare_line_1(t_args *args, char *line)
 {
-	if (!ft_strncmp("NO", line, 2) && !args->north_path)
+	if (!ft_strncmp("NO", line, 2))
+	{
+		if (args->north_path)
+			return (ft_error(6));
 		args->north_path = ft_substr(line, 3, ft_strlen(line) - 4);
-	else if (!ft_strncmp("SO", line, 2) && !args->south_path)
+	}
+	else if (!ft_strncmp("SO", line, 2))
+	{
+		if (args->south_path)
+			return (ft_error(6));
 		args->south_path = ft_substr(line, 3, ft_strlen(line) - 4);
-	else if (!ft_strncmp("WE", line, 2) && !args->west_path)
+
+	}
+	else if (!ft_strncmp("WE", line, 2))
+	{
+		if (args->west_path)
+			return (ft_error(6));
 		args->west_path = ft_substr(line, 3, ft_strlen(line) - 4);
-	else if (!ft_strncmp("EA", line, 2) && !args->east_path)
+	}
+	else if (!ft_strncmp("EA", line, 2))
+	{
+		if (args->east_path)
+			return (ft_error(6));
 		args->east_path = ft_substr(line, 3, ft_strlen(line) - 4);
-	else if (!ft_strncmp("F", line, 1) && !args->floor)
+	}
+	return (0);
+}
+
+static int	ft_compare_line_2(t_args *args, char *line)
+{
+	if (!ft_strncmp("F", line, 1))
+	{
+		if (args->floor)
+			return (ft_error(6));
 		args->floor = ft_substr(line, 2, ft_strlen(line) - 3);
-	else if (!ft_strncmp("C", line, 1) && !args->ceiling)
+	}
+	else if (!ft_strncmp("C", line, 1))
+	{
+		if (args->ceiling)
+			return (ft_error(6));
 		args->ceiling = ft_substr(line, 2, ft_strlen(line) - 3);
+	}
 	return (0);
 }
 
@@ -52,8 +82,9 @@ static int	ft_fill_infos(t_args *args, int fd)
 			return (ft_error(6));
 		while (line[i] == ' ')
 			i++;
-		if (*line && ft_compare_line(args, line + i))
-			return (free(line), 1);
+		if (*line && (ft_compare_line_1(args, line + i) || \
+			ft_compare_line_2(args, line + i)))
+			return (ft_clear_gnl(fd), free(line), 1);
 		free(line);
 	}
 	return (0);
@@ -64,6 +95,6 @@ int	ft_get_infos(t_args *args, int fd)
 	if (ft_fill_infos(args, fd))
 		return (1);
 	if (ft_parse_colors(args))
-		return (1);
+		return (ft_clear_gnl(fd), 1);
 	return (0);
 }

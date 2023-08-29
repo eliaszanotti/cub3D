@@ -153,6 +153,7 @@ void			ft_put_square(t_args *args, t_point p, int color, double angle);
 //	PARSING
 int				ft_parsing(t_args *args, char *cub_file);
 //		FD
+void			ft_clear_gnl(int fd);
 int				ft_get_infos(t_args *args, int fd);
 int				ft_get_map(t_args *args, int fd);
 int				ft_parse_colors(t_args *args);
