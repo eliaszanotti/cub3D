@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 11:49:12 by elias             #+#    #+#             */
-/*   Updated: 2023/04/06 14:23:01 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:34:53 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,15 @@
 
 int	ft_exit(t_args *args)
 {
+	int	i;
+
+	i = -1;
+	while (++i <= 6)
+	{
+		if (args->texture[i].img)
+			mlx_destroy_image(args->mlx->mlx, args->texture[i].img);
+	}
 	mlx_destroy_image(args->mlx->mlx, args->mlx->img.img);
-	mlx_destroy_image(args->mlx->mlx, args->texture[0].img);
-	mlx_destroy_image(args->mlx->mlx, args->texture[1].img);
-	mlx_destroy_image(args->mlx->mlx, args->texture[2].img);
-	mlx_destroy_image(args->mlx->mlx, args->texture[3].img);
 	ft_free_struct(args);
 	ft_free_str(args->map);
 	ft_free_mlx(args);

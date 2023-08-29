@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:56:24 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/04/05 13:18:33 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/08/29 16:21:43 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ int	ft_reset_struct(t_args *args)
 	args->last_x = -1;
 	args->is_paused = 0;
 	args->flash_timer = 0;
+	args->door_delay = 0;
 	return (0);
 }
