@@ -1,49 +1,70 @@
-# CUB3D
+# Project Cub3D
 
-## Table of Contents
+Cub3D is a 3D graphics project that explores the raycasting technique to create a simple game engine with a Wolfenstein 3D-like visual style.
 
-1. [Instalation](#instalation)
-3. [Map](#map)
-2. [Errors](#errors)
+## Installation
 
-## Instalation 
+To install and use Cub3D, follow these steps:
 
-```bash
-git clone https://github.com/eliaszanotti/cub3D.git --recursive
+1. Clone the Cub3D repository from GitHub:
+   ```
+   git clone https://github.com/username/cub3D.git
+   ```
+
+2. Change into the project directory:
+   ```
+   cd cub3D
+   ```
+
+3. Compile the Cub3D program using the provided Makefile:
+   ```
+   make
+   ```
+
+4. The `cub3D` executable will be generated. You can now start using Cub3D.
+
+Note: Cub3D requires a Unix-like operating system and a C compiler (e.g., GCC) to be installed on your system.
+
+## Usage
+
+To use Cub3D, follow the syntax:
+
+```
+./cub3D path/to/map.cub
 ```
 
-To install cub3D you just have to clone the project and run the following command:
+## Map Configuration
 
-```c
-make
+The map is configured in a `.cub` file. Example configuration:
+
+```plaintext
+R 1920 1080
+NO ./textures/wall_north.xpm
+SO ./textures/wall_south.xpm
+WE ./textures/wall_west.xpm
+EA ./textures/wall_east.xpm
+S ./textures/sprite.xpm
+F 255,255,255
+C 0,0,0
+111111
+100001
+1001N1
+100001
+111111
 ```
 
-## Map
+## Documentation
 
-0 is for an empty space
+Cub3D has the following key features and considerations:
 
-1 is for a wall 
+- The project implements raycasting for rendering a 3D environment.
+- Texture mapping is used to enhance the visual representation of walls and sprites.
+- The map is configured through a `.cub` file, specifying resolution, textures, colors, and the map layout.
+- Basic first-person controls allow users to navigate the 3D environment.
 
-3 is for a door
+## Credits
 
-N,E,S,W is for orientation of the player
+Cub3D is the result of the collective effort of several individuals:
 
-## Errors
-
-**[ERROR:2]** Wrong amount of arguments (only one is expected in .cub format)
-
-**[ERROR:3]** File not found
-
-**[ERROR:4]** Incorrect file extension (.cub expected)
-
-**[ERROR:5]** Can't open file
-
-**[ERROR:6]** Invalid map
-
-**[ERROR:7]** Invalid map (map not surrounded by walls)
-
-**[ERROR:8]** Invalid color format (R,G,B)
-
-**[ERROR:9]** Invalid texture path
-
-**[ERROR:10]** Invalid map (wrong character)
+- [Thibault GIRAUDON (tgiraudo)](https://github.com/Thib1708)
+- [Elias ZANOTTI (ezanotti)](https://github.com/eliaszanotti)
